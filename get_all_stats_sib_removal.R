@@ -54,7 +54,7 @@ saveRDS(dat.clean, "sib_purged_snpRdata.RDS")
 
 #======================calculate basic stats=======================
 neSY <- calc_ne(dat, "stream.year", chr = "chr", NeEstimator_path = "D://ne_estimator/Ne2-1.exe", methods = c("LD"))
-dat <- filter_snps(dat, HWE = 0.000001, maf = 0.05, maf.facets = "stream.year")
+dat <- filter_snps(dat, HWE = 0.000001)
 dat <- calc_basic_snp_stats(dat, c("stream.year"))
 dat <- calc_het_hom_ratio(dat, c("stream.year"))
 fst <- calc_pairwise_fst(dat, c("stream.year"), method = "genepop")
