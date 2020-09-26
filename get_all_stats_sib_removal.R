@@ -232,12 +232,13 @@ mst$variable <- gsub("pred_", "", mst$variable)
 mst <- reshape2::dcast(mst, Creek + year + Basin  + variable + Relative.percent.RBT ~ type, value.var = "value")
 
 colnames(mst)[4] <- "stat"
-p <- ggplot(mst, aes(x = observed, y = corrected, color = Relative.percent.RBT)) + 
+p <- ggplot(mst[-which(mst$stat == "LDNe_0.05"),], aes(x = observed, y = corrected, color = Relative.percent.RBT)) + 
   facet_wrap(~stat, scales = "free") + geom_point() +
   geom_abline(slope = 1, intercept = 0) + theme_bw() + 
   scale_color_viridis_c(direction = -1, end = .9) + labs(color = "%RBT") +
   theme(strip.background = element_blank(), strip.text = element_text(size = 20))
 
+ggsave("hyb_correction_plot_sib_removal.pdf", p, "pdf", width = 11, height = 8.5)
 
 
 #===============theta plot==================
@@ -262,6 +263,7 @@ p2 <- ggplot(theta_plot_dat,
   theme(strip.background = element_blank()) + ylab("Watterson's Theta") + xlab("Tajima's Theta") +
   scale_color_viridis_c() + scale_fill_viridis_c()
 
+ggsave("theta_plot_sib_removal.pdf", p2, "pdf", width = 11, height = 8.5)
 
 
 
