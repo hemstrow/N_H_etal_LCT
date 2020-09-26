@@ -1,0 +1,8 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
+               1     1.0000     1.0000    ROC_ROC_2017_001
+               2     1.0000     0.9344    ROC_ROC_2017_002
+               3     0.5689     0.5685    ROC_ROC_2017_003,ROC_ROC_2017_004
+               4     1.0000     0.9408    ROC_ROC_2017_005
+               5     1.0000     0.9400    ROC_ROC_2017_006
+               6     1.0000     0.9358    ROC_ROC_2017_007
+               7     1.0000     1.0000    ROC_ROC_2017_008

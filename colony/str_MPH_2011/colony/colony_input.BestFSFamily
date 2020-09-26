@@ -1,0 +1,8 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4
+               1     0.4237     0.4120    WAL_MPH_2011_002,WAL_MPH_2011_007
+               2     0.3583     0.3243    WAL_MPH_2011_003,WAL_MPH_2011_011
+               3     0.3953     0.1973    WAL_MPH_2011_004,WAL_MPH_2011_005,WAL_MPH_2011_016,WAL_MPH_2011_017
+               4     1.0000     0.8012    WAL_MPH_2011_006
+               5     1.0000     0.5416    WAL_MPH_2011_008
+               6     1.0000     0.9904    WAL_MPH_2011_009
+               7     1.0000     0.3756    WAL_MPH_2011_010

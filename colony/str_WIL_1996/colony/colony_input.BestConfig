@@ -1,0 +1,9 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    WWH_WIL_1996_015                   *1                   #1             1
+    WWH_WIL_1996_019                   *2                   #2             2
+    WWH_WIL_1996_033                   *3                   #3             3
+    WWH_WIL_1996_034                   *1                   #4             1
+    WWH_WIL_1996_038                   *4                   #5             4
+    WWH_WIL_1996_039                   *3                   #3             3
+    WWH_WIL_1996_314                   *5                   #4             1
+    WWH_WIL_1996_315                   *6                   #6             5

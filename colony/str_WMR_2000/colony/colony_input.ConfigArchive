@@ -1,0 +1,13 @@
+Archived Configurations with corresponding log likelihood
+Config#,1,LogLikelihood,-4.9364793638E+01
+OffspringID,FatherID,MotherID,ClusterIndex
+MAR_WMR_2000_033,*1,#1,1
+MAR_WMR_2000_037,*2,#2,2
+Config#,2,LogLikelihood,-5.2701347210E+01
+OffspringID,FatherID,MotherID,ClusterIndex
+MAR_WMR_2000_033,*1,#1,1
+MAR_WMR_2000_037,*2,#1,1
+Config#,3,LogLikelihood,-5.8182891616E+01
+OffspringID,FatherID,MotherID,ClusterIndex
+MAR_WMR_2000_033,*1,#1,1
+MAR_WMR_2000_037,*1,#1,1

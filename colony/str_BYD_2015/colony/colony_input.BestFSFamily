@@ -1,0 +1,26 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5,Member6,Member7,Member8,Member9,Member10,Member11,Member12,Member13
+               1     0.6368     0.6368    WAL_BYD_2015_001,WAL_BYD_2015_008,WAL_BYD_2015_016,WAL_BYD_2015_017,WAL_BYD_2015_018,WAL_BYD_2015_020,WAL_BYD_2015_041,WAL_BYD_2015_042,WAL_BYD_2015_114,WAL_BYD_2015_124
+               2     1.0000     0.0768    WAL_BYD_2015_002
+               3     0.9786     0.3056    WAL_BYD_2015_003,WAL_BYD_2015_006,WAL_BYD_2015_009,WAL_BYD_2015_011,WAL_BYD_2015_012,WAL_BYD_2015_014,WAL_BYD_2015_015,WAL_BYD_2015_022,WAL_BYD_2015_039,WAL_BYD_2015_120,WAL_BYD_2015_125,WAL_BYD_2015_213,WAL_BYD_2015_217
+               4     0.0639     0.0639    WAL_BYD_2015_004,WAL_BYD_2015_013,WAL_BYD_2015_047
+               5     1.0000     0.9874    WAL_BYD_2015_005
+               6     1.0000     0.0948    WAL_BYD_2015_007
+               7     1.0000     0.1537    WAL_BYD_2015_010
+               8     1.0000     0.1107    WAL_BYD_2015_019
+               9     1.0000     0.1537    WAL_BYD_2015_037
+              10     0.2974     0.2974    WAL_BYD_2015_038,WAL_BYD_2015_046,WAL_BYD_2015_122
+              11     0.9870     0.0750    WAL_BYD_2015_040,WAL_BYD_2015_116
+              12     1.0000     0.9901    WAL_BYD_2015_043
+              13     0.9095     0.3310    WAL_BYD_2015_044,WAL_BYD_2015_119
+              14     0.9679     0.9679    WAL_BYD_2015_045,WAL_BYD_2015_221
+              15     0.6093     0.6093    WAL_BYD_2015_048,WAL_BYD_2015_123,WAL_BYD_2015_225
+              16     0.9144     0.1412    WAL_BYD_2015_113,WAL_BYD_2015_214,WAL_BYD_2015_216
+              17     1.0000     0.0955    WAL_BYD_2015_115
+              18     1.0000     0.0852    WAL_BYD_2015_117
+              19     1.0000     0.1334    WAL_BYD_2015_118
+              20     0.9203     0.0873    WAL_BYD_2015_121,WAL_BYD_2015_218
+              21     1.0000     0.0780    WAL_BYD_2015_215
+              22     1.0000     1.0000    WAL_BYD_2015_219
+              23     1.0000     0.9286    WAL_BYD_2015_220
+              24     1.0000     0.2047    WAL_BYD_2015_223
+              25     1.0000     0.6412    WAL_BYD_2015_224

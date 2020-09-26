@@ -1,0 +1,13 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
+               1     1.0000     0.9393    ROC_FRZ_2017_001
+               2     1.0000     0.2178    ROC_FRZ_2017_008
+               3     0.8284     0.6121    ROC_FRZ_2017_009,ROC_FRZ_2017_012,ROC_FRZ_2017_026,ROC_FRZ_2017_035,ROC_FRZ_2017_040
+               4     1.0000     0.6307    ROC_FRZ_2017_015
+               5     1.0000     0.3567    ROC_FRZ_2017_028
+               6     0.5652     0.5194    ROC_FRZ_2017_037,ROC_FRZ_2017_062,ROC_FRZ_2017_063
+               7     1.0000     0.3065    ROC_FRZ_2017_041
+               8     1.0000     0.5311    ROC_FRZ_2017_047
+               9     1.0000     0.6455    ROC_FRZ_2017_051
+              10     0.4012     0.4012    ROC_FRZ_2017_052,ROC_FRZ_2017_069,ROC_FRZ_2017_076
+              11     1.0000     0.7761    ROC_FRZ_2017_070
+              12     1.0000     1.0000    ROC_FRZ_2017_075

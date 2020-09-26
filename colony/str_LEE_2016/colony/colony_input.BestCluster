@@ -1,0 +1,13 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.0987     SFH_LEE_2016_001                   *1                   #1
+           1      0.0987     SFH_LEE_2016_014                   *1                   #1
+           1      0.0987     SFH_LEE_2016_016                   *1                   #1
+           2      0.2580     SFH_LEE_2016_002                   *2                   #2
+           2      0.2580     SFH_LEE_2016_013                   *7                   #2
+           2      0.2580     SFH_LEE_2016_017                   *2                   #2
+           3      0.2308     SFH_LEE_2016_003                   *3                   #3
+           3      0.2308     SFH_LEE_2016_015                   *8                   #3
+           4      0.9002     SFH_LEE_2016_005                   *4                   #4
+           5      0.9587     SFH_LEE_2016_006                   *5                   #5
+           5      0.9587     SFH_LEE_2016_008                   *5                   #5
+           6      0.7048     SFH_LEE_2016_007                   *6                   #6

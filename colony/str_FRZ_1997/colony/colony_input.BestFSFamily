@@ -1,0 +1,5 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
+               1     0.4087     0.4018    ROC_FRZ_1997_005,ROC_FRZ_1997_026
+               2     0.5544     0.5439    ROC_FRZ_1997_007,ROC_FRZ_1997_009
+               3     1.0000     0.9144    ROC_FRZ_1997_011
+               4     1.0000     0.8515    ROC_FRZ_1997_022

@@ -1,0 +1,5 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.6264     STE_MSQ_2000_008                   *1                   #1
+           1      0.6264     STE_MSQ_2000_010                   *1                   #1
+           2      0.9340     STE_MSQ_2000_009                   *2                   #2
+           3      0.7698     STE_MSQ_2000_013                   *3                   #3

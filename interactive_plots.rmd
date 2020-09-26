@@ -1,0 +1,170 @@
+---
+title: "helen_figs"
+author: "William Hemstrom"
+date: "8/27/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr); library(ranger); library(lmerTest); library(lme4); library(ggplot2)
+library(sjPlot); library(sjmisc); library(sjlabelled); library(plotly)
+```
+
+## Prepare all of the needed data:
+
+```{r prep, echo=FALSE}
+stats <- read.csv("stream_year_combined_stats.csv")
+
+# prep and merge the PVA data
+PVA <- readr::read_csv("Table_Thetas_hyb_PVA_03062020.csv")
+PVA$`PVA Extinction` <- as.numeric(gsub("%", "", PVA$`PVA Extinction`))
+PVA$`PVA Ext U95` <- as.numeric(gsub("%", "", PVA$`PVA Ext U95`))
+PVA$`PVA Ext L95` <- as.numeric(gsub("%", "", PVA$`PVA Ext L95`))
+
+PVA$Group <- gsub("LHU_INC", "LHU_INK", PVA$Group)
+PVA$locale <- gsub("(.+)_(.+)_(.+)_(.+)", "str_\\3\\.\\4", PVA$Group)
+PVA$locale <- gsub("BAT", "NFB", PVA$locale)
+stats <- merge(stats, PVA, by = "locale", all = T)
+colnames(stats) <- gsub(" ", ".", colnames(stats))
+colnames(stats) <- gsub("/", ".", colnames(stats))
+colnames(stats) <- gsub("%", "percent", colnames(stats))
+colnames(stats) <- gsub("’", "", colnames(stats))
+colnames(stats) <- gsub(")", "", colnames(stats))
+colnames(stats) <- gsub("\\(", "", colnames(stats))
+## add in the updated thetas from sibpurge
+spt <- read.table("sibpurge_bamlists/cat_indF_thetas.txt")
+colnames(spt) <- c("locale", "Wattersons.theta.4Nu", "Tajimas.theta.4Nu")
+spt$locale <- gsub("sibpurge_bamlist_", "", spt$locale)
+spt$locale <- gsub("_baits_thetas-indF2.thetas.global", "", spt$locale)
+spt$locale <- gsub("LHU_INC", "LHU_INK", spt$locale)
+spt$locale <- gsub("(.+)_(.+)_(.+)", "str_\\2\\.\\3", spt$locale)
+spt$locale <- gsub("BAT", "NFB", spt$locale)
+stats$Wattersons.theta.4Nu <- NULL
+stats$Tajimas.theta.4Nu <- NULL
+stats <- merge(stats, spt, by = "locale", all.x = T)
+
+ostats <- stats
+
+
+## zero out cases where the genetics and PVA years aren't within 5 years
+missmatch <- which(abs(as.numeric(stats$year) - stats$PVA.Abund.Year) > 5)
+stats <- stats[-missmatch,]
+
+#=========================corrections for hybrids===============
+
+make_pred <- function(dat, vars){
+  mstats <- dat[,c("Basin", "Creek", "Relative.percent.RBT", "year", vars)]
+  mstats <- na.omit(mstats)
+  infs <- which(is.infinite(mstats[,vars]))
+  if(length(infs) > 0){
+    mstats <- mstats[-infs,]
+  }
+  formula <- paste0(vars, "~ (1|Basin/Creek) + Relative.percent.RBT + (1|year)")
+  mod <- lme4::lmer(formula, mstats)
+  if(isSingular(mod)){
+    formula <- paste0(vars, "~ (1|Basin/Creek) + Relative.percent.RBT + year")
+    mod <- lme4::lmer(formula, mstats)
+  }
+  if(vars == "ne.rand"){
+    formula <- paste0(vars, "~ (1|Basin) + Creek  + year + Relative.percent.RBT")
+    mod <- lme4::lmer(formula, mstats)
+  }
+  
+  unique_streams <- unique(mstats[,c("Creek", "Basin", "year")])
+  unique_streams <- na.omit(cbind.data.frame(unique_streams, Relative.percent.RBT = 0))
+  unique_streams$Creek <- as.character(unique_streams$Creek)
+  unique_streams$Basin <- as.character(unique_streams$Basin)
+  
+  pred <- predict(mod, newdata = unique_streams)
+  pred <- cbind(unique_streams, pred)
+  colnames(pred)[ncol(pred)] <- paste0("pred_", vars)
+  rownames(pred) <- 1:nrow(pred)
+  pred$Relative.percent.RBT <- NULL
+  pred <- merge(pred, dat[,c("Basin", "Creek", "year", "Relative.percent.RBT", vars)])
+
+  return(list(pred = pred, mod = mod))
+}
+
+
+
+
+hh.pred <- make_pred(ostats, "Het.Hom")
+
+ho.pred <- make_pred(ostats, "ho")
+
+pi.pred <- make_pred(ostats, "pi")
+
+# note: no effect
+ne.pred <- make_pred(ostats, "ne.rand")
+
+thetaT.pred <- make_pred(ostats, "Tajimas.theta.4Nu")
+
+thetaW.pred <- make_pred(ostats, "Wattersons.theta.4Nu")
+
+# combined table
+merge.list <- c("Creek", "Basin", "year", "Relative.percent.RBT")
+stats_table <- merge(pi.pred$pred, ho.pred$pred, by = merge.list, all = T)
+stats_table <- merge(stats_table, hh.pred$pred, by = merge.list, all = T)             
+stats_table <- merge(stats_table, thetaT.pred$pred, by = merge.list, all = T)             
+stats_table <- merge(stats_table, thetaW.pred$pred, by = merge.list, all = T)
+stats_table <- merge(stats_table, ne.pred$pred, by = merge.list, all = T)
+stats_table$theta_diff <- (stats_table$Tajimas.theta.4Nu - stats_table$Wattersons.theta.4Nu)/rowMeans(stats_table[,c(12,14)])
+stats_table$pred_theta_diff <- (stats_table$pred_Tajimas.theta.4Nu - stats_table$pred_Wattersons.theta.4Nu)/rowMeans(stats_table[,c(11,13)])
+stats_table <- merge(stats_table, ostats[,c("Creek", "Basin", "year", "n")], by = c("Creek", "Basin", "year"))
+
+
+# plot data
+mst <- reshape2::melt(stats_table[,-which(colnames(stats_table) == "n")], id.vars = c("Creek", "Basin", "year", "Relative.percent.RBT"))
+mst$type <- ifelse(grepl("pred_", mst$variable), "corrected", "observed")
+mst$variable <- gsub("pred_", "", mst$variable)
+mst <- reshape2::dcast(mst, Creek + year + Basin  + variable + Relative.percent.RBT ~ type, value.var = "value")
+mst$pop <- paste0(mst$Basin, "_", mst$Creek, "_", mst$year)
+
+colnames(mst)[4] <- "stat"
+
+# plot tajima's trajectory
+## thetas
+theta_pred <- stats_table[, c("Creek", "Basin", "year",
+                              "pred_Tajimas.theta.4Nu", "pred_Wattersons.theta.4Nu", "pred_theta_diff")]
+theta_pred$type <- "corrected"
+colnames(theta_pred) <- gsub("pred_", "", colnames(theta_pred))
+
+
+theta_obs <- stats_table[, c("Creek", "Basin", "year",
+                              "Tajimas.theta.4Nu", "Wattersons.theta.4Nu", "theta_diff")]
+theta_obs$type <- "observed"
+theta_plot_dat <- rbind(theta_pred, theta_obs)
+theta_plot_dat <- merge(theta_plot_dat, stats_table[,c("Basin", "Creek", "year", "Relative.percent.RBT")],
+                        by = c("Basin", "Creek", "year"))
+theta_plot_dat$pop <- paste0(theta_plot_dat$Basin, "_", theta_plot_dat$Creek, "_", theta_plot_dat$year)
+
+
+# Ne
+
+```
+
+## Plots
+### Corrected vs. observed stats
+
+
+```{r co, echo=FALSE}
+ggplotly(ggplot(mst, aes(x = observed, y = corrected, color = Relative.percent.RBT, label = pop)) + 
+           facet_wrap(~stat, scales = "free") + geom_point() +
+           geom_abline(slope = 1, intercept = 0) + theme_bw() + 
+           scale_color_viridis_c(direction = -1, end = .9) + labs(color = "%RBT") +
+           theme(strip.background = element_blank(), strip.text = element_text(size = 10)))
+```
+
+### Theta trajectories
+
+```{r tt, echo=FALSE}
+ggplotly(ggplot(theta_plot_dat, 
+             aes(x = Tajimas.theta.4Nu, y = Wattersons.theta.4Nu, size = theta_diff, color = Relative.percent.RBT,
+                 fill = Relative.percent.RBT, name = pop)) +
+  geom_point(alpha = 0.5) + geom_abline(slope = 1, intercept = 0) + facet_wrap(~type, ncol = 1) + theme_bw() +
+  theme(strip.background = element_blank()) + ylab("Watterson's Theta") + xlab("Tajima's Theta") +
+  scale_color_viridis_c() + scale_fill_viridis_c())
+```
+
+

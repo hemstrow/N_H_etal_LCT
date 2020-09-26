@@ -1,0 +1,10 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    MCD_LIN_2000_101                   *1                   #1             1
+    MCD_LIN_2000_102                   *2                   #2             2
+    MCD_LIN_2000_105                   *2                   #2             2
+    MCD_LIN_2000_104                   *3                   #3             3
+    MCD_LIN_2000_110                   *3                   #3             3
+    MCD_LIN_2000_109                   *4                   #4             4
+    MCD_LIN_2000_111                   *4                   #4             4
+    MCD_LIN_2000_112                   *5                   #5             5
+    MCD_LIN_2000_113                   *6                   #6             6

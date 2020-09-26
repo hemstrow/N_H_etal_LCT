@@ -1,0 +1,5 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    STE_MSQ_2000_008                   *1                   #1             1
+    STE_MSQ_2000_009                   *2                   #2             2
+    STE_MSQ_2000_010                   *1                   #1             1
+    STE_MSQ_2000_013                   *3                   #3             3

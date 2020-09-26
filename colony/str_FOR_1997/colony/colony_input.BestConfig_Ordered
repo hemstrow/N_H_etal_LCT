@@ -1,0 +1,9 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    NFH_FOR_1997_001                   *1                   #1             1
+    NFH_FOR_1997_053                   *3                   #2             2
+    NFH_FOR_1997_021                   *2                   #2             2
+    NFH_FOR_1997_054                   *4                   #3             3
+    NFH_FOR_1997_055                   *5                   #4             4
+    NFH_FOR_1997_081                   *6                   #5             5
+    NFH_FOR_1997_092                   *7                   #6             6
+    NFH_FOR_1997_111                   *8                   #7             7

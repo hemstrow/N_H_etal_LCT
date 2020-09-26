@@ -1,0 +1,9 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
+               1     0.7463     0.7462    CAR_EFC_2017_001,CAR_EFC_2017_004,CAR_EFC_2017_022
+               2     0.9686     0.7349    CAR_EFC_2017_002,CAR_EFC_2017_009,CAR_EFC_2017_017,CAR_EFC_2017_031,CAR_EFC_2017_032
+               3     0.9898     0.9897    CAR_EFC_2017_006,CAR_EFC_2017_012
+               4     1.0000     0.7328    CAR_EFC_2017_010
+               5     1.0000     0.5152    CAR_EFC_2017_011
+               6     0.9981     0.9980    CAR_EFC_2017_013,CAR_EFC_2017_018,CAR_EFC_2017_021,CAR_EFC_2017_025
+               7     0.9988     0.9017    CAR_EFC_2017_015,CAR_EFC_2017_019
+               8     0.2818     0.2814    CAR_EFC_2017_027,CAR_EFC_2017_028

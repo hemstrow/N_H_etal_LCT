@@ -1,0 +1,9 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.9914     ROC_ROC_2017_001                   *1                   #1
+           2      0.3367     ROC_ROC_2017_002                   *2                   #2
+           2      0.3367     ROC_ROC_2017_006                   *5                   #2
+           3      0.3852     ROC_ROC_2017_003                   *3                   #3
+           3      0.3852     ROC_ROC_2017_004                   *3                   #3
+           4      0.1370     ROC_ROC_2017_005                   *4                   #4
+           4      0.1370     ROC_ROC_2017_007                   *6                   #4
+           5      0.9967     ROC_ROC_2017_008                   *7                   #5

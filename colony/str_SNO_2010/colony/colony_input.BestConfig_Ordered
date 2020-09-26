@@ -1,0 +1,11 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    SFL_SNO_2010_450                   *1                   #1             1
+    SFL_SNO_2010_451                   *2                   #2             2
+    SFL_SNO_2010_452                   *3                   #3             3
+    SFL_SNO_2010_456                   *3                   #3             3
+    SFL_SNO_2010_453                   *4                   #4             4
+    SFL_SNO_2010_454                   *4                   #4             4
+    SFL_SNO_2010_455                   *5                   #5             5
+    SFL_SNO_2010_457                   *6                   #6             6
+    SFL_SNO_2010_458                   *6                   #6             6
+    SFL_SNO_2010_459                   *7                   #7             7

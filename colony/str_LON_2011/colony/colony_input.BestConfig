@@ -1,0 +1,15 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    QUI_LON_2011_216                   *1                   #1             1
+    QUI_LON_2011_217                   *1                   #2             1
+    QUI_LON_2011_218                   *2                   #2             1
+    QUI_LON_2011_220                   *3                   #3             2
+    QUI_LON_2011_221                   *4                   #4             3
+    QUI_LON_2011_222                   *4                   #4             3
+    QUI_LON_2011_223                   *5                   #1             1
+    QUI_LON_2011_225                   *6                   #5             4
+    QUI_LON_2011_226                   *7                   #6             5
+    QUI_LON_2011_227                   *6                   #5             4
+    QUI_LON_2011_230                   *8                   #7             6
+    QUI_LON_2011_231                   *9                   #6             5
+    QUI_LON_2011_232                  *10                   #8             7
+    QUI_LON_2011_233                  *11                   #2             1

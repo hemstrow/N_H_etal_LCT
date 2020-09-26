@@ -1,0 +1,8 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    QUI_NFB_2016_001                   *1                   #1             1
+    QUI_NFB_2016_006                   *1                   #1             1
+    QUI_NFB_2016_002                   *2                   #2             2
+    QUI_NFB_2016_003                   *3                   #3             3
+    QUI_NFB_2016_004                   *4                   #4             4
+    QUI_NFB_2016_005                   *5                   #5             5
+    QUI_NFB_2016_007                   *6                   #6             6

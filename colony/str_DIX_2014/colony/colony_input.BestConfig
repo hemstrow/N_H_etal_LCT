@@ -1,0 +1,4 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    SFH_DIX_2014_001                   *1                   #1             1
+    SFH_DIX_2014_002                   *2                   #2             2
+    SFH_DIX_2014_004                   *3                   #3             3

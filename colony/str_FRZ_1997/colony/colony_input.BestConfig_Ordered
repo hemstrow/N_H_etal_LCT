@@ -1,0 +1,7 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    ROC_FRZ_1997_005                   *1                   #1             1
+    ROC_FRZ_1997_026                   *1                   #1             1
+    ROC_FRZ_1997_007                   *2                   #2             2
+    ROC_FRZ_1997_009                   *2                   #2             2
+    ROC_FRZ_1997_011                   *3                   #3             3
+    ROC_FRZ_1997_022                   *4                   #4             4

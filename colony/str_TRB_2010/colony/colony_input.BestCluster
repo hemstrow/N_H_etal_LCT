@@ -1,0 +1,12 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.6905     SFL_TRB_2010_103                   *1                   #1
+           1      0.6905     SFL_TRB_2010_104                   *1                   #1
+           2      0.7511     SFL_TRB_2010_105                   *2                   #2
+           2      0.7511     SFL_TRB_2010_110                   *2                   #2
+           3      0.9961     SFL_TRB_2010_106                   *3                   #3
+           4      0.4204     SFL_TRB_2010_107                   *4                   #4
+           4      0.4204     SFL_TRB_2010_115                   *4                   #4
+           5      0.7703     SFL_TRB_2010_111                   *5                   #5
+           6      0.4027     SFL_TRB_2010_112                   *6                   #6
+           7      0.6273     SFL_TRB_2010_113                   *7                   #7
+           7      0.6273     SFL_TRB_2010_114                   *7                   #7

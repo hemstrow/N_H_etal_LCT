@@ -1,0 +1,11 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
+               1     0.5790     0.0714    REE_MHK_2000_003,REE_MHK_2000_014,REE_MHK_2000_022,REE_MHK_2000_026,REE_MHK_2000_031
+               2     0.8534     0.0514    REE_MHK_2000_004,REE_MHK_2000_012
+               3     1.0000     0.3991    REE_MHK_2000_005
+               4     0.2341     0.0524    REE_MHK_2000_006,REE_MHK_2000_013,REE_MHK_2000_025,REE_MHK_2000_029
+               5     0.8371     0.8322    REE_MHK_2000_009,REE_MHK_2000_021
+               6     0.9467     0.0834    REE_MHK_2000_011,REE_MHK_2000_017
+               7     1.0000     0.0988    REE_MHK_2000_015
+               8     0.2025     0.1974    REE_MHK_2000_016,REE_MHK_2000_027
+               9     1.0000     0.9997    REE_MHK_2000_023
+              10     1.0000     0.4445    REE_MHK_2000_028

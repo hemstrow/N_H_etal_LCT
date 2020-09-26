@@ -1,0 +1,6 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    REE_MHK_2016_001                   *1                   #1             1
+    REE_MHK_2016_002                   *2                   #2             2
+    REE_MHK_2016_003                   *3                   #3             3
+    REE_MHK_2016_004                   *1                   #1             1
+    REE_MHK_2016_005                   *4                   #4             4

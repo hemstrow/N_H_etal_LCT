@@ -1,0 +1,13 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    MAG_BEA_2009_052                   *1                   #1             1
+    MAG_BEA_2009_053                   *2                   #2             2
+    MAG_BEA_2009_054                   *3                   #3             3
+    MAG_BEA_2009_060                   *4                   #8             4
+    MAG_BEA_2009_055                   *4                   #4             4
+    MAG_BEA_2009_061                   *8                   #8             4
+    MAG_BEA_2009_062                   *8                   #4             4
+    MAG_BEA_2009_057                   *5                   #5             5
+    MAG_BEA_2009_058                   *6                   #6             6
+    MAG_BEA_2009_063                   *6                   #6             6
+    MAG_BEA_2009_059                   *7                   #7             7
+    MAG_BEA_2009_064                   *7                   #7             7

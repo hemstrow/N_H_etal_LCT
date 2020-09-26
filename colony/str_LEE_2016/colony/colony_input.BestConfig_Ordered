@@ -1,0 +1,13 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    SFH_LEE_2016_001                   *1                   #1             1
+    SFH_LEE_2016_014                   *1                   #1             1
+    SFH_LEE_2016_016                   *1                   #1             1
+    SFH_LEE_2016_013                   *7                   #2             2
+    SFH_LEE_2016_002                   *2                   #2             2
+    SFH_LEE_2016_017                   *2                   #2             2
+    SFH_LEE_2016_003                   *3                   #3             3
+    SFH_LEE_2016_015                   *8                   #3             3
+    SFH_LEE_2016_005                   *4                   #4             4
+    SFH_LEE_2016_006                   *5                   #5             5
+    SFH_LEE_2016_008                   *5                   #5             5
+    SFH_LEE_2016_007                   *6                   #6             6

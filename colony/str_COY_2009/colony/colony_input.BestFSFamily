@@ -1,0 +1,9 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4
+               1     0.4921     0.4921    MAG_COY_2009_012,MAG_COY_2009_017,MAG_COY_2009_021,MAG_COY_2009_023
+               2     1.0000     0.6809    MAG_COY_2009_013
+               3     1.0000     0.9999    MAG_COY_2009_014
+               4     1.0000     1.0000    MAG_COY_2009_015
+               5     0.3899     0.3897    MAG_COY_2009_016,MAG_COY_2009_018
+               6     0.9986     0.7179    MAG_COY_2009_019,MAG_COY_2009_022,MAG_COY_2009_025
+               7     1.0000     0.1198    MAG_COY_2009_020
+               8     1.0000     0.1148    MAG_COY_2009_026

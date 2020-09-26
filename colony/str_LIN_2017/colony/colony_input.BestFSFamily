@@ -1,0 +1,5 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
+               1     0.9565     0.4185    MCD_LIN_2017_001,MCD_LIN_2017_002
+               2     0.9996     0.9996    MCD_LIN_2017_003,MCD_LIN_2017_004
+               3     1.0000     1.0000    MCD_LIN_2017_005
+               4     1.0000     0.2191    MCD_LIN_2017_006

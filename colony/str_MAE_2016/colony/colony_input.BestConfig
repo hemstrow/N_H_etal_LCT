@@ -1,0 +1,6 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    MAR_MAE_2016_001                   *1                   #1             1
+    MAR_MAE_2016_002                   *2                   #2             2
+    MAR_MAE_2016_003                   *3                   #3             3
+    MAR_MAE_2016_004                   *4                   #4             4
+    MAR_MAE_2016_005                   *5                   #5             5

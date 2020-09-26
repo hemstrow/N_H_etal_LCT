@@ -1,0 +1,4 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.9492     QUI_LON_2016_001                   *1                   #1
+           2      0.9497     QUI_LON_2016_002                   *2                   #2
+           3      0.9986     QUI_LON_2016_003                   *3                   #3

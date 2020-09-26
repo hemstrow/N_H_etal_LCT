@@ -1,0 +1,11 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
+               1     0.3754     0.3665    CAR_MUR_2017_045,CAR_MUR_2017_061,CAR_MUR_2017_065
+               2     0.8051     0.8051    CAR_MUR_2017_046,CAR_MUR_2017_048
+               3     0.8321     0.8321    CAR_MUR_2017_047,CAR_MUR_2017_049,CAR_MUR_2017_050,CAR_MUR_2017_055,CAR_MUR_2017_060
+               4     1.0000     0.8704    CAR_MUR_2017_051
+               5     1.0000     0.8263    CAR_MUR_2017_054
+               6     1.0000     1.0000    CAR_MUR_2017_056
+               7     0.9236     0.9236    CAR_MUR_2017_058,CAR_MUR_2017_067
+               8     0.3432     0.3221    CAR_MUR_2017_059,CAR_MUR_2017_064,CAR_MUR_2017_068
+               9     1.0000     0.8325    CAR_MUR_2017_070
+              10     1.0000     0.8020    CAR_MUR_2017_071

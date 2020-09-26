@@ -1,0 +1,10 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.6223     WWH_WHO_2011_010                   *1                   #1
+           2      0.1246     WWH_WHO_2011_016                   *2                   #2
+           2      0.1246     WWH_WHO_2011_036                   *2                   #5
+           3      0.5048     WWH_WHO_2011_024                   *3                   #3
+           3      0.5048     WWH_WHO_2011_041                   *3                   #3
+           4      0.4966     WWH_WHO_2011_034                   *4                   #4
+           4      0.4966     WWH_WHO_2011_047                   *4                   #4
+           5      0.3835     WWH_WHO_2011_038                   *5                   #6
+           5      0.3835     WWH_WHO_2011_044                   *5                   #6

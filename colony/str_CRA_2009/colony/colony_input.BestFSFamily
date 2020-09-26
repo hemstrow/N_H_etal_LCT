@@ -1,0 +1,9 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5,Member6,Member7,Member8,Member9,Member10,Member11
+               1     1.0000     1.0000    REE_CRA_2009_134
+               2     0.5781     0.0662    REE_CRA_2009_135,REE_CRA_2009_138,REE_CRA_2009_141,REE_CRA_2009_143,REE_CRA_2009_145,REE_CRA_2009_146,REE_CRA_2009_149,REE_CRA_2009_151,REE_CRA_2009_152,REE_CRA_2009_153,REE_CRA_2009_155
+               3     0.5784     0.0367    REE_CRA_2009_136,REE_CRA_2009_137
+               4     1.0000     0.9889    REE_CRA_2009_139
+               5     0.6400     0.0382    REE_CRA_2009_142,REE_CRA_2009_144,REE_CRA_2009_148
+               6     1.0000     0.1809    REE_CRA_2009_147
+               7     1.0000     0.6780    REE_CRA_2009_150
+               8     1.0000     0.0274    REE_CRA_2009_154

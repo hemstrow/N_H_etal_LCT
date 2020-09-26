@@ -1,0 +1,8 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5,Member6
+               1     1.0000     0.9901    STE_CWC_2000_001
+               2     0.3730     0.3730    STE_CWC_2000_002,STE_CWC_2000_014
+               3     0.9708     0.7445    STE_CWC_2000_003,STE_CWC_2000_008,STE_CWC_2000_012,STE_CWC_2000_016,STE_CWC_2000_017,STE_CWC_2000_018
+               4     1.0000     0.6794    STE_CWC_2000_004
+               5     0.1981     0.1961    STE_CWC_2000_006,STE_CWC_2000_015
+               6     1.0000     0.8881    STE_CWC_2000_007
+               7     0.3476     0.3189    STE_CWC_2000_011,STE_CWC_2000_013

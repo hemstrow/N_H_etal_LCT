@@ -1,0 +1,16 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    STE_CWC_2000_001                   *1                   #1             1
+    STE_CWC_2000_002                   *2                   #2             2
+    STE_CWC_2000_003                   *3                   #3             3
+    STE_CWC_2000_004                   *4                   #4             4
+    STE_CWC_2000_006                   *5                   #5             5
+    STE_CWC_2000_007                   *6                   #6             6
+    STE_CWC_2000_008                   *3                   #3             3
+    STE_CWC_2000_011                   *7                   #7             7
+    STE_CWC_2000_012                   *3                   #3             3
+    STE_CWC_2000_013                   *7                   #7             7
+    STE_CWC_2000_014                   *2                   #2             2
+    STE_CWC_2000_015                   *5                   #5             5
+    STE_CWC_2000_016                   *3                   #3             3
+    STE_CWC_2000_017                   *3                   #3             3
+    STE_CWC_2000_018                   *3                   #3             3

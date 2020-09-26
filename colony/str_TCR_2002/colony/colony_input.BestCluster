@@ -1,0 +1,10 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.7320     MAR_TCR_2002_001                   *1                   #1
+           2      0.3858     MAR_TCR_2002_002                   *2                   #2
+           3      0.8649     MAR_TCR_2002_009                   *3                   #3
+           4      0.3405     MAR_TCR_2002_011                   *4                   #4
+           4      0.3405     MAR_TCR_2002_022                   *4                   #4
+           5      0.7920     MAR_TCR_2002_017                   *5                   #5
+           6      0.0971     MAR_TCR_2002_020                   *6                   #6
+           6      0.0971     MAR_TCR_2002_024                   *6                   #7
+           6      0.0971     MAR_TCR_2002_025                   *7                   #7

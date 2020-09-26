@@ -1,0 +1,11 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    ROC_WLN_2017_001                   *1                   #1             1
+    ROC_WLN_2017_002                   *2                   #2             2
+    ROC_WLN_2017_003                   *3                   #3             3
+    ROC_WLN_2017_004                   *4                   #3             3
+    ROC_WLN_2017_005                   *5                   #4             4
+    ROC_WLN_2017_006                   *6                   #5             5
+    ROC_WLN_2017_007                   *7                   #6             6
+    ROC_WLN_2017_008                   *8                   #7             7
+    ROC_WLN_2017_009                   *5                   #4             4
+    ROC_WLN_2017_010                   *7                   #6             6

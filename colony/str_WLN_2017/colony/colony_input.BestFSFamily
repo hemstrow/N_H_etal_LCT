@@ -1,0 +1,9 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
+               1     1.0000     0.9950    ROC_WLN_2017_001
+               2     1.0000     0.9972    ROC_WLN_2017_002
+               3     1.0000     0.7306    ROC_WLN_2017_003
+               4     1.0000     0.7138    ROC_WLN_2017_004
+               5     0.8957     0.8955    ROC_WLN_2017_005,ROC_WLN_2017_009
+               6     1.0000     0.9978    ROC_WLN_2017_006
+               7     0.3422     0.3422    ROC_WLN_2017_007,ROC_WLN_2017_010
+               8     1.0000     0.9354    ROC_WLN_2017_008

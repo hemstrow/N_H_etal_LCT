@@ -1,0 +1,13 @@
+Archived Configurations with corresponding log likelihood
+Config#,1,LogLikelihood,-3.1914493249E+01
+OffspringID,FatherID,MotherID,ClusterIndex
+STE_PKC_2000_007,*1,#1,1
+STE_PKC_2000_008,*2,#2,2
+Config#,2,LogLikelihood,-3.3283443648E+01
+OffspringID,FatherID,MotherID,ClusterIndex
+STE_PKC_2000_007,*1,#1,1
+STE_PKC_2000_008,*1,#2,1
+Config#,3,LogLikelihood,-3.4872936073E+01
+OffspringID,FatherID,MotherID,ClusterIndex
+STE_PKC_2000_007,*1,#1,1
+STE_PKC_2000_008,*1,#1,1

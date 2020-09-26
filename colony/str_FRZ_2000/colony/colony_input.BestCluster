@@ -1,0 +1,7 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.4721     ROC_FRZ_2000_023                   *1                   #1
+           2      0.5423     ROC_FRZ_2000_030                   *2                   #2
+           3      0.1442     ROC_FRZ_2000_032                   *3                   #3
+           3      0.1442     ROC_FRZ_2000_046                   *3                   #6
+           4      0.9644     ROC_FRZ_2000_035                   *4                   #4
+           5      0.6352     ROC_FRZ_2000_039                   *5                   #5

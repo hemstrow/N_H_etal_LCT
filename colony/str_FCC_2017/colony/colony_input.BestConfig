@@ -1,0 +1,12 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    QUI_FCC_2017_001                   *1                   #1             1
+    QUI_FCC_2017_002                   *2                   #2             2
+    QUI_FCC_2017_003                   *3                   #2             2
+    QUI_FCC_2017_004                   *4                   #3             3
+    QUI_FCC_2017_005                   *5                   #4             4
+    QUI_FCC_2017_006                   *6                   #5             5
+    QUI_FCC_2017_007                   *7                   #6             6
+    QUI_FCC_2017_008                   *8                   #7             7
+    QUI_FCC_2017_010                   *7                   #8             6
+    QUI_FCC_2017_011                   *9                   #7             7
+    QUI_FCC_2017_012                  *10                   #1             1

@@ -1,0 +1,8 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    QUI_AND_2016_001                   *1                   #1             1
+    QUI_AND_2016_004                   *1                   #1             1
+    QUI_AND_2016_002                   *2                   #2             2
+    QUI_AND_2016_003                   *3                   #3             3
+    QUI_AND_2016_005                   *4                   #3             3
+    QUI_AND_2016_006                   *5                   #4             4
+    QUI_AND_2016_111                   *5                   #5             4

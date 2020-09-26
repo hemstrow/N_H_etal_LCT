@@ -1,0 +1,4 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.4478     STE_LTA_2000_005                   *1                   #1
+           2      0.2257     STE_LTA_2000_007                   *2                   #2
+           2      0.2257     STE_LTA_2000_017                   *2                   #2

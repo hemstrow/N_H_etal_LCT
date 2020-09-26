@@ -1,0 +1,13 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    WAL_MPH_2011_002                   *1                   #1             1
+    WAL_MPH_2011_007                   *1                   #1             1
+    WAL_MPH_2011_003                   *2                   #2             2
+    WAL_MPH_2011_011                   *2                   #2             2
+    WAL_MPH_2011_004                   *3                   #3             3
+    WAL_MPH_2011_005                   *3                   #3             3
+    WAL_MPH_2011_016                   *3                   #3             3
+    WAL_MPH_2011_017                   *3                   #3             3
+    WAL_MPH_2011_006                   *4                   #4             4
+    WAL_MPH_2011_010                   *7                   #5             5
+    WAL_MPH_2011_008                   *5                   #5             5
+    WAL_MPH_2011_009                   *6                   #6             6

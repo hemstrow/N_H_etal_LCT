@@ -1,0 +1,10 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    MAR_TCR_2002_001                   *1                   #1             1
+    MAR_TCR_2002_002                   *2                   #2             2
+    MAR_TCR_2002_009                   *3                   #3             3
+    MAR_TCR_2002_011                   *4                   #4             4
+    MAR_TCR_2002_022                   *4                   #4             4
+    MAR_TCR_2002_017                   *5                   #5             5
+    MAR_TCR_2002_020                   *6                   #6             6
+    MAR_TCR_2002_024                   *6                   #7             6
+    MAR_TCR_2002_025                   *7                   #7             6

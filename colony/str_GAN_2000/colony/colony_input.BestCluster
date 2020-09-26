@@ -1,0 +1,7 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.4299     NFH_GAN_2000_101                   *1                   #1
+           2      0.7358     NFH_GAN_2000_102                   *2                   #2
+           3      0.0583     NFH_GAN_2000_108                   *3                   #3
+           3      0.0583     NFH_GAN_2000_109                   *3                   #3
+           4      0.2450     NFH_GAN_2000_110                   *4                   #4
+           4      0.2450     NFH_GAN_2000_111                   *4                   #4

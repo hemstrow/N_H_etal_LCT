@@ -1,0 +1,6 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3
+               1     1.0000     0.9914    MAR_MRB_2016_001
+               2     0.7013     0.7013    MAR_MRB_2016_002,MAR_MRB_2016_004,MAR_MRB_2016_007
+               3     1.0000     0.9736    MAR_MRB_2016_003
+               4     1.0000     0.9652    MAR_MRB_2016_005
+               5     1.0000     1.0000    MAR_MRB_2016_006

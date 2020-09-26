@@ -1,0 +1,11 @@
+         OffspringID             FatherID             MotherID  ClusterIndex
+    MCD_CCC_2017_001                   *1                   #1             1
+    MCD_CCC_2017_002                   *1                   #1             1
+    MCD_CCC_2017_003                   *2                   #2             2
+    MCD_CCC_2017_005                   *3                   #3             3
+    MCD_CCC_2017_006                   *4                   #4             4
+    MCD_CCC_2017_007                   *5                   #5             5
+    MCD_CCC_2017_008                   *2                   #2             2
+    MCD_CCC_2017_009                   *6                   #6             6
+    MCD_CCC_2017_010                   *3                   #3             3
+    MCD_CCC_2017_011                   *1                   #1             1

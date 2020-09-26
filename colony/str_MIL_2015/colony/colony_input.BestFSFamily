@@ -1,0 +1,13 @@
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5,Member6,Member7
+               1     0.8047     0.5415    WAL_MIL_2015_001,WAL_MIL_2015_005,WAL_MIL_2015_013,WAL_MIL_2015_018,WAL_MIL_2015_022,WAL_MIL_2015_025,WAL_MIL_2015_031
+               2     0.2446     0.2399    WAL_MIL_2015_002,WAL_MIL_2015_008
+               3     0.5577     0.2882    WAL_MIL_2015_004,WAL_MIL_2015_006,WAL_MIL_2015_023,WAL_MIL_2015_026,WAL_MIL_2015_038,WAL_MIL_2015_040
+               4     0.4773     0.2396    WAL_MIL_2015_007,WAL_MIL_2015_011,WAL_MIL_2015_019
+               5     1.0000     0.1693    WAL_MIL_2015_009
+               6     0.7961     0.7926    WAL_MIL_2015_010,WAL_MIL_2015_020
+               7     1.0000     0.5400    WAL_MIL_2015_012
+               8     1.0000     0.5515    WAL_MIL_2015_014
+               9     0.7140     0.7140    WAL_MIL_2015_021,WAL_MIL_2015_039
+              10     1.0000     0.3733    WAL_MIL_2015_024
+              11     1.0000     0.3871    WAL_MIL_2015_030
+              12     1.0000     0.3104    WAL_MIL_2015_032
