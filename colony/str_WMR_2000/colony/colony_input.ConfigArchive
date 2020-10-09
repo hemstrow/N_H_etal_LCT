@@ -7,7 +7,7 @@ Config#,2,LogLikelihood,-5.2701347210E+01
 OffspringID,FatherID,MotherID,ClusterIndex
 MAR_WMR_2000_033,*1,#1,1
 MAR_WMR_2000_037,*2,#1,1
-Config#,3,LogLikelihood,-5.8182891616E+01
+Config#,3,LogLikelihood,-5.8182813030E+01
 OffspringID,FatherID,MotherID,ClusterIndex
 MAR_WMR_2000_033,*1,#1,1
 MAR_WMR_2000_037,*1,#1,1

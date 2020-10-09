@@ -4,14 +4,14 @@ Estimates by Colony full likelihood method : Assuming random mating
 Alpha   =          0.00
 Ne      =            13
 CI95(L) =             6
-CI95(U) =            34
+CI95(U) =            32
 ----------------------------------------------------------------------------------------------------
 Estimates by Colony full likelihood method : Assuming nonrandom mating
 ----------------------------------------------------------------------------------------------------
 Alpha   =         -0.17
 Ne      =            27
 CI95(L) =            15
-CI95(U) =            54
+CI95(U) =            59
 
 ----------------------------------------------------------------------------------------------------
 Estimates by heterozygote excess method

@@ -1,7 +1,7 @@
 FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
-               1     1.0000     0.0911    CAR_GOC_2017_033
-               2     0.9790     0.9790    CAR_GOC_2017_034,CAR_GOC_2017_042
+               1     1.0000     0.0991    CAR_GOC_2017_033
+               2     0.9744     0.9744    CAR_GOC_2017_034,CAR_GOC_2017_042
                3     1.0000     1.0000    CAR_GOC_2017_035
-               4     0.9998     0.9284    CAR_GOC_2017_036,CAR_GOC_2017_038,CAR_GOC_2017_039,CAR_GOC_2017_043,CAR_GOC_2017_044
-               5     1.0000     0.7537    CAR_GOC_2017_037
-               6     0.8848     0.8848    CAR_GOC_2017_040,CAR_GOC_2017_041
+               4     0.9997     0.8997    CAR_GOC_2017_036,CAR_GOC_2017_038,CAR_GOC_2017_039,CAR_GOC_2017_043,CAR_GOC_2017_044
+               5     1.0000     0.8090    CAR_GOC_2017_037
+               6     0.8800     0.8800    CAR_GOC_2017_040,CAR_GOC_2017_041

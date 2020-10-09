@@ -1,9 +1,8 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     REE_CRA_2009_134                   *1                   #1             1
-    REE_CRA_2009_147                   *5                   #3             2
-    REE_CRA_2009_154                   *5                   #2             2
-    REE_CRA_2009_136                   *2                   #3             2
-    REE_CRA_2009_137                   *2                   #3             2
+    REE_CRA_2009_142                   *4                   #2             2
+    REE_CRA_2009_144                   *4                   #2             2
+    REE_CRA_2009_148                   *4                   #2             2
     REE_CRA_2009_135                   *2                   #2             2
     REE_CRA_2009_138                   *2                   #2             2
     REE_CRA_2009_141                   *2                   #2             2
@@ -12,11 +11,12 @@
     REE_CRA_2009_146                   *2                   #2             2
     REE_CRA_2009_149                   *2                   #2             2
     REE_CRA_2009_151                   *2                   #2             2
-    REE_CRA_2009_152                   *2                   #2             2
     REE_CRA_2009_153                   *2                   #2             2
     REE_CRA_2009_155                   *2                   #2             2
-    REE_CRA_2009_142                   *4                   #2             2
-    REE_CRA_2009_144                   *4                   #2             2
-    REE_CRA_2009_148                   *4                   #2             2
+    REE_CRA_2009_136                   *2                   #3             2
+    REE_CRA_2009_137                   *2                   #3             2
+    REE_CRA_2009_154                   *5                   #2             2
+    REE_CRA_2009_147                   *5                   #3             2
     REE_CRA_2009_139                   *3                   #4             3
     REE_CRA_2009_150                   *6                   #5             4
+    REE_CRA_2009_152                   *6                   #5             4

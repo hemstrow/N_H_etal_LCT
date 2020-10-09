@@ -1,11 +1,11 @@
          OffspringID             FatherID             MotherID  ClusterIndex
-    QUI_WAC_1997_016                   *6                   #1             1
+    QUI_WAC_1997_017                   *6                   #7             1
     QUI_WAC_1997_006                   *1                   #1             1
+    QUI_WAC_1997_021                   *1                   #7             1
     QUI_WAC_1997_007                   *1                   #1             1
-    QUI_WAC_1997_018                   *1                   #7             1
-    QUI_WAC_1997_025                   *1                   #7             1
-    QUI_WAC_1997_021                   *7                   #1             1
-    QUI_WAC_1997_017                   *7                   #6             1
+    QUI_WAC_1997_016                   *1                   #6             1
+    QUI_WAC_1997_018                   *7                   #1             1
+    QUI_WAC_1997_025                   *7                   #1             1
     QUI_WAC_1997_008                   *2                   #2             2
     QUI_WAC_1997_011                   *2                   #2             2
     QUI_WAC_1997_012                   *3                   #3             3

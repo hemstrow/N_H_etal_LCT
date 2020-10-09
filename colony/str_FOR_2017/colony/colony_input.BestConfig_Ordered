@@ -1,15 +1,15 @@
          OffspringID             FatherID             MotherID  ClusterIndex
-    NFH_FOR_2017_055                   *5                   #1             1
     NFH_FOR_2017_014                   *1                   #1             1
+    NFH_FOR_2017_055                   *5                   #1             1
     NFH_FOR_2017_016                   *2                   #2             2
     NFH_FOR_2017_021                   *3                   #3             3
     NFH_FOR_2017_025                   *3                   #3             3
     NFH_FOR_2017_107                   *3                   #3             3
     NFH_FOR_2017_051                   *4                   #4             4
-    NFH_FOR_2017_059                   *6                   #5             5
     NFH_FOR_2017_065                   *7                   #6             5
-    NFH_FOR_2017_126                  *12                   #5             5
+    NFH_FOR_2017_059                   *6                   #5             5
     NFH_FOR_2017_124                  *12                   #6             5
+    NFH_FOR_2017_126                  *12                   #5             5
     NFH_FOR_2017_067                   *8                   #7             6
     NFH_FOR_2017_118                   *8                   #7             6
     NFH_FOR_2017_078                   *9                   #8             7

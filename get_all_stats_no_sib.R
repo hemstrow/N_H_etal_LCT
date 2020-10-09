@@ -1,6 +1,19 @@
-library(dplyr); library(ranger); library(lmerTest); library(lme4); library(ggplot2)
+library(dplyr); library(ranger); library(lmerTest); library(lme4); library(ggplot2); library(openxlsx)
 library(sjPlot); library(sjmisc); library(sjlabelled); library(plotly); library(snpR)
 source("make_pred_and_make_AIC_comp.R")
+wb <- openxlsx::createWorkbook(creator = "William Hemstrom")
+openxlsx::addWorksheet(wb, "genetic_stats")
+openxlsx::addWorksheet(wb, "AIC_tab")
+openxlsx::addWorksheet(wb, "Fst")
+openxlsx::addWorksheet(wb, "Tajima's D plot")
+openxlsx::addWorksheet(wb, "Hyb Correction plot")
+openxlsx::addWorksheet(wb, "rf Extinction plot")
+openxlsx::addWorksheet(wb, "rf Abundance plot")
+
+
+
+
+
 
 #=====================prepare data and calculate basic statistics=============
 # prepare data
@@ -34,14 +47,30 @@ fst$p2 <- unlist(strsplit(fst$comparison, "~"))[c(F,T)]
 fst$n1 <- comb_stats$n[match(fst$p1, comb_stats$pop)]
 fst$n2 <- comb_stats$n[match(fst$p2, comb_stats$pop)]
 
+fstc <- reshape2::dcast(fst, p1 ~ p2, value.var = "overall_fst")
+colnames(fstc)[1] <- "Overall Fst"
+fstn1 <- reshape2::dcast(fst, p1 ~ p2, value.var = "n1")
+colnames(fstn1)[1] <- "n pop 1"
+fstn2 <- reshape2::dcast(fst, p1 ~ p2, value.var = "n2")
+colnames(fstn2)[1] <- "n pop 2"
+fst$nt <- fst$n1 + fst$n2
+fstnt <- reshape2::dcast(fst, p1 ~ p2, value.var = "nt")
+colnames(fstnt)[1] <- "n total"
+
+
+openxlsx::writeData(wb, "Fst", fstc, keepNA = T)
+openxlsx::writeData(wb, "Fst", fstn1, startRow = nrow(fstc) + 4, keepNA = T); at.row <- nrow(fstc) + 4
+openxlsx::writeData(wb, "Fst", fstn2, startRow = at.row + nrow(fstc) + 4, keepNA = T)
+openxlsx::writeData(wb, "Fst", fstnt, startRow = at.row + nrow(fstc) + 4, keepNA = T)
+
 #=================add in hybridization info============
 # get hybridization info
 hyb <- readr::read_csv("LCT_RBT_final hybridization 2-19-19.csv")
 colnames(hyb)[1] <- "ID"
 colnames(hyb)[5] <- "Relative.percent.RBT"
-hh$ID <- gsub("QUI_BAT_2013", "QUI_NFB_2013", hh$ID)
-hh$stream <- gsub("str_BAT", "str_NFB", hh$stream)
-comb <- merge(hh, hyb, by = "ID", all.x = T) # note, this will auto-subset by whatever samples are still in they analysis!
+# hh$ID <- gsub("QUI_BAT_2013", "QUI_NFB_2013", hh$ID)
+# hh$stream <- gsub("str_BAT", "str_NFB", hh$stream)
+comb <- merge(hh, hyb, by = "ID", all.x = T) # note, this will auto-subset by whatever samples are still in they analysis! (removing poorly sequenced individuals)
 
 #================summerize by population==============
 comb_stats$pop <- gsub("BAT", "NFB", comb_stats$pop)
@@ -60,7 +89,7 @@ LDNe <- neSY$ne
 LDNe <- LDNe[,c(1,2,3)]
 LDNe$LDNe[is.infinite(LDNe$LDNe)] <- NA
 LDNec <- reshape2::dcast(LDNe, locale ~ pcrit, value.var = "LDNe")
-LDNec$locale <- gsub("BAT", "NFB", LDNec$locale)
+#LDNec$locale <- gsub("BAT", "NFB", LDNec$locale)
 colnames(LDNec) <- c("locale", paste0("LDNe_", colnames(LDNec)[-1]))
 stats <- merge(stats, LDNec, "locale", all.x = T)
 
@@ -75,10 +104,8 @@ PVA <- readr::read_csv("Table_Thetas_hyb_PVA_03062020.csv")
 PVA$`PVA Extinction` <- as.numeric(gsub("%", "", PVA$`PVA Extinction`))
 PVA$`PVA Ext U95` <- as.numeric(gsub("%", "", PVA$`PVA Ext U95`))
 PVA$`PVA Ext L95` <- as.numeric(gsub("%", "", PVA$`PVA Ext L95`))
+PVA$locale <- paste0(PVA$Stream_code, ".", PVA$`Genetic Year`)
 
-PVA$Group <- gsub("LHU_INC", "LHU_INK", PVA$Group)
-PVA$locale <- gsub("(.+)_(.+)_(.+)_(.+)", "str_\\3\\.\\4", PVA$Group)
-PVA$locale <- gsub("BAT", "NFB", PVA$locale)
 stats <- merge(stats, PVA, by = "locale", all = T)
 
 #===============fix column names=======================
@@ -112,7 +139,8 @@ AIC_tab <- dplyr::bind_rows(hh.AIC_comp$AIC, ho.AIC_comp$AIC, pi.AIC_comp$AIC, n
                             ldne_.01.AIC_comp$AIC, ldne_.02.AIC_comp$AIC, thetaT.AIC_comp$AIC,
                             thetaW.AIC_comp$AIC)
 
-write.table(AIC_tab, "AIC_table_no_sibling_removal.txt", col.names = T, row.names = F, quote = F, sep = "\t")
+#write.table(AIC_tab, "AIC_table_no_sibling_removal.txt", col.names = T, row.names = F, quote = F, sep = "\t")
+openxlsx::writeData(wb, "AIC_tab", x = AIC_tab, keepNA = T)
 
 #==============get hyb corrected values===============
 hh.pred <- make_pred(hh.AIC_comp)
@@ -149,7 +177,8 @@ mlist <- list(hh.pred$mod, ho.pred$mod, pi.pred$mod, ne.pred$mod, ldne_.01.pred$
               thetaT.pred$mod, thetaW.pred$mod)
 tab_model(mlist,
           show.aic = T, 
-          digits.re = 7, 
+          digits.re = 7,
+          digits = 7,
           collapse.ci = T, 
           pred.labels = c("(Intercept)", "%RBT", "year"), 
           show.icc = F, file = "Model_summary_no_sib_removal.html", CSS = css_theme("cells"))
@@ -162,16 +191,16 @@ stats_table <- merge(pi.pred$pred, ho.pred$pred, by = merge.list, all = T)
 stats_table <- merge(stats_table, hh.pred$pred, by = merge.list, all = T)             
 stats_table <- merge(stats_table, thetaT.pred$pred, by = merge.list, all = T)             
 stats_table <- merge(stats_table, thetaW.pred$pred, by = merge.list, all = T)
-stats_table <- merge(stats_table, ne.pred$pred, by = merge.list, all = T)
 stats_table$pred_theta_diff <- (stats_table$pred_Tajimas.theta.4Nu - stats_table$pred_Wattersons.theta.4Nu)/rowMeans(stats_table[,c(11,13)])
 stats_table$theta_diff <- (stats_table$Tajimas.theta.4Nu - stats_table$Wattersons.theta.4Nu)/rowMeans(stats_table[,c(12,14)])
+stats_table <- merge(stats_table, ne.pred$pred, by = merge.list, all = T)
 stats_table <- merge(stats_table, ldne_.01.pred$pred, by = merge.list, all = T)
 stats_table <- merge(stats_table, ldne_.02.pred$pred, by = merge.list, all = T)
 stats_table <- merge(stats_table, stats[,c("Creek", "Basin", "year", "LDNe_0.05")], by = c("Creek", "Basin", "year"), all.x = T)
 stats_table <- merge(stats_table, stats[,c("Creek", "Basin", "year", "n")], by = c("Creek", "Basin", "year"))
 
-write.table(stats_table, "hyb_corrected_diversity_estimates_no_sib_removal.txt", sep = "\t", col.names = T, row.names = F, quote = F)
-
+#write.table(stats_table, "hyb_corrected_diversity_estimates_no_sib_removal.txt", sep = "\t", col.names = T, row.names = F, quote = F)
+openxlsx::writeData(wb, "genetic_stats", x = stats_table, keepNA = T)
 
 #===============hyb correction plot==========
 mst <- reshape2::melt(stats_table[,-which(colnames(stats_table) == "n")], id.vars = c("Creek", "Basin", "year", "Relative.percent.RBT"))
@@ -187,6 +216,8 @@ p <- ggplot(mst[-which(mst$stat == "LDNe_0.05"),], aes(x = observed, y = correct
   theme(strip.background = element_blank(), strip.text = element_text(size = 20))
 
 ggsave("hyb_correction_plot_no_sib_removal.pdf", p, "pdf", width = 11, height = 8.5)
+p
+openxlsx::insertPlot(wb, "Hyb Correction plot", width = 11, height = 8.5)
 
 #===============theta plot==================
 theta_pred <- stats_table[, c("Creek", "Basin", "year",
@@ -211,6 +242,8 @@ p2 <- ggplot(theta_plot_dat,
   scale_color_viridis_c() + scale_fill_viridis_c()
 
 ggsave("theta_plot_no_sib_removal.pdf", p2, "pdf", width = 11, height = 8.5)
+p2
+openxlsx::insertPlot(wb, "Tajima's D plot", width = 11, height = 8.5)
 
 
 #================rf for PVA================
@@ -251,7 +284,11 @@ mod <- ranger::ranger(dependent.variable.name = "PVA.Extinction",
 mod$variable.importance
 pd <- data.frame(obs = rfstats_ext[-which(is.na(rfstats_ext$Relative.percent.RBT) | is.na(rfstats_ext$ne.rand)),]$PVA.Extinction,
                  pred = mod$predictions)
-ggsave("rf_pred_plot_no_sib_removal.pdf", ggplot(pd, aes(obs, pred)) + geom_point() + theme_bw(), "pdf", width = 11, height = 8.5)
+prf1 <- ggplot(pd, aes(obs, pred)) + geom_point() + theme_bw()
+ggsave("rf_pred_plot_no_sib_removal.pdf", prf1, "pdf", width = 11, height = 8.5)
+
+prf1
+openxlsx::insertPlot(wb, "rf Extinction plot", width = 11, height = 8.5)
 
 
 
@@ -268,3 +305,13 @@ mod <- ranger::ranger(dependent.variable.name = "PVA.Abundance.2.5",
                       num.threads = 4,
                       verbose = T, importance = "permutation")
 mod$variable.importance
+
+pd <- data.frame(obs = rfstats_ab$PVA.Abundance.2.5,
+                 pred = mod$predictions)
+prf2 <- ggplot(pd, aes(obs, pred)) + geom_point() + theme_bw()
+prf2
+openxlsx::insertPlot(wb, "rf Abundance plot", width = 11, height = 8.5)
+
+
+#================save============
+openxlsx::saveWorkbook(wb, "no_sib_removal_stats.xlsx", overwrite = T)

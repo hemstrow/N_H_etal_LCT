@@ -6,7 +6,7 @@ make_AIC_comp <- function(dat, vars){
     mstats <- mstats[-infs,]
   }
   
-  AIC_list <- vector("list", 3)
+  AIC_list <- vector("list", 4)
   
   # model 1
   formula <- paste0(vars, "~ (1|Basin/Creek) + Relative.percent.RBT + (1|year)")
@@ -32,6 +32,15 @@ make_AIC_comp <- function(dat, vars){
     names(AIC_list)[3] <- "rbasin_fyear"
   }
   
+  # model 4: no creek (mostly for the really small datasets)
+  formula <- paste0(vars, "~ (1|Basin)  + year + Relative.percent.RBT")
+  mod_rbasin_nocreek_fyear <- try(lmerTest::lmer(formula, mstats), silent = T)
+  if(!class(mod_rbasin_nocreek_fyear) == "try-error"){
+    AIC_list[[4]] <- mod_rbasin_nocreek_fyear
+    names(AIC_list)[4] <- "rbasin_nocreek_fyear"
+  }
+  
+  
   AIC_list <- rlist::list.clean(AIC_list)
   AICs <- lapply(AIC_list, AIC)
   names(AICs) <- names(AIC_list)
@@ -42,6 +51,7 @@ make_AIC_comp <- function(dat, vars){
               mod_nested_ryear = mod_nested_ryear,
               mod_nested_fyear = mod_nested_fyear,
               mod_rbasin_fyear = mod_rbasin_fyear,
+              mod_rbasin_nocreek_fyear = mod_rbasin_nocreek_fyear,
               dat = mstats))
 }
 
@@ -59,11 +69,13 @@ make_pred <- function(AIC_tab){
   not.errors <- !unlist(lapply(AIC_tab[-1][-(length(AIC_tab) - 1)], function(x) class(x) == "try-error"))
   if(sum(not.errors) < length(not.errors)){
     err <- names(which(!not.errors))
-    AIC_tab[[err]] <- NULL
+    for(i in err){
+      AIC_tab[[i]] <- NULL
+    }
   }
   
   not.singulars <- !unlist(lapply(AIC_tab[-1][-(length(AIC_tab) - 1)], isSingular))
-  use.model <- names(which.min(AIC_tab$AIC[,-1][which(not.singulars)]))
+  use.model <- names(which.min(AIC_tab$AIC[,-1, drop = F][which(not.singulars)]))
   mod <- AIC_tab[[paste0("mod_", use.model)]]
   
   cat("Best model is: ", use.model)

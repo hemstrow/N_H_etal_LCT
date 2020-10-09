@@ -1,13 +1,13 @@
 Archived Configurations with corresponding log likelihood
 Config#,1,LogLikelihood,-2.6230047434E+01
 OffspringID,FatherID,MotherID,ClusterIndex
-LHU_INC_2013_011,*1,#1,1
-LHU_INC_2013_012,*2,#2,2
+LHU_INK_2013_011,*1,#1,1
+LHU_INK_2013_012,*2,#2,2
 Config#,2,LogLikelihood,-2.7543136095E+01
 OffspringID,FatherID,MotherID,ClusterIndex
-LHU_INC_2013_011,*1,#1,1
-LHU_INC_2013_012,*1,#2,1
-Config#,3,LogLikelihood,-2.9306922060E+01
+LHU_INK_2013_011,*1,#1,1
+LHU_INK_2013_012,*1,#2,1
+Config#,3,LogLikelihood,-2.9306888090E+01
 OffspringID,FatherID,MotherID,ClusterIndex
-LHU_INC_2013_011,*1,#1,1
-LHU_INC_2013_012,*1,#1,1
+LHU_INK_2013_011,*1,#1,1
+LHU_INK_2013_012,*1,#1,1

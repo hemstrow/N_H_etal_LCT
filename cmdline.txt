@@ -1,0 +1,7 @@
+Genepop
+GenepopInputFile=genepop.stream.year.txt
+MenuOptions=6:2
+EstimationPloidy=Diploid
+RandomSeed=67144630
+Mode=Batch
+

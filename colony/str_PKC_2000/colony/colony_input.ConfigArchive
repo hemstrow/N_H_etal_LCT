@@ -7,7 +7,7 @@ Config#,2,LogLikelihood,-3.3283443648E+01
 OffspringID,FatherID,MotherID,ClusterIndex
 STE_PKC_2000_007,*1,#1,1
 STE_PKC_2000_008,*1,#2,1
-Config#,3,LogLikelihood,-3.4872936073E+01
+Config#,3,LogLikelihood,-3.4872882842E+01
 OffspringID,FatherID,MotherID,ClusterIndex
 STE_PKC_2000_007,*1,#1,1
 STE_PKC_2000_008,*1,#1,1

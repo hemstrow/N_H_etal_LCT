@@ -1,13 +1,13 @@
          OffspringID             FatherID             MotherID  ClusterIndex
-    CAR_GOC_2017_036                   *4                   #1             1
-    CAR_GOC_2017_038                   *4                   #1             1
-    CAR_GOC_2017_039                   *4                   #1             1
-    CAR_GOC_2017_043                   *4                   #1             1
-    CAR_GOC_2017_044                   *4                   #1             1
     CAR_GOC_2017_033                   *1                   #1             1
+    CAR_GOC_2017_036                   *1                   #4             1
+    CAR_GOC_2017_038                   *1                   #4             1
+    CAR_GOC_2017_039                   *1                   #4             1
+    CAR_GOC_2017_043                   *1                   #4             1
+    CAR_GOC_2017_044                   *1                   #4             1
     CAR_GOC_2017_034                   *2                   #2             2
     CAR_GOC_2017_042                   *2                   #2             2
     CAR_GOC_2017_035                   *3                   #3             3
-    CAR_GOC_2017_037                   *5                   #4             4
-    CAR_GOC_2017_040                   *6                   #5             5
-    CAR_GOC_2017_041                   *6                   #5             5
+    CAR_GOC_2017_037                   *4                   #5             4
+    CAR_GOC_2017_040                   *5                   #6             5
+    CAR_GOC_2017_041                   *5                   #6             5

@@ -1,5 +1,5 @@
 ClusterIndex Probability          OffspringID             FatherID             MotherID
-           1      0.3201     MAR_MAU_2016_001                   *1                   #1
-           1      0.3201     MAR_MAU_2016_002                   *1                   #1
-           2      0.9957     MAR_MAU_2016_003                   *2                   #2
-           3      0.9810     MAR_MAU_2016_004                   *3                   #3
+           1      0.4421     MAR_MAU_2016_001                   *1                   #1
+           1      0.4421     MAR_MAU_2016_002                   *1                   #1
+           2      0.9962     MAR_MAU_2016_003                   *2                   #2
+           3      0.9867     MAR_MAU_2016_004                   *3                   #3

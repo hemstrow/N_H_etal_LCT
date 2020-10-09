@@ -1,5 +1,5 @@
 FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
-               1     1.0000     0.8500    NFH_GAN_2000_101
-               2     1.0000     0.9414    NFH_GAN_2000_102
-               3     0.0639     0.0593    NFH_GAN_2000_108,NFH_GAN_2000_109
-               4     0.2338     0.2176    NFH_GAN_2000_110,NFH_GAN_2000_111
+               1     1.0000     0.8620    NFH_GAN_2000_101
+               2     1.0000     0.9366    NFH_GAN_2000_102
+               3     0.0605     0.0559    NFH_GAN_2000_108,NFH_GAN_2000_109
+               4     0.2524     0.2396    NFH_GAN_2000_110,NFH_GAN_2000_111

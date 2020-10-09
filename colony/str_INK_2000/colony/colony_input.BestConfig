@@ -1,5 +1,5 @@
          OffspringID             FatherID             MotherID  ClusterIndex
-    LHU_INC_2000_104                   *1                   #1             1
-    LHU_INC_2000_107                   *2                   #2             2
-    LHU_INC_2000_118                   *3                   #2             2
-    LHU_INC_2000_121                   *4                   #1             1
+    LHU_INK_2000_104                   *1                   #1             1
+    LHU_INK_2000_107                   *2                   #2             2
+    LHU_INK_2000_118                   *2                   #3             2
+    LHU_INK_2000_121                   *3                   #1             1

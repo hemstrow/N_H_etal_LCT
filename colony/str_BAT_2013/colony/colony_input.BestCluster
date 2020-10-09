@@ -1,9 +1,0 @@
-ClusterIndex Probability          OffspringID             FatherID             MotherID
-           1      0.3561     QUI_BAT_2013_117                   *1                   #1
-           1      0.3561     QUI_BAT_2013_120                   *1                   #1
-           2      0.8138     QUI_BAT_2013_118                   *2                   #2
-           3      0.8202     QUI_BAT_2013_119                   *3                   #3
-           4      0.2228     QUI_BAT_2013_121                   *4                   #4
-           4      0.2228     QUI_BAT_2013_124                   *4                   #4
-           5      0.4935     QUI_BAT_2013_122                   *5                   #5
-           5      0.4935     QUI_BAT_2013_123                   *5                   #5

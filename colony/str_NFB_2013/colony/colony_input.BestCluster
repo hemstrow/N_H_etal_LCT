@@ -1,0 +1,9 @@
+ClusterIndex Probability          OffspringID             FatherID             MotherID
+           1      0.3982     QUI_NFB_2013_117                   *1                   #1
+           1      0.3982     QUI_NFB_2013_120                   *1                   #1
+           2      0.8022     QUI_NFB_2013_118                   *2                   #2
+           3      0.8190     QUI_NFB_2013_119                   *3                   #3
+           4      0.2676     QUI_NFB_2013_121                   *4                   #4
+           4      0.2676     QUI_NFB_2013_124                   *4                   #4
+           5      0.5190     QUI_NFB_2013_122                   *5                   #5
+           5      0.5190     QUI_NFB_2013_123                   *5                   #5

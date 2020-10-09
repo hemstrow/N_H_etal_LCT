@@ -1,19 +1,19 @@
          OffspringID             FatherID             MotherID  ClusterIndex
-    YUB_MAC_2016_077                   *7                   #2             1
-    YUB_MAC_2016_058                   *2                   #2             1
-    YUB_MAC_2016_076                   *2                   #2             1
-    YUB_MAC_2016_057                   *1                   #1             1
-    YUB_MAC_2016_078                   *1                   #7             1
     YUB_MAC_2016_065                   *1                   #2             1
+    YUB_MAC_2016_057                   *1                   #1             1
+    YUB_MAC_2016_077                   *6                   #7             1
+    YUB_MAC_2016_078                   *1                   #8             1
     YUB_MAC_2016_074                   *1                   #4             1
+    YUB_MAC_2016_076                   *2                   #7             1
+    YUB_MAC_2016_058                   *2                   #2             1
     YUB_MAC_2016_060                   *4                   #4             1
     YUB_MAC_2016_072                   *4                   #4             1
     YUB_MAC_2016_059                   *3                   #3             2
-    YUB_MAC_2016_090                  *10                   #3             2
-    YUB_MAC_2016_088                   *5                   #3             2
-    YUB_MAC_2016_079                   *5                   #8             2
-    YUB_MAC_2016_069                   *5                   #5             2
-    YUB_MAC_2016_070                   *6                   #6             3
+    YUB_MAC_2016_090                  *10                  #11             3
+    YUB_MAC_2016_088                  *10                   #5             3
+    YUB_MAC_2016_079                   *7                   #5             3
+    YUB_MAC_2016_069                   *5                   #5             3
+    YUB_MAC_2016_070                   *5                   #6             3
     YUB_MAC_2016_083                   *8                   #9             4
     YUB_MAC_2016_085                   *8                   #9             4
     YUB_MAC_2016_086                   *8                   #9             4
