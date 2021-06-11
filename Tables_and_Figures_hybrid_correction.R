@@ -252,7 +252,7 @@ col.scale <- scale_colour_manual(name = "use_watershed",values = myColors)
 
 Fig2a <- ggplot(hyb, aes(x = PC1, y = PC2, color = use_watershed)) + 
   geom_point(size = 6) + theme_bw() +
-  col.scale + ylab("PC1 (31.8%)") + xlab("PC2 (0.93%)") +
+  col.scale + xlab("PC1 (31.8%)") + ylab("PC2 (0.93%)") +
   ggtitle("A") + guides(color = guide_legend(title = "Watershed"))
 # ggsave(filename = "updated_PCA_plot.pdf", device = "pdf", plot = pd, width = 11, height = 8.5)
 Fig2a
@@ -453,6 +453,9 @@ for(i in 1:length(run_stats)){
 }
 
 Table.S3 <- models
+Table.S3$holm_Ext <- p.adjust(Table.S3$Ext, "holm")
+Table.S3$holm_AB <- p.adjust(Table.S3$AB, "holm")
+
 
 
 
@@ -589,10 +592,14 @@ for(i in 1:length(run_stats)){
   models[i,1] <- paste0("Delta_", run_stats[i])
   models[i,2:3] <- out
 }
+models$holm_Ext <- p.adjust(models$Ext, "holm")
+models$holm_AB <- p.adjust(models$AB, "holm")
+
 
 # combine
-colnames(models) <- c("Statistic", "Extinction", "Abundance", "Model Type")
-colnames(Table.S3) <- c("Statistic", "Extinction", "Abundance", "Model Type")
+colnames(models) <- c("Statistic", "Extinction", "Abundance", "Model Type", "Adjusted Extinction", "Adjusted Abundance")
+colnames(Table.S3) <- c("Statistic", "Extinction", "Abundance", "Model Type",
+                        "Adjusted Extinction", "Adjusted Abundance")
 Table.S3 <- rbind(Table.S3, models)
 
 # save
