@@ -51,8 +51,11 @@ neSY <- calc_ne(dat, "stream.year", chr = "chr", NeEstimator_path = "C://usr/bin
 neSY <- get.snpR.stats(neSY, "stream.year", "pop")
 dat <- calc_basic_snp_stats(dat, c("stream.year"))
 dat <- calc_het_hom_ratio(dat, c("stream.year"))
-dat <- calc_tajimas_d(dat, "stream.year")
-tajimas_D <- get.snpR.stats(dat, "stream.year", "single.window")
+dat <- calc_tajimas_d(dat, "stream.year.chr", par = 6)
+tajimas_D <- get.snpR.stats(dat, "stream.year.chr", "weighted.means")
+tajimas_D <- dplyr::filter(tajimas_D, snp.subfacet == ".base")
+tajimas_D <- tajimas_D[,-c(1, 3, 4, 7)]
+colnames(tajimas_D)[2:3] <- gsub("weighted_mean_", "", colnames(tajimas_D)[2:3])
 tajimas_D$ws.theta <- tajimas_D$ws.theta/nsites # devide by total number of sequenced sites to change the denominator
 tajimas_D$ts.theta <- tajimas_D$ts.theta/nsites # devide by total number of sequenced sites to change the denominator
 
@@ -64,20 +67,27 @@ tajimas_D$ts.theta <- tajimas_D$ts.theta/nsites # devide by total number of sequ
 # combine and reformat
 hh <- dat@sample.stats
 ss <- dat@stats
-ho <- tapply(ss$ho, ss$subfacet, mean, na.rm = T)
-pi <- tapply(ss$pi, ss$subfacet, mean, na.rm = T)
-comb_stats <- data.frame(pop = names(ho), ho = ho, pi = pi)
 ss$n <- ss$maj.count + ss$min.count
-comb_stats$n <- tapply(ss$n, ss$subfacet, function(x) max(x)/2)
+comb_stats <- tapply(ss$n, ss$subfacet, function(x) max(x)/2)
+comb_stats <- data.frame(subfacet = names(comb_stats), n = as.numeric(comb_stats))
+stats <- get.snpR.stats(dat, "stream.year", c("ho", "pi"))
+stats <- na.omit(stats$weighted.means)
+colnames(stats) <- gsub("weighted_mean_", "", colnames(stats))
+stats <- stats[,-c(3:4)]
+comb_stats <- merge(comb_stats, stats, by = "subfacet", all = T)
+comb_stats <- dplyr::filter(comb_stats, subfacet != ".base")
+
 comb_stats$ho <- comb_stats$ho/nsites
 comb_stats$pi <- comb_stats$pi/nsites
+comb_stats <- comb_stats[,-3]
+colnames(comb_stats)[1] <- "pop"
 
 
 # add in hybridization info
 ## get hybridization info
 hyb <- openxlsx::read.xlsx("Table S1 20210111.xlsx")
 hyb_key <- openxlsx::read.xlsx("Table S1 20210111.xlsx", sheet = 2)
-hyb <- merge(hyb, hyb_key, by = "Previous.ID")
+hyb <- merge(hyb, hyb_key, by.x = "Previous.ID", by.y = "New.ID")
 colnames(hyb)[7] <- "ID"
 colnames(hyb)[4] <- "Relative.percent.RBT"
 comb <- merge(hh, hyb, by = "ID", all.x = T) # note, this will auto-subset by whatever samples are still in they analysis! (removing poorly sequenced individuals)
@@ -85,15 +95,16 @@ comb <- merge(hh, hyb, by = "ID", all.x = T) # note, this will auto-subset by wh
 # summerize by population
 comb_stats$pop <- gsub("BAT", "NFB", comb_stats$pop)
 comb$stream.year <- paste0(comb$stream, ".", comb$year)
-heho_tab <- tapply(comb$'Het/Hom', comb$stream.year, mean)
-heho_tab <- data.frame(locale = names(heho_tab), Het.Hom = as.numeric(heho_tab))
+heho_tab <- get.snpR.stats(dat, "stream.year", "het_hom_ratio")$weighted.means
+heho_tab <- na.omit(heho_tab)
+
+heho_tab <- data.frame(locale = heho_tab$subfacet, Het.Hom = heho_tab$`weighted_mean_Het/Hom`)
 hyb_tab <- tapply(comb$Relative.percent.RBT, comb$stream.year, mean, na.omit = T)
 hhyb_tab <- data.frame(locale = names(hyb_tab), Relative.percent.RBT = as.numeric(hyb_tab))
 stats <- merge(heho_tab, comb_stats, by.x = "locale", by.y = "pop", all.x = T)
 stats <- merge(stats, hhyb_tab, by = "locale")
 
 # merge in tajima's D/thetas
-tajimas_D <- tajimas_D[,c(2,7,8)]
 colnames(tajimas_D)[1] <- "locale"
 stats <- merge(stats, tajimas_D)
 stats$theta_diff <- (stats$ts.theta - stats$ws.theta)/rowMeans(stats[,c("ts.theta", "ws.theta")])
@@ -140,14 +151,14 @@ colnames(stats) <- gsub("Genetic.Year", "year", colnames(stats))
 #==============get the corrected stats using lms================
 # run models
 source("make_pred_and_make_AIC_comp.R")
-hh.AIC_comp <- make_AIC_comp(stats, "Het.Hom")
+# hh.AIC_comp <- make_AIC_comp(stats, "Het.Hom")
 
 ho.AIC_comp <- make_AIC_comp(stats, "ho")
 
 pi.AIC_comp <- make_AIC_comp(stats, "pi")
 
 # note: no effect
-ne.AIC_comp <- make_AIC_comp(stats, "ne.rand")
+# ne.AIC_comp <- make_AIC_comp(stats, "ne.rand")
 
 ldne_.01.AIC_comp <- make_AIC_comp(stats, "LDNe_0.01")
 
@@ -158,14 +169,14 @@ thetaW.AIC_comp <- make_AIC_comp(stats, "ws.theta")
 # ldne_.05.AIC_comp <- make_AIC_comp(stats, "LDNe_0.05") # no models work and aren't singular...
 
 ## write the AIC table
-AIC_tab <- dplyr::bind_rows(hh.AIC_comp$AIC, ho.AIC_comp$AIC, pi.AIC_comp$AIC, thetaT.AIC_comp$AIC,
+AIC_tab <- dplyr::bind_rows(ho.AIC_comp$AIC, pi.AIC_comp$AIC, thetaT.AIC_comp$AIC,
                             thetaW.AIC_comp$AIC)
 
 openxlsx::writeData(wb, "Correction model AICs", x = AIC_tab, keepNA = T)
 
 # predict to get values
-hh.pred <- make_pred(hh.AIC_comp)
-ggplot(hh.pred$pre, aes(x = Relative.percent.RBT, y = Het.Hom - pred_Het.Hom)) + geom_point() + theme_bw()
+# hh.pred <- make_pred(hh.AIC_comp)
+# ggplot(hh.pred$pre, aes(x = Relative.percent.RBT, y = Het.Hom - pred_Het.Hom)) + geom_point() + theme_bw()
 
 ho.pred <- make_pred(ho.AIC_comp)
 ggplot(ho.pred$pred, aes(x = Relative.percent.RBT, y = ho - pred_ho)) + geom_point() + theme_bw()
@@ -193,11 +204,11 @@ ggplot(thetaW.pred$pred, aes(x = Relative.percent.RBT, y = ws.theta - pred_ws.th
 # merge them together
 merge.list <- c("Creek", "Basin", "year", "Relative.percent.RBT")
 stats_table <- merge(pi.pred$pred, ho.pred$pred, by = merge.list, all = T)
-stats_table <- merge(stats_table, hh.pred$pred, by = merge.list, all = T)             
+# stats_table <- merge(stats_table, hh.pred$pred, by = merge.list, all = T)             
 stats_table <- merge(stats_table, thetaT.pred$pred, by = merge.list, all = T)             
 stats_table <- merge(stats_table, thetaW.pred$pred, by = merge.list, all = T)
-stats_table$pred_theta_diff <- (stats_table$pred_ts.theta - stats_table$pred_ws.theta)/rowMeans(stats_table[,c(11,13)])
-stats_table$theta_diff <- (stats_table$ts.theta - stats_table$ws.theta)/rowMeans(stats_table[,c(12,14)])
+stats_table$pred_theta_diff <- (stats_table$pred_ts.theta - stats_table$pred_ws.theta)/rowMeans(stats_table[,c("pred_ts.theta", "pred_ws.theta")])
+stats_table$theta_diff <- (stats_table$ts.theta - stats_table$ws.theta)/rowMeans(stats_table[,c("ts.theta", "ws.theta")])
 # stats_table <- merge(stats_table, ne.pred$pred, by = merge.list, all = T)
 # stats_table <- merge(stats_table, ldne_.01.pred$pred, by = merge.list, all = T)
 stats_table <- merge(stats_table, stats[,c("locale", "Basin", "Creek", "year",
@@ -213,8 +224,9 @@ colnames(stats_table) <- gsub("pred_", "corrected_", colnames(stats_table))
 Table.S2 <- stats_table
 
 stats_table <- Table.S2[,c("locale", "Basin", "Creek", "year",
-                           "corrected_pi", "corrected_ho", "corrected_Het.Hom",
-                           "corrected_ts.theta", "corrected_ws.theta", "corrected_theta_diff", 
+                           "corrected_pi", "corrected_ho",
+                           "corrected_ts.theta", "corrected_ws.theta", "corrected_theta_diff", "ne.rand",
+                           "LDNe_0.01",
                            "PVA.Extinction", "PVA.Ext.L95", "PVA.Ext.U95",
                            "PVA.Abundance.50", "PVA.Abundance.2.5", "PVA.Abund.Year", "n")]
 colnames(stats_table) <- gsub("corrected_", "", colnames(stats_table))
@@ -230,40 +242,73 @@ hyb$samp <- substr(hyb$ID, 1, 7)
 # PC2 0.93%
 
 # plot
-Fig2 <- ggplot(hyb, aes(x = PC1, y = PC2, color = watershed, size = Relative.percent.RBT, label = samp)) + 
-  geom_label() + theme_bw() +
-  scale_color_viridis_d() + ylab("PC1 (31.8%)") + xlab("PC2 (0.93%)")
+col.scale <- RColorBrewer::brewer.pal(5, "Dark2")
+myColors <- c("black", col.scale) # LTR, MAG, MCD, RBT, SFG
+hyb$use_watershed <- hyb$watershed
+hyb$use_watershed[which(!hyb$use_watershed %in% c("LTR", "MAG", "MCD", "RBT", "SFH"))] <- "Other"
+hyb$use_watershed <- factor(hyb$use_watershed, levels = c("Other", "LTR", "MAG", "MCD", "RBT", "SFH"))
+
+col.scale <- scale_colour_manual(name = "use_watershed",values = myColors)
+
+Fig2a <- ggplot(hyb, aes(x = PC1, y = PC2, color = use_watershed)) + 
+  geom_point(size = 6) + theme_bw() +
+  col.scale + ylab("PC1 (31.8%)") + xlab("PC2 (0.93%)") +
+  ggtitle("A") + guides(color = guide_legend(title = "Watershed"))
 # ggsave(filename = "updated_PCA_plot.pdf", device = "pdf", plot = pd, width = 11, height = 8.5)
-Fig2
+Fig2a
+
+
+
+# import and prep the NGSadmix plot
+setwd("NGSadmix/")
+K2 <- read.table("bamlist1_omy_adm.beagle.k2.qopt")
+K3 <- read.table("bamlist1_omy_adm.beagle.k3.qopt")
+K2 <- cbind(K2, K3, hyb)
+K2 <- K2[which(K2$watershed %in% c("QUI", "MAG", "SFH", "LTR", "MCD", "RBT")),]
+write.table(K2[,1:2], "K2.sub.qopt", col.names = F, row.names = F, quote = F)
+write.table(K2[,3:5], "K3.sub.qopt", col.names = F, row.names = F, quote = F)
+facet.levels <- c(K2$watershed, "MAG", "SFH", "LTR", "MCD", "RBT")
+facet.levels <- facet.levels[-which(duplicated(facet.levels, fromLast = T))]
+NGSadmix <- plot_structure(".sub.qopt", k = 3, facet = K2$watershed, 
+                           facet.order = facet.levels, qsort_K = 2, qsort = 2, 
+                           separator_thickness = .5, separator_color = "white")
+NGSadmix$plot <- NGSadmix$plot + xlab("Watershed") + ggtitle("B")
+
+grid.arrange(Fig2a, NGSadmix$plot)
 openxlsx::insertPlot(wb, "Figure 2", width = 11, height = 8.5)
+setwd("..")
 
 #================Figure 3==================
 # basic correlations:
 ## melt data
 year.matches <- which(abs(stats_table$year  - stats_table$PVA.Abund.Year) <= 5)
 cor_dat <- stats_table[year.matches,]
-cor_dat <- reshape2::melt(cor_dat[,c(1:11, 14)], id.vars = colnames(cor_dat)[c(1:4, 11, 14)])
+cor_dat <- reshape2::melt(cor_dat[,c("locale", "Basin", "Creek", "year", "pi", "ho", "LDNe_0.01",
+                                     "ts.theta", "ws.theta", "theta_diff", "ne.rand", "PVA.Extinction", "PVA.Abundance.50")], 
+                          id.vars = c("locale", "Basin", "Creek", "year", "PVA.Extinction", "PVA.Abundance.50"))
 
 ## change variable names to be pretty
-pretty_names_tab <- list("Het.Hom" = "Het/Hom",
-                         "ho" = bquote(H[o]),
-                         "pi" = bquote(pi),
-                         "ws.theta" = bquote(theta[W]),
-                         "ts.theta" = bquote(theta[T]),
-                         "theta_diff" = bquote(theta[diff]),
-                         "LDNe_0.01" = bquote(LDNe[0.01]),
-                         "ne.rand" = bquote(Ne[Colony]))
+pretty_names_tab <- c(ho = "H[o]",
+                      pi = "pi",
+                      ws.theta = "theta[W]",
+                      ts.theta = "theta[T]",
+                      theta_diff = "theta[diff]",
+                      LDNe_0.01 = "LDNe[0.01]",
+                      LDNe_0.05 = "LDNe[0.05]",
+                      ne.rand = "Ne[Colony]")
 
-vlabeller <- function(variable,value){
-  return(pretty_names_tab[value])
-}
+
+vlabeller <- as_labeller(pretty_names_tab, default = label_parsed)
 
 ## plots
 cor_plot_ab <- ggplot(cor_dat, aes(y = log10(PVA.Abundance.50), x = value)) + 
   facet_wrap(~variable, scales = "free_x", labeller = vlabeller, strip.position = "bottom") + 
   geom_point() + theme_bw() + 
   theme(strip.background = element_blank(), axis.title.x = element_blank(), 
-        strip.placement = "outside", axis.text = element_text(size = 6), panel.spacing.x = unit(1, "lines")) 
+        strip.placement = "outside", axis.text.x = element_text(size = 10, angle = 90), 
+        strip.text = element_text(size = 12),
+        axis.text.y = element_text(size = 10),
+        panel.spacing.x = unit(1, "lines")) + ggtitle("A") + ylab("log10(Estimated PVA Abundance)")
 
 
 
@@ -271,7 +316,10 @@ cor_plot_ext <- ggplot(cor_dat, aes(y = log10(PVA.Extinction), x = value)) +
   facet_wrap(~variable, scales = "free_x", labeller = vlabeller, strip.position = "bottom") + geom_point() +
   theme_bw() + 
   theme(strip.background = element_blank(), axis.title.x = element_blank(), 
-        strip.placement = "outside", axis.text = element_text(size = 6), panel.spacing.x = unit(1, "lines"))
+        strip.placement = "outside", axis.text.x = element_text(size = 10, angle = 90), 
+        strip.text = element_text(size = 12),
+        axis.text.y = element_text(size = 10),
+        panel.spacing.x = unit(1, "lines")) + ggtitle("B") + ylab("log10(% Estimated PVA Extinction Risk)")
 
 
 
@@ -294,7 +342,7 @@ rfstats$ts.theta <- scale(rfstats$ts.theta)
 
 
 ## run a random forest against extinction risk
-rfstats_ext <- rfstats[,c("PVA.Extinction", "Het.Hom", "ho", "pi", "ws.theta", "ts.theta")]
+rfstats_ext <- rfstats[,c("PVA.Extinction","ne.rand", "ho", "pi", "ws.theta", "ts.theta")]
 
 ## full model
 rf_ext <- ranger::ranger(dependent.variable.name = "PVA.Extinction", 
@@ -307,10 +355,10 @@ rf_ext <- ranger::ranger(dependent.variable.name = "PVA.Extinction",
 pred_rf <- data.frame(obs = rfstats_ext$PVA.Extinction,
                       pred = rf_ext$predictions, statistic = "Extinction")
 
-# rsq 0.0117
+# rsq 0.05
 
 ## run a random forest against PVA.Abundance
-rfstats_ab <- rfstats[,c("PVA.Abundance.50", "Het.Hom", "ho", "pi", "ws.theta", "ts.theta")]
+rfstats_ab <- rfstats[,c("PVA.Abundance.50","ne.rand", "ho", "pi", "ws.theta", "ts.theta")]
 rfstats_ab <- na.omit(rfstats_ab)
 
 
@@ -323,7 +371,7 @@ rf_ab <- ranger::ranger(dependent.variable.name = "PVA.Abundance.50",
                         num.threads = 4,
                         verbose = T, importance = "permutation")
 
-# rsq -.45
+# rsq -.46
 
 pred_rf <- rbind(pred_rf,
                  data.frame(obs = rfstats_ab$PVA.Abundance.50,
@@ -332,21 +380,27 @@ pred_rf <- rbind(pred_rf,
 
 
 ## plot rf data
+pred_rf$new_statistic <- ifelse(pred_rf$statistic == "Abundance", "log10(Estimated PVA Abundance)", "log10(% Estimated PVA Extinction Risk)")
+pred_rf$new_statistic <- factor(pred_rf$new_statistic, levels = c("log10(Estimated PVA Abundance)", "log10(% Estimated PVA Extinction Risk)"))
 rf_p <- ggplot(pred_rf, aes(x = obs, y = pred)) + geom_point() +
-  theme_bw() + facet_wrap(~statistic, scales = "free") + theme(strip.background = element_blank()) +
-  ylab("Predicted") + xlab("Observed")
+  theme_bw() + facet_wrap(~new_statistic, scales = "free") + theme(strip.background = element_blank()) +
+  ylab("Predicted") + xlab("Observed") + ggtitle("C")
 
 
 # combine plots
-grid.arrange(cor_plot_ext, cor_plot_ab, rf_p, layout_matrix = matrix(c(1,2, 3, 3), byrow = T, nrow = 2),
+grid.arrange(cor_plot_ab + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")), 
+             cor_plot_ext + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")), 
+             rf_p + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")),
+             layout_matrix = matrix(c(1,2, 3, 3), byrow = T, nrow = 2),
              heights = c(1, .5))
 openxlsx::insertPlot(wb, "Figure 3", width = 11, height = 8.5)
 
 
 #===============Table S3, part 1================
 mod_stats <- stats_table[year.matches,]
-mod_stats <- mod_stats[,c(2:11, 14)]
-run_stats <- colnames(mod_stats)[-c(1:3, 10:11)]
+mod_stats <- mod_stats[,c("Basin", "Creek", "year", "pi", "ho", "Het.Hom",
+                          "ts.theta", "ws.theta", "theta_diff", "ne.rand", "PVA.Extinction", "PVA.Abundance.50")]
+run_stats <- c("pi", "ho", "ts.theta", "ws.theta", "theta_diff", "ne.rand")
 
 # clean
 mod_stats$Basin <- as.factor(mod_stats$Basin)
@@ -403,7 +457,9 @@ Table.S3 <- models
 
 
 #==============Figure 4==========
-change_dat <- reshape2::melt(stats_table[,c(1:11, 14)], id.vars = colnames(stats_table)[c(1:4, 11, 14)])
+change_dat <- reshape2::melt(stats_table[,c("locale", "Basin", "Creek", "year", "pi", "ho",
+                                            "ts.theta", "ws.theta", "theta_diff", "ne.rand", "PVA.Extinction", "PVA.Abundance.50")], 
+                             id.vars = c("locale", "Basin", "Creek", "year", "PVA.Extinction", "PVA.Abundance.50"))
 
 change_dat$locale <- paste0(change_dat$Basin, "_", change_dat$Creek)
 min_year <- tapply(change_dat$year, change_dat$locale, min, na.rm = T)
@@ -414,7 +470,9 @@ change_plot <- ggplot(change_dat, aes(x = year_delta, y = value, color = locale)
   theme_bw() + facet_wrap(~variable, scales = "free_y", strip.position = "left", labeller = vlabeller) +
   geom_line(aes(group = locale), alpha = 0.5) +
   geom_point() + 
-  theme(legend.position = "none", strip.background = element_blank(), axis.title.y = element_blank(), strip.placement = "outside") +
+  theme(legend.position = "none", strip.background = element_blank(), 
+        axis.title.y = element_blank(), strip.placement = "outside", 
+        strip.text = element_text(size = 12), axis.text = element_text(size = 10)) +
   scale_color_viridis_d() + xlab("Years Since First Sample")
 change_plot
 openxlsx::insertPlot(wb, "Figure 4", width = 11, height = 8.5)
@@ -422,8 +480,10 @@ openxlsx::insertPlot(wb, "Figure 4", width = 11, height = 8.5)
 
 #==============Figure 5==================
 change_dat <- stats_table[year.matches,]
-change_dat <- reshape2::melt(change_dat[,c(1:11, 14)], id.vars = colnames(change_dat)[c(1:4, 11, 14)])
-# note: dropping Ho and both Ne estimates because they are had fixed effects of year
+change_dat <- reshape2::melt(change_dat[,c("locale", "Basin", "Creek", "year", "pi", "ho",
+                                           "ts.theta", "theta_diff", "ne.rand", "PVA.Extinction", "PVA.Abundance.50")], 
+                             id.vars = c("locale", "Basin", "Creek", "year", "PVA.Extinction", "PVA.Abundance.50"))
+# note: dropping ws.theta because it had a fixed effect for year
 
 change_dat$locale <- paste0(change_dat$Basin, "_", change_dat$Creek)
 min_year <- tapply(change_dat$year, change_dat$locale, min, na.rm = T)
@@ -438,7 +498,7 @@ for(i in 1:length(locales)){
   if(length(years) == 1){
     next
   }
-
+  
   ymin <- min(years)
   ymax <- max(years)
   min_stats <- change_dat[intersect(matches, which(change_dat$year == ymin)),]
@@ -459,26 +519,32 @@ stat_deltas_m <- reshape2::melt(stat_deltas, id.vars = colnames(stat_deltas)[-c(
 
 
 
-pretty_names_tab2 <- list("Het.Hom" = "Het/Hom",
-                          "ho" = bquote(H[o]),
-                          "pi" = bquote(pi),
-                          "ws.theta" = bquote(theta[W]),
-                          "ts.theta" = bquote(theta[T]),
-                          "theta_diff" = bquote(theta[diff]),
-                          "LDNe_0.01" = bquote(LDNe[0.01]),
-                          "ne.rand" = bquote(Ne[Colony]))
+# pretty_names_tab2 <- list("Het.Hom" = "Het/Hom",
+#                           "ho" = bquote(H[o]),
+#                           "pi" = bquote(pi),
+#                           "ws.theta" = bquote(theta[W]),
+#                           "ts.theta" = bquote(theta[T]),
+#                           "theta_diff" = bquote(theta[diff]),
+#                           "LDNe_0.01" = bquote(LDNe[0.01]),
+#                           "ne.rand" = bquote(Ne[Colony]))
 
-stat_deltas_m$statistic <- factor(stat_deltas_m$statistic, levels = unique(stat_deltas_m$statistic),
-                                  labels = unlist(pretty_names_tab2[match(unique(stat_deltas_m$statistic), names(pretty_names_tab2))]))
-stat_deltas_m$variable <- as.character(stat_deltas_m$variable)
-stat_deltas_m$variable[which(stat_deltas_m$variable == "PVA.Extinction")] <- "Extinction"
-stat_deltas_m$variable[which(stat_deltas_m$variable == "PVA.Abundance.Delta")] <- "Delta* Abundance"
+pretty_names_tab2 <- c(pretty_names_tab, PVA.Extinction = "Estimated~PVA~Extinction~Risk", PVA.Abundance.Delta = "Delta*~Estimated~PVA~Abundance")
+vlabeller <- as_labeller(pretty_names_tab2, default = label_parsed)
+
+
+
+# stat_deltas_m$statistic <- factor(stat_deltas_m$statistic, levels = unique(stat_deltas_m$statistic),
+#                                   labels = unlist(pretty_names_tab2[match(unique(stat_deltas_m$statistic), names(pretty_names_tab2))]))
+# stat_deltas_m$variable <- as.character(stat_deltas_m$variable)
+# stat_deltas_m$variable[which(stat_deltas_m$variable == "PVA.Extinction")] <- "Extinction"
+# stat_deltas_m$variable[which(stat_deltas_m$variable == "PVA.Abundance.Delta")] <- "Delta* Abundance"
 stat_deltas_m$rate_of_change <- stat_deltas_m$difference/stat_deltas_m$year_delta
-  
+
 ext_plot <- ggplot(stat_deltas_m, aes(y = value, x = rate_of_change))+
   geom_point() +
-  facet_grid(variable~statistic, scales = "free", labeller = label_parsed, switch = "y") + theme_bw() + 
-  theme(strip.background = element_blank(), axis.title.y = element_blank(), strip.placement = "outside", axis.text.x = element_text(size = 4)) +
+  facet_grid(variable~statistic, scales = "free", labeller = vlabeller, switch = "both") + theme_bw() + 
+  theme(strip.background = element_blank(), axis.title.y = element_blank(), strip.placement = "outside", 
+        axis.text.x = element_text(size = 10, angle = 90), strip.text = element_text(size = 12)) +
   xlab(bquote(Delta*Statistic/Year))
 
 ext_plot
@@ -497,7 +563,8 @@ mod_stats$Creek <- as.factor(mod_stats$Creek)
 mod_stats$PVA.Abundance.Delta <- scale(mod_stats$PVA.Abundance.Delta)
 mod_stats$PVA.Extinction <- scale(mod_stats$PVA.Extinction)
 
-run_stats <- run_stats[-c(7:8)]
+run_stats <- c("pi", "ho", "ts.theta", "theta_diff")
+
 models <- data.frame(stat = numeric(length(run_stats)),
                      Ext = numeric(length(run_stats)),
                      AB = numeric(length(run_stats)),
@@ -524,15 +591,17 @@ for(i in 1:length(run_stats)){
 }
 
 # combine
+colnames(models) <- c("Statistic", "Extinction", "Abundance", "Model Type")
+colnames(Table.S3) <- c("Statistic", "Extinction", "Abundance", "Model Type")
 Table.S3 <- rbind(Table.S3, models)
-colnames(Table.S3) <- c("Statistic", "Extinction", "Abundance", "Extinction Model")
 
 # save
 openxlsx::writeData(wb, "Table S3", x = Table.S3, keepNA = T)
 
 
 #================correction plot===============
-mst <- Table.S2[,c(1:16)]
+mst <- Table.S2[,c("Creek", "Basin", "year", "Relative.percent.RBT", "corrected_pi", "pi", "corrected_ho", "ho",
+                   "corrected_ts.theta", "ts.theta", "corrected_ws.theta", "ws.theta", "corrected_theta_diff", "theta_diff")]
 mst <- reshape2::melt(mst, id.vars = c("Creek", "Basin", "year", "Relative.percent.RBT"))
 mst$type <- ifelse(grepl("corrected_", mst$variable), "corrected", "observed")
 mst$variable <- gsub("corrected_", "", mst$variable)
@@ -540,10 +609,14 @@ mst <- reshape2::dcast(mst, Creek + year + Basin  + variable + Relative.percent.
 
 colnames(mst)[4] <- "stat"
 p <- ggplot(mst, aes(x = observed, y = corrected, color = Relative.percent.RBT)) + 
-  facet_wrap(~stat, scales = "free") + geom_point() +
+  facet_wrap(~stat, scales = "free", labeller = vlabeller, strip.position = "bottom") + 
+  geom_point(size = 4) +
   geom_abline(slope = 1, intercept = 0) + theme_bw() + 
-  scale_color_viridis_c(direction = -1, end = .9) + labs(color = "%RBT") +
-  theme(strip.background = element_blank(), strip.text = element_text(size = 20))
+  scale_color_viridis_c(direction = 1, end = .85) + labs(color = "%RBT") +
+  theme(strip.background = element_blank(), strip.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 90), axis.text = element_text(size = 10), 
+        strip.placement = "outside") +
+  xlab("Corrected Value") + ylab("Observed Value")
 
 
 p
@@ -572,7 +645,7 @@ p2 <- ggplot(theta_plot_dat,
              aes(x = ts.theta, y = ws.theta, size = theta_diff, color = Relative.percent.RBT,
                  fill = Relative.percent.RBT, label = samp)) +
   geom_point(alpha = 0.5) + geom_abline(slope = 1, intercept = 0) + facet_wrap(~type, ncol = 1) + theme_bw() +
-  theme(strip.background = element_blank()) + ylab("Watterson's Theta") + xlab("Tajima's Theta") +
+  theme(strip.background = element_blank()) + ylab(expression(theta[W])) + xlab(expression(theta[T])) +
   scale_color_viridis_c() + scale_fill_viridis_c()
 
 p2

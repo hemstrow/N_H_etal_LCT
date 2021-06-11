@@ -8,6 +8,17 @@ colnames(snp_meta) <- c("chr", "position")
 
 
 dat <- import.snpR.data(genos[,-c(1:2)], snp_meta, sample_meta)
+dat <- calc_hwe(dat, "stream.year")
+hwe <- get.snpR.stats(dat, "stream.year", "hwe")
+hwe$single$low.p <- ifelse(hwe$single$pHWE <= 0.000001, 1, 0)
+bad.loci <- tapply(hwe$single$low.p, hwe$single[,c("chr", "position")], sum, na.rm = T)
+bad.loci <- reshape2::melt(bad.loci)
+bad.loci <- na.omit(bad.loci)
+bad.loci <- bad.loci[which(bad.loci$value > 0),] # four snps to remove
+good.loci <- which(!do.call(paste0, snp.meta(dat)[,1:2]) %in% do.call(paste0, bad.loci[,1:2]))
+dat <- import.snpR.data(genos[good.loci,-c(1:2)], snp_meta[good.loci,], sample_meta)
+
+
 pops <- unique(sample_meta[,3:4])
 dir.create("colony")
 setwd("colony/")
@@ -31,7 +42,7 @@ for(i in 1:nrow(pops)){
       dir.create(paste0(pops[i,], collapse = "_"))
       setwd(paste0(pops[i,], collapse = "_"))
       write_colony_input(tdat, sampleIDs = "ID")
-      call_colony("colony/colony_input.dat", colony_path = "D:/ZSL/Colony/colony2s.exe")
+      call_colony("colony/colony_input.dat", colony_path = "C:/usr/bin/Colony/colony2s.exe")
       out[[i]] <- read.csv("colony/colony_input.FullSibDyad", header = T, stringsAsFactors = F)
       setwd("../")
     }
@@ -46,6 +57,7 @@ write.table(cout, "colony_sibs.txt", quote = F, sep = "\t", row.names = F)
 
 
 #===============harvest and save ne===================
+setwd("..")
 nef <- list.files(path ="colony/", pattern = "Ne", recursive = T)
 out <- data.frame(pop = gsub("/.+", "", nef),
                   ne.rand = numeric(length(nef)), 
