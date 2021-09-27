@@ -3,6 +3,10 @@ library(ggplot2); library(snpR)
 sample_meta <- read.table("metadata.txt", header = T)
 genos <- read.table("bamlist2_baits_geno.geno", stringsAsFactors = F)
 sample_meta$stream <- paste0("str_", sample_meta$stream)
+pva_merge_key <- data.frame(old = c("SEC", "TRB", "SHE", "SNO"), new = "GRP")
+for(i in 1:nrow(pva_merge_key)){
+  sample_meta$stream <- gsub(pva_merge_key[i,1], pva_merge_key[i,2], sample_meta$stream)
+}
 snp_meta <- genos[,1:2]
 colnames(snp_meta) <- c("chr", "position")
 

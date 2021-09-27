@@ -29,6 +29,11 @@ sample_meta <- read.table("metadata.txt", header = T)
 genos <- read.table("bamlist2_baits_geno.geno", stringsAsFactors = F)
 sample_meta$stream <- paste0("str_", sample_meta$stream)
 sample_meta$stream[sample_meta$watershed == "LHU" & sample_meta$stream == "str_INC"] <- "str_INK"
+## merge pops ran together during pva
+pva_merge_key <- data.frame(old = c("SEC", "TRB", "SHE", "SNO"), new = "GRP")
+for(i in 1:nrow(pva_merge_key)){
+  sample_meta$stream <- gsub(pva_merge_key[i,1], pva_merge_key[i,2], sample_meta$stream)
+}
 snp_meta <- genos[,1:2]
 colnames(snp_meta) <- c("chr", "position")
 dat <- import.snpR.data(genos[,-c(1:2)], snp_meta, sample_meta)
@@ -41,7 +46,7 @@ hwe$single$low.p <- ifelse(hwe$single$pHWE <= 0.000001, 1, 0)
 bad.loci <- tapply(hwe$single$low.p, hwe$single[,c("chr", "position")], sum, na.rm = T)
 bad.loci <- reshape2::melt(bad.loci)
 bad.loci <- na.omit(bad.loci)
-bad.loci <- bad.loci[which(bad.loci$value > 0),] # four snps to remove
+bad.loci <- bad.loci[which(bad.loci$value > 0),] # seven snps to remove
 good.loci <- which(!do.call(paste0, snp.meta(dat)[,1:2]) %in% do.call(paste0, bad.loci[,1:2]))
 dat <- import.snpR.data(genos[good.loci,-c(1:2)], snp_meta[good.loci,], sample_meta)
 
@@ -343,6 +348,7 @@ rfstats$ts.theta <- scale(rfstats$ts.theta)
 
 ## run a random forest against extinction risk
 rfstats_ext <- rfstats[,c("PVA.Extinction","ne.rand", "ho", "pi", "ws.theta", "ts.theta")]
+
 
 ## full model
 rf_ext <- ranger::ranger(dependent.variable.name = "PVA.Extinction", 
