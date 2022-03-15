@@ -1,0 +1,716 @@
+---
+title: "Untitled"
+author: "William Hemstrom"
+date: "1/18/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(snpR); library(ggplot2); library(gridExtra); library(data.table); library(openxlsx); library(ggtern)
+
+nsites <- 60589
+wb <- openxlsx::createWorkbook(creator = "William Hemstrom")
+openxlsx::addWorksheet(wb, "Table S2")
+openxlsx::addWorksheet(wb, "Table S3")
+openxlsx::addWorksheet(wb, "Figure 3")
+openxlsx::addWorksheet(wb, "Figure 4")
+openxlsx::addWorksheet(wb, "Figure 5")
+openxlsx::addWorksheet(wb, "PCA and NGSadmix")
+openxlsx::addWorksheet(wb, "thetas")
+
+```
+# Read in and prep data
+## Read in the genotype and metadata
+
+First, read in and clean the basic metadata.
+```{r, echo=FALSE, message=FALSE, results='hide'}
+# meta
+sample_meta <- read.table("metadata.txt", header = T)
+sample_meta$stream <- paste0("str_", sample_meta$stream)
+sample_meta$stream[sample_meta$watershed == "LHU" & sample_meta$stream == "str_INC"] <- "str_INK"
+## merge pops ran together during pva
+pva_merge_key <- data.frame(old = c("SEC", "TRB", "SHE", "SNO", "MAE", "MAR", "MRB", "MAU"), new = c(rep("GRP", 4), rep("MRG", 4)))
+for(i in 1:nrow(pva_merge_key)){
+  sample_meta$stream <- gsub(pva_merge_key[i,1], pva_merge_key[i,2], sample_meta$stream)
+}
+## fix year for some MRG samples
+sample_meta[sample_meta$stream == "str_MRG",]$year <- 2016
+
+```
+
+Read in the hybridization info, then merge with meta. Need to use the key to adjust for name changes.
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+# read
+hyb <- read.csv("YCT_RBT_hybrid_assessment.csv")
+hyb_key <- openxlsx::read.xlsx("Table S1 20210111.xlsx", sheet = 2)
+hyb <- merge(hyb, hyb_key, by.x = "sample_ID", by.y = "New.ID")
+
+# merge
+comb_meta <- merge(sample_meta, hyb[,c(15, 11:13)], by.x = "ID", by.y = "Final.ID")
+```
+
+Read in the genotypes, convert to snpRdata.
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+genos <- read.table("bamlist2_baits_geno.geno", stringsAsFactors = F)
+
+snp_meta <- genos[,1:2]
+colnames(snp_meta) <- c("chr", "position")
+dat <- import.snpR.data(genos[,-c(1:2)], snp_meta, comb_meta)
+
+```
+
+Remove samples that have a %LCT less than 99%. Filter SNPs.
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+# filter bad individuals
+dat2 <- dat[,-which(sample.meta(dat)$LCT < .99)]
+
+# save filtering info
+n_before <- table(paste0(sample.meta(dat)[,"stream"], ".", sample.meta(dat)[,"year"]))
+n_after <- table(paste0(sample.meta(dat2)[,"stream"], ".", sample.meta(dat2)[,"year"]))
+n <- data.frame(subfacet = names(n_before), n_before = as.numeric(n_before), n_after = 0)
+n$n_after <- n_after[match(n$subfacet, names(n_after))]
+n$n_after[is.na(n$n_after)] <- 0
+
+
+percent_hyb_before <- as.data.table(sample.meta(dat))
+percent_hyb_before[,subfacet := paste0(stream, ".", year)]
+
+percent_hyb_after <- as.data.table(sample.meta(dat2))
+percent_hyb_after[,subfacet := paste0(stream, ".", year)]
+
+
+for(i in c("LCT", "YCT", "RBT")){
+  percent_hyb_before2 <- percent_hyb_before[, mean(get(i)), by = subfacet]
+  percent_hyb_after2 <- percent_hyb_after[, mean(get(i)), by = subfacet]
+  percent_hyb2 <- merge(percent_hyb_before2, percent_hyb_after2, by = "subfacet", all = TRUE)
+  colnames(percent_hyb2) <- c("subfacet", paste0("percent_", i, c("_before", "_after")))
+  if(!exists("percent_hyb")){
+    percent_hyb <- percent_hyb2
+  }
+  else{
+    percent_hyb <- merge(percent_hyb, percent_hyb2, by = "subfacet", all = TRUE)
+  }
+
+}
+
+dat <- dat2
+
+rm(dat2)
+
+# 
+# # filter for HWE per pop
+# dat <- filter_snps(dat, hwe = 0.000001, hwe_facets = "stream.year") # removing 5 loci
+
+
+```
+# Calculate and merge together statistics
+## Calculate basic diversity statistics
+
+Ne via NeEstimator, ho, he, het_hom, and Tajima's D. Uncomment to run.
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+# dat <- calc_ne(dat, "stream.year", chr = "chr", NeEstimator_path = "C://usr/bin/Ne2-1.exe", methods = c("LD"))
+# dat <- calc_ho(dat, c("stream.year"))
+# dat <- calc_pi(dat, "stream.year")
+# dat <- calc_het_hom_ratio(dat, c("stream.year"))
+# dat <- calc_tajimas_d(dat, "stream.year.chr", par = 6)
+# dat <- calc_fis(dat, "stream.year")
+# saveRDS(dat, "processed_snpRdata.RDS")
+dat <- readRDS("processed_snpRdata.RDS")
+```
+
+## Run Colony
+If this needs to be run still, uncomment. Otherwise, just read in the results.
+
+```{r, results='hide'}
+# dir.create("colony")
+# setwd("colony/")
+# 
+# pops <- unique(sample.meta(dat)[,3:4])
+# 
+# #=========run and source sibs==============
+# out <- vector("list", nrow(pops))
+# 
+# for(i in 1:nrow(pops)){
+#   tdat <- dat[stream.year = paste0(pops[i, 1], ".", pops[i, 2])]
+#   if(nsamps(tdat) <= 1 | nsnps(tdat) <= 10){
+#     out[[i]] <- data.frame(offspringID1 = character(), ofspringID2 = character(), Probability = numeric())
+#   }
+#   else{
+#     tdat <- filter_snps(tdat, maf = 0.01)
+#     if(nsamps(tdat) <= 1 | nsnps(tdat) <= 10){
+#       out[[i]] <- data.frame(OffspringID1 = character(), OffspringID2 = character(), Probability = numeric())
+#     }
+#     else{
+#       dir.create(paste0(pops[i,], collapse = "_"))
+#       setwd(paste0(pops[i,], collapse = "_"))
+#       write_colony_input(tdat, sampleIDs = "ID")
+#       call_colony("colony/colony_input.dat", colony_path = "C:/usr/bin/Colony/colony2s.exe", update_bib = FALSE)
+#       out[[i]] <- read.csv("colony/colony_input.FullSibDyad", header = T, stringsAsFactors = F)
+#       setwd("../")
+#     }
+#   }
+# }
+# empties <- which(lapply(out, nrow) == 0)
+# cout <- dplyr::bind_rows(out[-empties])
+# 
+# write.table(cout, "colony_sibs.txt", quote = F, sep = "\t", row.names = F)
+# setwd("../")
+
+#===============harvest and save ne===================
+nef <- list.files(path ="colony/", pattern = "Ne", recursive = T)
+out <- data.frame(pop = gsub("/.+", "", nef),
+                  ne.rand = numeric(length(nef)),
+                  lcl.rand = numeric(length(nef)),
+                  ucl.rand = numeric(length(nef)),
+                  ne.nonrand = numeric(length(nef)),
+                  lcl.nonrand = numeric(length(nef)),
+                  ucl.nonrand = numeric(length(nef)))
+
+for(i in 1:length(nef)){
+  col_ne <- readLines(paste0("colony/", nef[i]))
+  col_ne <- gsub(" ", "", col_ne)
+  col_ne <- gsub("^.+=", "", col_ne)
+  out[i,-1] <- as.numeric(col_ne[c(5,6,7,12,13,14)])
+}
+
+out[out == 2147483647] <- Inf
+# write.table(out, "colony_ne.txt", quote = F, sep = "\t", row.names = F)
+col_ne <- out
+```
+
+
+## Fetch and merge statistics
+
+Tajima's D first:
+```{r, results='hide'}
+tajimas_D <- get.snpR.stats(dat, "stream.year.chr", "tajimas_d")$weighted.means
+tajimas_D <- dplyr::filter(tajimas_D, snp.subfacet == ".OVERALL_MEAN")
+tajimas_D <- tajimas_D[,-c(1, 3, 4, 7)]
+colnames(tajimas_D)[2:3] <- gsub("weighted_mean_", "", colnames(tajimas_D)[2:3])
+tajimas_D$ws.theta <- tajimas_D$ws.theta/nsites # devide by total number of sequenced sites to change the denominator
+tajimas_D$ts.theta <- tajimas_D$ts.theta/nsites # devide by total number of sequenced sites to change the denominator
+```
+
+Other basic stats:
+
+```{r, results='hide'}
+ne <- get.snpR.stats(dat, "stream.year", "ne")$pop
+colnames(ne)[2] <- "subfacet"
+diversity <- get.snpR.stats(dat, "stream.year", c("pi", "ho", "het_hom_ratio", "fis"))$weighted.mean
+```
+
+
+```{r, results='hide'}
+# merge Tajima's D and ne with diversity stats
+stats <- merge(diversity, ne, by = c("facet", "subfacet"))
+stats <- merge(stats, tajimas_D, by = "subfacet")
+
+# sample sizes
+stats <- merge(stats, n, by = "subfacet", all = TRUE)
+
+# hyb percents
+stats <- merge(stats, percent_hyb, by = "subfacet", all = TRUE)
+
+# combine and reformat
+stats$weighted_mean_pi <- stats$weighted_mean_pi/nsites
+stats$weighted_mean_ho <- stats$weighted_mean_ho/nsites
+colnames(stats)[which(colnames(stats) == "weighted_mean_pi")] <- "pi"
+colnames(stats)[which(colnames(stats) == "weighted_mean_ho")] <- "ho"
+colnames(stats)[which(colnames(stats) == "weighted_mean_fis")] <- "fis"
+
+# add scaled tsd
+stats$theta_diff <- (stats$ts.theta - stats$ws.theta)/rowMeans(stats[,c("ts.theta", "ws.theta")])
+
+
+
+
+```
+
+Merge in colony info
+```{r, results='hide'}
+# merge in colony Ne info
+col_ne$pop <- gsub("_", ".", col_ne$pop)
+col_ne$pop <- gsub("str.", "str_", col_ne$pop)
+stats <- merge(stats, col_ne, by.x = "subfacet", by.y = "pop", all.x = TRUE)
+```
+
+Merge in PVA data
+
+```{r, results='hide', warning=FALSE}
+#===========newer PVA data=============
+new_PVA <- readr::read_csv("Tables_Figs_Ave N_ALL for Will 1-4-22.csv")
+new_PVA <- as.data.table(new_PVA)
+mod.cols <- 1:ncol(new_PVA)
+new_PVA[,(mod.cols) := lapply(.SD, function(x) gsub("#N/A", NA, x)), .SDcols = mod.cols] # fix NA labels
+need.num.cols <- c(3:9,11:ncol(new_PVA))
+new_PVA[,(need.num.cols) := lapply(.SD, as.numeric), .SDcols = need.num.cols]
+old_PVA <- readr::read_csv("Table_Thetas_hyb_PVA_03062020.csv")
+colnames(old_PVA)[which(colnames(old_PVA) == "Genetic Year")] <- "year"
+old_PVA <- as.data.table(old_PVA)
+new_PVA <- merge(new_PVA, old_PVA[,c(1:8)], by = c("Basin", "Creek", "year"), all = TRUE)
+## merge pops ran together during pva
+for(i in 1:nrow(pva_merge_key)){
+  new_PVA$Stream_code <- gsub(pva_merge_key[i,1], pva_merge_key[i,2], new_PVA$Stream_code)
+}
+was_merged <- which(new_PVA$Stream_code == "str_MRG")
+new_PVA[was_merged]$Creek <- "Merged Marys River"
+new_PVA <- new_PVA[-was_merged[2:3],]
+new_PVA[, subfacet := paste0(Stream_code, ".", year)]
+new_PVA <- as.data.frame(new_PVA)
+
+stats <- merge(stats, new_PVA, by = "subfacet", all = TRUE)
+
+
+```
+## Output table
+
+```{r}
+Table.S2 <- stats[, -c(which(colnames(stats) %in% c("snp.facet", "snp.subfacet", "weighted_mean_Het/Hom", "LDNe_0.02", "Group",
+                                                    "Sample_ID_Prefix", "popname", "popnum", "year_genetics")),
+                       grep("CIp", colnames(stats)),
+                       grep("02$", colnames(stats)))]
+
+
+openxlsx::writeData(wb, "Table S2", x = Table.S2, keepNA = T)
+
+
+
+```
+
+# PCA and NGSadmix plots
+
+See Hyb_info.Rmd for code
+
+```{r}
+# read in
+cluster_plots <- readRDS("cluster_plots.RDS")
+
+l1 <- ggpubr::get_legend(cluster_plots$pca)
+l2 <- ggpubr::get_legend(cluster_plots$ngs)
+
+gridExtra::grid.arrange(cluster_plots$pca + ggplot2::guides(color = "none"), l1, 
+             cluster_plots$ngs + ggplot2::guides(fill = "none", color = "none"), l2,
+             nrow = 2, ncol = 2,
+             layout_matrix = cbind(c(1, 3), c(2, 4)),
+             widths = c(1, .2))
+openxlsx::insertPlot(wb, "PCA and NGSadmix", width = 11, height = 8.5)
+
+```
+
+
+
+# Statistical analysis vs. PVA data
+
+## Figure 3
+```{r}
+# basic correlations:
+## melt data
+# year.matches <- which(abs(stats$year  - stats$PVA.Abund.Year) <= 5 & stats$n_after >= 5)
+year.matches <- which(!is.na(stats$PVA.Abund.Year) & stats$n_after >= 5)
+cor_dat <- stats[year.matches,]
+cor_dat <- reshape2::melt(cor_dat[,c("subfacet", "Basin", "Creek", "year", "pi", "ho",
+                                     "ts.theta", "ws.theta", "theta_diff", "PVA.Extinction", "PVA.Abundance.50", "N_harmean")], 
+                          id.vars = c("subfacet", "Basin", "Creek", "year", "PVA.Extinction", "PVA.Abundance.50", "N_harmean"))
+
+## change variable names to be pretty
+pretty_names_tab <- c(ho = "H[o]",
+                      pi = "pi",
+                      ws.theta = "theta[W]",
+                      ts.theta = "theta[T]",
+                      theta_diff = "theta[diff]",
+                      fis = "F[IS]",
+                      ne.rand = "Ne[Colony]")
+
+
+vlabeller <- as_labeller(pretty_names_tab, default = label_parsed)
+
+## plots
+cor_plot_ab <- ggplot(cor_dat, aes(y = log10(PVA.Abundance.50), x = value)) + 
+  facet_wrap(~variable, scales = "free_x", labeller = vlabeller, strip.position = "bottom") + 
+  geom_point() + theme_bw() + 
+  theme(strip.background = element_blank(), axis.title.x = element_blank(), 
+        strip.placement = "outside", axis.text.x = element_text(size = 10, angle = 90), 
+        strip.text = element_text(size = 12),
+        axis.text.y = element_text(size = 10),
+        panel.spacing.x = unit(1, "lines")) + ggtitle("A") + ylab("log10(Estimated PVA Abundance)")
+
+
+
+cor_plot_ext <- ggplot(cor_dat, aes(y = log10(PVA.Extinction), x = value)) + 
+  facet_wrap(~variable, scales = "free_x", labeller = vlabeller, strip.position = "bottom") + geom_point() +
+  theme_bw() + 
+  theme(strip.background = element_blank(), axis.title.x = element_blank(), 
+        strip.placement = "outside", axis.text.x = element_text(size = 10, angle = 90), 
+        strip.text = element_text(size = 12),
+        axis.text.y = element_text(size = 10),
+        panel.spacing.x = unit(1, "lines")) + ggtitle("B") + ylab("log10(% Estimated PVA Extinction Risk)")
+
+cor_plot_harmean <- ggplot(cor_dat, aes(y = log10(N_harmean), x = value)) + 
+  facet_wrap(~variable, scales = "free_x", labeller = vlabeller, strip.position = "bottom") + geom_point() +
+  theme_bw() + 
+  theme(strip.background = element_blank(), axis.title.x = element_blank(), 
+        strip.placement = "outside", axis.text.x = element_text(size = 10, angle = 90), 
+        strip.text = element_text(size = 12),
+        axis.text.y = element_text(size = 10),
+        panel.spacing.x = unit(1, "lines")) + ggtitle("B") + ylab("log10(Estimated Harmonic Mean Population Size)")
+
+
+# rf
+
+rfstats <- stats[year.matches,]
+
+## clean
+rfstats$Basin <- as.factor(rfstats$Basin)
+rfstats$Creek <- as.factor(rfstats$Creek)
+rfstats$PVA.Extinction <- scale(rfstats$PVA.Extinction)
+rfstats$PVA.Abundance.50 <- scale(rfstats$PVA.Abundance.50)
+rfstats$N_harmean <- scale(rfstats$N_harmean)
+rfstats$pi <- scale(rfstats$pi)
+rfstats$ho <- scale(rfstats$ho)
+rfstats$ws.theta <- scale(rfstats$ws.theta)
+rfstats$ts.theta <- scale(rfstats$ts.theta)
+
+
+
+
+## run a random forest against extinction risk
+rfstats_ext <- rfstats[,c("PVA.Extinction", "ho", "pi", "ws.theta", "ts.theta")]
+
+
+## full model
+rf_ext <- ranger::ranger(dependent.variable.name = "PVA.Extinction", 
+                         data = rfstats_ext, 
+                         num.trees = 100000, 
+                         mtry = ncol(rfstats_ext) - 1,
+                         num.threads = 4, 
+                         verbose = T, importance = "permutation")
+
+pred_rf <- data.frame(obs = rfstats_ext$PVA.Extinction,
+                      pred = rf_ext$predictions, statistic = "Extinction")
+
+rf_ext$r.squared
+
+## run a random forest against PVA.Abundance
+rfstats_ab <- rfstats[,c("PVA.Abundance.50", "ho", "pi", "ws.theta", "ts.theta")]
+rfstats_ab <- na.omit(rfstats_ab)
+
+
+
+## full model
+rf_ab <- ranger::ranger(dependent.variable.name = "PVA.Abundance.50", 
+                        data = rfstats_ab, 
+                        num.trees = 100000, 
+                        mtry = ncol(rfstats_ab) - 1,
+                        num.threads = 4,
+                        verbose = T, importance = "permutation")
+
+rf_ab$r.squared
+
+pred_rf <- rbind(pred_rf,
+                 data.frame(obs = rfstats_ab$PVA.Abundance.50,
+                            pred = rf_ab$predictions,
+                            statistic = "Abundance"))
+
+
+## run a random forest against N_harmean
+rfstats_harmean <- rfstats[,c("N_harmean", "ho", "pi", "ws.theta", "ts.theta")]
+rfstats_harmean <- na.omit(rfstats_harmean)
+
+
+
+## full model
+rf_harmean <- ranger::ranger(dependent.variable.name = "N_harmean", 
+                        data = rfstats_harmean, 
+                        num.trees = 100000, 
+                        mtry = ncol(rfstats_harmean) - 1,
+                        num.threads = 4,
+                        verbose = T, importance = "permutation")
+
+rf_harmean$r.squared
+
+pred_rf <- rbind(pred_rf,
+                 data.frame(obs = rfstats_harmean$N_harmean,
+                            pred = rf_harmean$predictions,
+                            statistic = "Harmonic Mean N"))
+
+
+## plot rf data
+pred_rf$new_statistic <- ifelse(pred_rf$statistic == "Abundance", "log10(Estimated PVA Abundance)", ifelse(pred_rf$statistic == "Extinction", "log10(% Estimated PVA Extinction Risk)", "log10(Estimated Harmonic Mean Population Size)"))
+pred_rf$new_statistic <- factor(pred_rf$new_statistic, levels = c("log10(Estimated PVA Abundance)", "log10(% Estimated PVA Extinction Risk)", "log10(Estimated Harmonic Mean Population Size)"))
+
+
+# rf_p <- ggplot(pred_rf, aes(x = obs, y = pred)) + geom_point() +
+#   theme_bw() + facet_wrap(~new_statistic, scales = "free") + theme(strip.background = element_blank()) +
+#   ylab("Predicted") + xlab("Observed") + ggtitle("C")
+rf_p <- ggplot(pred_rf[-which(pred_rf$statistic == "Abundance"),], aes(x = obs, y = pred)) + geom_point() +
+  theme_bw() + facet_wrap(~new_statistic, scales = "free") + theme(strip.background = element_blank()) +
+  ylab("Predicted") + xlab("Observed") + ggtitle("C")
+
+
+# combine plots
+# grid.arrange(cor_plot_ab + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")), 
+#              cor_plot_ext + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")),
+#              cor_plot_harmean + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")),
+#              rf_p + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")),
+#              layout_matrix = matrix(c(1,2,3, 4, 4, 4), byrow = T, nrow = 2),
+#              heights = c(1, .5))
+grid.arrange(cor_plot_ext + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")),
+             cor_plot_harmean + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")),
+             rf_p + theme(plot.margin = unit(c(.4, .4, .4, .4), "cm")),
+             layout_matrix = matrix(c(1,2,3,3), byrow = T, nrow = 2),
+             heights = c(1, .5))
+openxlsx::insertPlot(wb, "Figure 3", width = 11, height = 8.5)
+
+
+```
+
+## Table S3, part 1
+
+```{r}
+#===============Table S3, part 1================
+mod_stats <- stats[year.matches,]
+mod_stats <- mod_stats[,c("Basin", "Creek", "year", "pi", "ho",
+                          "ts.theta", "ws.theta", "theta_diff", "PVA.Extinction", "N_harmean")]
+run_stats <- c("pi", "ho", "ts.theta", "ws.theta", "theta_diff")
+
+# clean
+mod_stats$Basin <- as.factor(mod_stats$Basin)
+mod_stats$Creek <- as.factor(mod_stats$Creek)
+mod_stats$N_harmean <- scale(mod_stats$N_harmean)
+mod_stats$PVA.Extinction <- scale(mod_stats$PVA.Extinction)
+
+models <- data.frame(stat = numeric(length(run_stats)),
+                     Ext = numeric(length(run_stats)),
+                     HM = numeric(length(run_stats)),
+                     Ext.model = character(length(run_stats)),
+                     stringsAsFactors = F)
+
+for(i in 1:length(run_stats)){
+  # prep
+  tdat <- mod_stats[,c("Creek", "Basin", "N_harmean", "PVA.Extinction", run_stats[i])]
+  colnames(tdat)[5] <- "stat"
+  bads <- which(is.na(tdat$stat) | is.infinite(tdat$stat))
+  if(length(bads) > 0){
+    tdat <- tdat[-bads,]
+  }
+  tdat$stat <- scale(tdat$stat)
+  
+  # run models, checking if the lmer worked for ext and running a basic lm if not
+  HM <- lmerTest::lmer(N_harmean ~ stat + (1|Basin) + (1|Basin:Creek), tdat)
+  Ext <- try(lmerTest::lmer(PVA.Extinction ~ stat + (1|Basin) + (1|Basin:Creek), tdat), silent = T)
+  out <- numeric(2)
+  out[2] <- summary(HM)$coefficients[2,5]
+  
+  ## check if the lmer for Ext is good:
+  goodlme <- T
+  if(class(Ext) == "try-error"){goodlme <- F}
+  else if(!is.null(summary(Ext)$optinfo$conv$lme4$code)){goodlme <- F}
+  
+  
+  if(!goodlme){
+    cat("Statistic: ", run_stats[i], " failed to converge with lmer.\n")
+    Ext <- lm(PVA.Extinction ~ stat, tdat)
+    out[1] <- summary(Ext)$coefficients[2,4]
+    models[i, 4] <- "lm"
+  }
+  else if(goodlme){
+    cat("Statistic: ", run_stats[i], " converged with lmer.\n")
+    out[1] <- summary(Ext)$coefficients[2,5]
+    models[i, 4] <- "glmm"
+  }
+  
+  models[i,1] <- run_stats[i]
+  models[i,2:3] <- out
+}
+
+Table.S3 <- models
+Table.S3$holm_Ext <- p.adjust(Table.S3$Ext, "holm")
+Table.S3$holm_HM <- p.adjust(Table.S3$HM, "holm")
+
+```
+
+## Figure 4
+
+```{r}
+change_dat <- reshape2::melt(stats[,c("subfacet", "Basin", "Creek", "year", "pi", "ho",
+                                            "ts.theta", "ws.theta", "theta_diff", "PVA.Extinction", "N_harmean")], 
+                             id.vars = c("subfacet", "Basin", "Creek", "year", "PVA.Extinction", "N_harmean"))
+change_dat <- change_dat[-which(is.na(change_dat$year)),]
+
+change_dat$subfacet <- paste0(change_dat$Basin, "_", change_dat$Creek)
+min_year <- tapply(change_dat$year, change_dat$subfacet, min, na.rm = T)
+change_dat$min_year <- min_year[match(change_dat$subfacet, names(min_year))]
+change_dat$year_delta <- change_dat$year - change_dat$min_year
+
+change_plot <- ggplot(change_dat, aes(x = year_delta, y = value, color = subfacet)) +
+  theme_bw() + facet_wrap(~variable, scales = "free_y", strip.position = "left", labeller = vlabeller) +
+  geom_line(aes(group = subfacet), alpha = 0.5) +
+  geom_point() + 
+  theme(legend.position = "none", strip.background = element_blank(), 
+        axis.title.y = element_blank(), strip.placement = "outside", 
+        strip.text = element_text(size = 12), axis.text = element_text(size = 10)) +
+  scale_color_viridis_d() + xlab("Years Since First Sample")
+change_plot
+openxlsx::insertPlot(wb, "Figure 4", width = 11, height = 8.5)
+```
+
+## Figure 5
+
+```{r}
+change_dat <- stats[year.matches,]
+change_dat <- reshape2::melt(change_dat[,c("subfacet", "Basin", "Creek", "year", "pi", "ho", "ws.theta",
+                                           "ts.theta", "theta_diff", "PVA.Extinction", "N_harmean")], 
+                             id.vars = c("subfacet", "Basin", "Creek", "year", "PVA.Extinction", "N_harmean"))
+
+change_dat$subfacet <- paste0(change_dat$Basin, "_", change_dat$Creek)
+min_year <- tapply(change_dat$year, change_dat$subfacet, min, na.rm = T)
+change_dat$min_year <- min_year[match(change_dat$subfacet, names(min_year))]
+change_dat$year_delta <- change_dat$year - change_dat$min_year
+
+stat_deltas <- data.frame(Creek = character(0), Basin = character(0), subfacet = character(0), variable = character(0), difference = numeric(0), year_delta = numeric(0))
+subfacets <- unique(change_dat$subfacet)
+for(i in 1:length(subfacets)){
+  matches <- which(change_dat$subfacet == subfacets[i])
+  years <- unique(change_dat[matches,]$year)
+  if(length(years) == 1){
+    next
+  }
+  
+  ymin <- min(years)
+  ymax <- max(years)
+  min_stats <- change_dat[intersect(matches, which(change_dat$year == ymin)),]
+  max_stats <- change_dat[intersect(matches, which(change_dat$year == ymax)),]
+  comp_stats <- merge(max_stats[,c("variable", "value", "N_harmean")], min_stats[,c("variable", "value", "N_harmean")],
+                      by = "variable")
+  delta <- comp_stats$value.y - comp_stats$value.x
+  
+  hm.delta <- comp_stats$N_harmean.y - comp_stats$N_harmean.x
+  
+  stat_deltas <- rbind(stat_deltas, cbind(change_dat[matches[1],2:3], subfacet = subfacets[i], variable = comp_stats[,1], difference = delta, year_delta = ymax - ymin, N_harmean_delta = hm.delta))
+}
+
+stat_deltas <- merge(stat_deltas, stats[,c("Creek", "Basin", "PVA.Extinction")], by = c("Creek", "Basin"))
+colnames(stat_deltas)[4] <- c("statistic")
+
+stat_deltas_m <- reshape2::melt(stat_deltas, id.vars = colnames(stat_deltas)[-c(7:8)])
+
+
+
+# pretty_names_tab2 <- list("Het.Hom" = "Het/Hom",
+#                           "ho" = bquote(H[o]),
+#                           "pi" = bquote(pi),
+#                           "ws.theta" = bquote(theta[W]),
+#                           "ts.theta" = bquote(theta[T]),
+#                           "theta_diff" = bquote(theta[diff]),
+#                           "LDNe_0.01" = bquote(LDNe[0.01]),
+#                           "ne.rand" = bquote(Ne[Colony]))
+
+pretty_names_tab2 <- c(pretty_names_tab, PVA.Extinction = "Estimated~PVA~Extinction~Risk", N_harmean_delta = "Delta*~Estimated~Harmonic~Mean~N")
+vlabeller <- as_labeller(pretty_names_tab2, default = label_parsed)
+
+
+
+# stat_deltas_m$statistic <- factor(stat_deltas_m$statistic, levels = unique(stat_deltas_m$statistic),
+#                                   labels = unlist(pretty_names_tab2[match(unique(stat_deltas_m$statistic), names(pretty_names_tab2))]))
+# stat_deltas_m$variable <- as.character(stat_deltas_m$variable)
+# stat_deltas_m$variable[which(stat_deltas_m$variable == "PVA.Extinction")] <- "Extinction"
+# stat_deltas_m$variable[which(stat_deltas_m$variable == "N_harmean_delta")] <- "Delta* Abundance"
+stat_deltas_m$rate_of_change <- stat_deltas_m$difference/stat_deltas_m$year_delta
+
+ext_plot <- ggplot(stat_deltas_m, aes(y = value, x = rate_of_change))+
+  geom_point() +
+  facet_grid(variable~statistic, scales = "free", labeller = vlabeller, switch = "both") + theme_bw() + 
+  theme(strip.background = element_blank(), axis.title.y = element_blank(), strip.placement = "outside", 
+        axis.text.x = element_text(size = 10, angle = 90), strip.text = element_text(size = 12)) +
+  xlab(bquote(Delta*Statistic/Year))
+
+ext_plot
+openxlsx::insertPlot(wb, "Figure 5", width = 11, height = 8.5)
+```
+
+
+## Table S3 part 2
+
+```{r}
+stat_deltasc <- reshape2::dcast(stat_deltas, Creek + Basin + subfacet + year_delta + PVA.Extinction + N_harmean_delta ~ statistic, value.var = "difference", mean)
+mod_stats <- stat_deltasc
+
+# clean
+mod_stats$Basin <- as.factor(mod_stats$Basin)
+mod_stats$Creek <- as.factor(mod_stats$Creek)
+mod_stats$N_harmean_delta <- scale(mod_stats$N_harmean_delta)
+mod_stats$PVA.Extinction <- scale(mod_stats$PVA.Extinction)
+
+run_stats <- c("pi", "ho", "ts.theta", "ws.theta", "theta_diff")
+
+models <- data.frame(stat = numeric(length(run_stats)),
+                     Ext = numeric(length(run_stats)),
+                     HM = numeric(length(run_stats)),
+                     Ext.model = "lm",
+                     stringsAsFactors = F)
+
+for(i in 1:length(run_stats)){
+  # prep
+  tdat <- mod_stats[,c("Creek", "Basin", "N_harmean_delta", "PVA.Extinction", run_stats[i])]
+  colnames(tdat)[5] <- "stat"
+  bads <- which(is.na(tdat$stat) | is.infinite(tdat$stat))
+  if(length(bads) > 0){
+    tdat <- tdat[-bads,]
+  }
+  tdat$stat <- scale(tdat$stat)
+  
+  # run models, checking if the lmer worked for ext and running a basic lm if not
+  HM <- lm(N_harmean_delta ~ stat, tdat)
+  Ext <- lm(PVA.Extinction ~ stat, tdat)
+  out <- c(summary(Ext)$coefficients[2,4], summary(HM)$coefficients[2,4])
+  
+  models[i,1] <- paste0("Delta_", run_stats[i])
+  models[i,2:3] <- out
+}
+models$holm_Ext <- p.adjust(models$Ext, "holm")
+models$holm_HM <- p.adjust(models$HM, "holm")
+
+
+# combine
+colnames(models) <- c("Statistic", "Extinction", "Harmonic_Mean_N", "Model Type", "Adjusted Extinction", "Adjusted Harmonic Mean N")
+colnames(Table.S3) <- c("Statistic", "Extinction", "Harmonic_Mean_N", "Model Type",
+                        "Adjusted Extinction", "Adjusted Harmonic Mean N")
+Table.S3 <- rbind(Table.S3, models)
+
+# save
+openxlsx::writeData(wb, "Table S3", x = Table.S3, keepNA = T)
+
+```
+
+## Thetas
+```{r}
+theta_obs <- stats[,c("Creek", "Basin", "year",
+                         "ts.theta", "ws.theta", "theta_diff", "PVA.Extinction", "N_harmean")]
+
+theta_obs$samp <- paste0(theta_obs$Basin, "_", theta_obs$Creek, "_", theta_obs$year)
+
+
+## merge and plot
+p2 <- ggplot(theta_obs, 
+             aes(x = ts.theta, y = ws.theta, size = theta_diff, label = samp, color = N_harmean)) +
+  geom_point(alpha = 0.5) + geom_abline(slope = 1, intercept = 0) + theme_bw() +
+  theme(strip.background = element_blank()) + ylab(expression(theta[W])) + xlab(expression(theta[T])) +
+  scale_color_viridis_c() + scale_fill_viridis_c()
+
+p2
+
+openxlsx::insertPlot(wb, "thetas", width = 11, height = 8.5)
+```
+
+
+# Save
+```{r}
+openxlsx::saveWorkbook(wb, "Tables_and_figures_corrected.xlsx", overwrite = T)
+
+```
+

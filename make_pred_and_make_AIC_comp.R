@@ -76,6 +76,10 @@ make_pred <- function(AIC_tab){
   
   not.singulars <- !unlist(lapply(AIC_tab[-1][-(length(AIC_tab) - 1)], isSingular))
   use.model <- names(which.min(AIC_tab$AIC[,-1, drop = F][which(not.singulars)]))
+  if(is.null(use.model)){
+    cat("No models had no errors and were not singular.\n")
+    return(F)
+  }
   mod <- AIC_tab[[paste0("mod_", use.model)]]
   
   cat("Best model is: ", use.model)

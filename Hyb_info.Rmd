@@ -1,0 +1,228 @@
+---
+title: "Hyb_info"
+author: "William Hemstrom"
+date: "1/6/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(snpR); library(ggplot2); library(ggtern);library(plotly)
+
+setwd("NGSadmix/")
+# read in and prep bamlist
+bamlist <- read.table("../hybrid_check_bamlist.txt")
+bamlist <- strsplit(bamlist$V1, "/")
+bamlist <- as.data.frame(bamlist)
+bamlist <- t(bamlist)
+rownames(bamlist) <- NULL
+bamlist <- as.data.frame(bamlist)
+bamlist[bamlist$V1 == "YCT_ref_panel",]$V1 <- "YCT"
+bamlist[bamlist$V1 == "RBT_ref_panel",]$V1 <- "RBT"
+bamlist[bamlist$V1 == "new_samples",]$V1 <- "LCT"
+bamlist[grep("RBT", bamlist$V2),]$V1 <- "RBT"
+
+
+# read in and fix metadata
+sample_meta <- read.table("../metadata.txt", header = T)
+
+sample_meta$stream <- paste0("str_", sample_meta$stream)
+sample_meta$stream[sample_meta$watershed == "LHU" & sample_meta$stream == "str_INC"] <- "str_INK"
+## merge pops ran together during pva
+pva_merge_key <- data.frame(old = c("SEC", "TRB", "SHE", "SNO"), new = "GRP")
+for(i in 1:nrow(pva_merge_key)){
+  sample_meta$stream <- gsub(pva_merge_key[i,1], pva_merge_key[i,2], sample_meta$stream)
+}
+
+# merge
+bamlist$V2 <- gsub("\\..+", "", bamlist$V2)
+bamlist$ord <- 1:nrow(bamlist)
+bamlist <- merge(bamlist, sample_meta, by.x = "V2", by.y = "ID", all.x = TRUE, sort = FALSE)
+bamlist <- dplyr::arrange(bamlist, ord)
+
+
+# fix samples not in metadata
+
+## LHU_INC samples
+reps <- is.na(bamlist$watershed) & bamlist$V1 == "LCT" & grepl("LHU_INC", bamlist$V2)
+bamlist[reps,c(4, 5, 6)] <- cbind("LHU",
+                                  "str_INK",
+                                  substr(bamlist[reps, "V2"], 9, 12))
+
+## others
+reps <- is.na(bamlist$watershed) & bamlist$V1 == "LCT"
+bamlist[reps,c(4,5,6)] <- cbind(substr(bamlist[reps, "V2"], 1, 3),
+                                paste0("str_", substr(bamlist[reps, "V2"], 5, 7)),
+                                substr(bamlist[reps, "V2"], 9, 12))
+
+colnames(bamlist)[1:2] <- c("sample_ID", "species")     
+bamlist[bamlist$species == "RBT", c("watershed", "stream")] <- rep("RBT", sum(bamlist$species == "RBT")*2)
+bamlist[bamlist$species == "YCT", c("watershed", "stream")] <- rep("YCT", sum(bamlist$species == "YCT")*2)
+bamlist$locale <- paste0(bamlist$watershed, "_", bamlist$stream)
+bamlist$species[which(bamlist$species == "RBT" & grepl("RBT_TRU_", bamlist$sample_ID))] <- "Local_RBT"
+bamlist$species[which(bamlist$species == "RBT" & !grepl("RBT_TRU_", bamlist$sample_ID))] <- "Columbia_RBT"
+
+
+ngsadmix <- plot_structure("NGSadmix_hybcheck_K3_r2.qopt", k = 3, facet = bamlist$species, alt.palette = RColorBrewer::brewer.pal(8, "Dark2"),
+                           reps = 1, clumpp_path = "/usr/bin/CLUMPP.exe", separator_thickness = .1)
+
+K3 <- read.table("NGSadmix_hybcheck_K3_r2.qopt")
+colnames(K3) <- paste0("Cluster", 1:3)
+comb <- cbind(bamlist, K3)
+
+comb$RBT <- comb$Cluster3
+comb$YCT <- comb$Cluster1
+comb$LCT <- comb$Cluster2
+
+
+spreadsheet <- comb[comb$species == "LCT",]
+write.csv(spreadsheet, "../YCT_RBT_hybrid_assessment.csv", row.names = FALSE, quote = FALSE)
+
+
+
+# pull in and parse the likelihoods
+NGSlike <- readLines("cat_log.txt")
+NGSheaders <- NGSlike[grep("Input: ", NGSlike)]
+NGSlike <- data.table(K = as.numeric(gsub("nPop=", "", stringr::str_extract(NGSheaders, "nPop=[0-9]{1,2}"))),
+                      run = as.numeric(gsub("_r", "", stringr::str_extract(NGSheaders, "_r[0-9]{1,2}"))),
+                      est_ln_prob = as.double(stringr::str_extract(NGSlike[grep("best like", NGSlike)], "-[0-9]+\\.[0-9]+")))
+
+# evanno it
+evanno <- NGSlike[, mean(est_ln_prob), by = K]
+colnames(evanno)[2] <- "mean_est_ln_prob"
+evanno$lnpK <- NA
+evanno$lnppK <- NA
+evanno$deltaK <- NA
+evanno <- evanno[order(evanno$K),]
+evanno$sd_est_ln_prob <- NGSlike[, sqrt(var(est_ln_prob)), by = K][[2]]
+evanno$lnpK[-1] <- evanno$mean_est_ln_prob[-1] - evanno$mean_est_ln_prob[-nrow(evanno)]
+evanno$lnppK[-nrow(evanno)] <- abs(evanno$lnpK[-nrow(evanno)] - evanno$lnpK[-1])
+evanno$deltaK[-c(1, nrow(evanno))] <- abs(evanno$lnppK)[-c(1, nrow(evanno))]/evanno$sd_est_ln_prob[-c(1, nrow(evanno))] # no reason to resolve for ln''(K)
+infs <- which(is.infinite(evanno$deltaK))
+if(length(infs) > 0){
+  evanno$deltaK[infs] <- NA
+}
+
+evanno_m <- data.table::melt(evanno, id.vars = c("K"))
+evanno_m <- evanno_m[which(evanno_m$variable %in% c("deltaK", "mean_est_ln_prob")),]
+evanno_m[,variable := as.character(variable)]
+evanno_m$value[evanno_m$variable == "deltaK"] <- log10(evanno_m$value[evanno_m$variable == "deltaK"])
+evanno_m$variable[evanno_m$variable == "deltaK"] <- "log[10](Delta*K)"
+evanno_m$variable[evanno_m$variable == "mean_est_ln_prob"] <- "bar(ln(Prob))"
+
+```
+
+# Admixture Plot
+
+```{r admixture, echo=FALSE}
+
+ggplotly(ngsadmix$plot + theme(axis.title.x = element_blank()))
+
+ggplot(evanno_m[evanno_m$K <= 9,], aes(x = K, y = value)) +
+  geom_point(size = 4) + 
+  facet_wrap(~variable, nrow = 2, labeller = label_parsed, scales = "free_y", strip.position = "left") +
+  theme_bw() +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 14), 
+        panel.grid.minor.x  = element_blank(), 
+        axis.title.y = element_blank(), 
+        strip.placement = "outside", 
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14)) +
+  scale_x_continuous(breaks = 1:9)
+
+```
+
+# Ternary Plot
+```{r ternary, echo = FALSE}
+# output
+
+ggtern(comb, aes(y = LCT, x = RBT, z = YCT, color = watershed, label = watershed, shape = species)) + geom_point(size = 6) +
+  theme_bw() + scale_color_viridis_d(option = 3, direction = -1)
+```
+
+
+# %Hybrid
+
+```{r scatter, echo=FALSE}
+ggplotly(ggplot(comb, aes(y = RBT + YCT, x = watershed, color = watershed, label = locale)) + 
+           geom_jitter(height = 0, width = .2) + theme_bw() +
+           scale_color_viridis_d(option = 3, direction = -1) +
+           geom_hline(yintercept = .01) +
+           scale_y_log10(breaks = c(0.001, 0.01, 0.1, 1)) +
+           ylab("Proportion Hybrid Ancestry") +
+           theme(axis.text.x = element_text(angle = 90)))
+```
+
+# PCA
+
+```{r}
+# Read input file
+covar <- read.table("hybrid_check_bamlist_pca_LCT_loci_pca.covMat")
+
+# Eigenvalues
+eig <- eigen(covar, symm=TRUE);
+eig$val <- eig$val/sum(eig$val);
+
+# PC1: 54.0%
+# PC2: 10.0%
+
+# Plot
+PC <- as.data.frame(eig$vectors)
+colnames(PC) <- gsub("V", "PC", colnames(PC))
+
+comb$PC1 <- PC$PC1
+comb$PC2 <- PC$PC2
+
+col.scale <- RColorBrewer::brewer.pal(7, "Dark2")
+myColors <- c("black", col.scale)
+
+comb$use_watershed <- comb$watershed
+comb$use_watershed[which(!comb$use_watershed %in% c("LTR", "MCD", "RBT", "SFH", "YCT"))] <- "Other"
+comb$use_watershed[which(comb$species == "Local_RBT")] <- "Local_RBT"
+comb$use_watershed[which(comb$species == "Columbia_RBT")] <- "Columbia_RBT"
+comb$use_watershed <- factor(comb$use_watershed, levels = c("Other", "YCT", "Local_RBT", "Columbia_RBT", "LTR", "MCD", "SFH"))
+
+col.scale <- scale_colour_manual(name = "use_watershed",values = myColors)
+
+pcap <- ggplot(comb, aes(x = PC1, y = PC2, color = use_watershed, label = sample_ID)) + 
+  geom_point(size = 6) + theme_bw() +
+  col.scale + xlab("PC1 (54.0%)") + ylab("PC2 (10.0%)") +
+  ggtitle("A") + guides(color = guide_legend(title = "Watershed"))
+
+```
+
+# Correlation between NGSadmix and PCA/K levels
+
+```{r}
+cor(comb$PC1, comb$RBT) # 99.8% correlation between PC1 and RBT cluster assignment.
+
+setwd("NGSadmix/")
+ngsadmixk4 <- plot_structure("NGSadmix_hybcheck_K4_r1.qopt", k = 4, facet = bamlist$species, alt.palette = RColorBrewer::brewer.pal(8, "Dark2"),
+                           reps = 1, clumpp_path = "/usr/bin/CLUMPP.exe", separator_thickness = .1)
+setwd("..")
+
+K4 <- read.table("NGSadmix/NGSadmix_hybcheck_K4_r1.qopt")
+colnames(K4) <- paste0("Cluster", 1:4)
+K4$RBT <- K4$Cluster3 + K4$Cluster4
+K4$LCT <- K4$Cluster1
+K4$YCT <- K4$Cluster2
+
+cor(K4$RBT, comb$RBT)
+cor(K4$LCT, comb$LCT)
+cor(K4$YCT, comb$YCT)
+
+weakly_assigned <- which(comb$LCT >= .99 & comb$species == "LCT")
+cor(K4$RBT[weakly_assigned], comb$RBT[weakly_assigned])
+cor(K4$LCT[weakly_assigned], comb$LCT[weakly_assigned])
+cor(K4$YCT[weakly_assigned], comb$YCT[weakly_assigned])
+
+```
+
+# Export figure for other script
+```{r}
+cluster_plots <- list(pca = pcap, ngs = ngsadmix$plot + xlab("Species") + ggtitle("B"))
+saveRDS(cluster_plots, "cluster_plots.RDS")
+```
+
