@@ -66,40 +66,12 @@ Remove samples that have a %LCT less than 99%. Filter SNPs.
 
 ```{r, echo=FALSE, message=FALSE, results='hide'}
 # filter bad individuals
-dat2 <- dat[,-which(sample.meta(dat)$LCT < .99)]
+dat <- dat[,-which(sample.meta(dat)$LCT < .99)]
 
 # save filtering info
-n_before <- table(paste0(sample.meta(dat)[,"stream"], ".", sample.meta(dat)[,"year"]))
-n_after <- table(paste0(sample.meta(dat2)[,"stream"], ".", sample.meta(dat2)[,"year"]))
-n <- data.frame(subfacet = names(n_before), n_before = as.numeric(n_before), n_after = 0)
-n$n_after <- n_after[match(n$subfacet, names(n_after))]
-n$n_after[is.na(n$n_after)] <- 0
-
-
-percent_hyb_before <- as.data.table(sample.meta(dat))
-percent_hyb_before[,subfacet := paste0(stream, ".", year)]
-
-percent_hyb_after <- as.data.table(sample.meta(dat2))
-percent_hyb_after[,subfacet := paste0(stream, ".", year)]
-
-
-for(i in c("LCT", "YCT", "RBT")){
-  percent_hyb_before2 <- percent_hyb_before[, mean(get(i)), by = subfacet]
-  percent_hyb_after2 <- percent_hyb_after[, mean(get(i)), by = subfacet]
-  percent_hyb2 <- merge(percent_hyb_before2, percent_hyb_after2, by = "subfacet", all = TRUE)
-  colnames(percent_hyb2) <- c("subfacet", paste0("percent_", i, c("_before", "_after")))
-  if(!exists("percent_hyb")){
-    percent_hyb <- percent_hyb2
-  }
-  else{
-    percent_hyb <- merge(percent_hyb, percent_hyb2, by = "subfacet", all = TRUE)
-  }
-
-}
-
-dat <- dat2
-
-rm(dat2)
+n <- table(paste0(sample.meta(dat)[,"stream"], ".", sample.meta(dat)[,"year"]))
+n <- as.data.frame(n)
+colnames(n) <- c("subfacet", "Final n")
 
 # 
 # # filter for HWE per pop
@@ -204,6 +176,64 @@ colnames(ne)[2] <- "subfacet"
 diversity <- get.snpR.stats(dat, "stream.year", c("pi", "ho", "het_hom_ratio", "fis"))$weighted.mean
 ```
 
+# PCA and NGSadmix plots
+
+See Hyb_info.Rmd for code
+
+```{r}
+# read in
+cluster_plots <- readRDS("cluster_plots.RDS")
+
+l1 <- ggpubr::get_legend(cluster_plots$pca)
+l2 <- ggpubr::get_legend(cluster_plots$ngs)
+
+# get the total number of hybrids per pop...
+check <- cluster_plots$pca$data
+check <- check[-which(check$locale %in% c("YCT_YCT", "RBT_RBT")),]
+check$stream <- gsub("str_BAT", "str_NFB", check$stream)
+for(i in 1:nrow(pva_merge_key)){
+  check$stream <- gsub(pva_merge_key[i,1], pva_merge_key[i,2], check$stream)
+}
+check$subfacet <- paste0(check$stream, ".", check$year)
+check$subfacet <- gsub("str_MRG.2017", "str_MRG.2016", check$subfacet)
+check <- as.data.table(check)
+
+
+check[,bad := LCT < 0.99]
+n_rem <- table(check$subfacet[which(check$bad)])
+n_rem <- as.data.frame(n_rem)
+colnames(n_rem) <- c("locale", "Number of Hybrids (%LCT < .99)")
+
+merge_and_add <- function(x, tab, new.name){
+  tab <- as.data.frame(tab)
+  tab$locale <- rownames(tab)
+  colnames(tab)[1] <- c(new.name)
+  return(merge(tab, x, "locale", all = TRUE))
+}
+
+n_rem <- merge_and_add(n_rem, tapply(check$LCT, check$subfacet, mean), "%LCT before filtering")
+n_rem <- merge_and_add(n_rem, tapply(check$YCT, check$subfacet, mean), "%YCT before filtering")
+n_rem <- merge_and_add(n_rem, tapply(check$RBT, check$subfacet, mean), "%RBT before filtering")
+
+n_rem <- merge_and_add(n_rem, with(check[-which(check$bad),], tapply(LCT, subfacet, mean)), "%LCT after filtering")
+n_rem <- merge_and_add(n_rem, with(check[-which(check$bad),], tapply(YCT, subfacet, mean)), "%YCT after filtering")
+n_rem <- merge_and_add(n_rem, with(check[-which(check$bad),], tapply(RBT, subfacet, mean)), "%RBT after filtering")
+
+n_rem <- merge(n_rem, unique(check[, c("watershed", "stream", "year", "subfacet")]), by.x = "locale", by.y = "subfacet")
+
+
+# note the numbers removed/percent hybrid before and after.
+
+gridExtra::grid.arrange(cluster_plots$pca + ggplot2::guides(color = "none"), l1, 
+             cluster_plots$ngs + ggplot2::guides(fill = "none", color = "none"), l2,
+             nrow = 2, ncol = 2,
+             layout_matrix = cbind(c(1, 3), c(2, 4)),
+             widths = c(1, .2))
+openxlsx::insertPlot(wb, "PCA and NGSadmix", width = 11, height = 8.5)
+
+```
+
+# merge all of the stats together
 
 ```{r, results='hide'}
 # merge Tajima's D and ne with diversity stats
@@ -214,7 +244,8 @@ stats <- merge(stats, tajimas_D, by = "subfacet")
 stats <- merge(stats, n, by = "subfacet", all = TRUE)
 
 # hyb percents
-stats <- merge(stats, percent_hyb, by = "subfacet", all = TRUE)
+stats <- merge(stats, n_rem[,1:8], by.x = "subfacet", by.y = "locale", all = TRUE)
+stats$`Final n`[which(is.na(stats$`Final n`))] <- 0 
 
 # combine and reformat
 stats$weighted_mean_pi <- stats$weighted_mean_pi/nsites
@@ -282,36 +313,25 @@ openxlsx::writeData(wb, "Table S2", x = Table.S2, keepNA = T)
 
 ```
 
-# PCA and NGSadmix plots
 
-See Hyb_info.Rmd for code
+# Statistical analysis vs. PVA data
+
+Remove the bad PVA pops.
 
 ```{r}
-# read in
-cluster_plots <- readRDS("cluster_plots.RDS")
 
-l1 <- ggpubr::get_legend(cluster_plots$pca)
-l2 <- ggpubr::get_legend(cluster_plots$ngs)
-
-gridExtra::grid.arrange(cluster_plots$pca + ggplot2::guides(color = "none"), l1, 
-             cluster_plots$ngs + ggplot2::guides(fill = "none", color = "none"), l2,
-             nrow = 2, ncol = 2,
-             layout_matrix = cbind(c(1, 3), c(2, 4)),
-             widths = c(1, .2))
-openxlsx::insertPlot(wb, "PCA and NGSadmix", width = 11, height = 8.5)
+bad.locales <- c("str_CMC.2016", "str_AND.2016", "str_LIN.2017", "str_LEE.2016", "str_NFG.2009", "str_PEC.2018", "str_MEI.2017", "str_POL.2016", "str_BYD.2015")
+stats <- stats[-which(stats$subfacet %in% bad.locales),]
 
 ```
 
-
-
-# Statistical analysis vs. PVA data
 
 ## Figure 3
 ```{r}
 # basic correlations:
 ## melt data
-# year.matches <- which(abs(stats$year  - stats$PVA.Abund.Year) <= 5 & stats$n_after >= 5)
-year.matches <- which(!is.na(stats$PVA.Abund.Year) & stats$n_after >= 5)
+# year.matches <- which(abs(stats$year  - stats$PVA.Abund.Year) <= 5 & stats$`Final n` >= 5)
+year.matches <- which(!is.na(stats$PVA.Abund.Year) & stats$`Final n` >= 5)
 cor_dat <- stats[year.matches,]
 cor_dat <- reshape2::melt(cor_dat[,c("subfacet", "Basin", "Creek", "year", "pi", "ho",
                                      "ts.theta", "ws.theta", "theta_diff", "PVA.Extinction", "PVA.Abundance.50", "N_harmean")], 
@@ -488,6 +508,7 @@ models <- data.frame(stat = numeric(length(run_stats)),
                      Ext = numeric(length(run_stats)),
                      HM = numeric(length(run_stats)),
                      Ext.model = character(length(run_stats)),
+                     n = numeric(length(run_stats)),
                      stringsAsFactors = F)
 
 for(i in 1:length(run_stats)){
@@ -501,7 +522,10 @@ for(i in 1:length(run_stats)){
   tdat$stat <- scale(tdat$stat)
   
   # run models, checking if the lmer worked for ext and running a basic lm if not
+  cat("\n", i, "\n")
+  cat("HM:\n")
   HM <- lmerTest::lmer(N_harmean ~ stat + (1|Basin) + (1|Basin:Creek), tdat)
+  cat("Ext:\n")
   Ext <- try(lmerTest::lmer(PVA.Extinction ~ stat + (1|Basin) + (1|Basin:Creek), tdat), silent = T)
   out <- numeric(2)
   out[2] <- summary(HM)$coefficients[2,5]
@@ -509,7 +533,7 @@ for(i in 1:length(run_stats)){
   ## check if the lmer for Ext is good:
   goodlme <- T
   if(class(Ext) == "try-error"){goodlme <- F}
-  else if(!is.null(summary(Ext)$optinfo$conv$lme4$code)){goodlme <- F}
+  else if(!is.null(summary(Ext)$optinfo$conv$lme4$code) | !is.null(summary(HM))){goodlme <- F}
   
   
   if(!goodlme){
@@ -526,6 +550,7 @@ for(i in 1:length(run_stats)){
   
   models[i,1] <- run_stats[i]
   models[i,2:3] <- out
+  models$n <- nrow(tdat)
 }
 
 Table.S3 <- models
@@ -652,6 +677,7 @@ models <- data.frame(stat = numeric(length(run_stats)),
                      Ext = numeric(length(run_stats)),
                      HM = numeric(length(run_stats)),
                      Ext.model = "lm",
+                     n = numeric(length(run_stats)),
                      stringsAsFactors = F)
 
 for(i in 1:length(run_stats)){
@@ -671,14 +697,15 @@ for(i in 1:length(run_stats)){
   
   models[i,1] <- paste0("Delta_", run_stats[i])
   models[i,2:3] <- out
+  models[i,]$n <- nrow(tdat)
 }
 models$holm_Ext <- p.adjust(models$Ext, "holm")
 models$holm_HM <- p.adjust(models$HM, "holm")
 
 
 # combine
-colnames(models) <- c("Statistic", "Extinction", "Harmonic_Mean_N", "Model Type", "Adjusted Extinction", "Adjusted Harmonic Mean N")
-colnames(Table.S3) <- c("Statistic", "Extinction", "Harmonic_Mean_N", "Model Type",
+colnames(models) <- c("Statistic", "Extinction", "Harmonic_Mean_N", "Model Type", "n", "Adjusted Extinction", "Adjusted Harmonic Mean N")
+colnames(Table.S3) <- c("Statistic", "Extinction", "Harmonic_Mean_N", "Model Type", "n",
                         "Adjusted Extinction", "Adjusted Harmonic Mean N")
 Table.S3 <- rbind(Table.S3, models)
 
