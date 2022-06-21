@@ -1,7 +1,4 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     MCD_LIN_2017_001                   *1                   #1             1
-    MCD_LIN_2017_002                   *1                   #1             1
-    MCD_LIN_2017_003                   *2                   #2             2
-    MCD_LIN_2017_004                   *2                   #2             2
-    MCD_LIN_2017_005                   *3                   #3             3
-    MCD_LIN_2017_006                   *1                   #4             1
+    MCD_LIN_2017_002                   *2                   #2             2
+    MCD_LIN_2017_006                   *3                   #3             3

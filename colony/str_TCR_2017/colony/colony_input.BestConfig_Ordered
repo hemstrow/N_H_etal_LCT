@@ -1,19 +1,18 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     MAR_TCR_2017_001                   *1                   #1             1
-    MAR_TCR_2017_024                   *1                   #1             1
-    MAR_TCR_2017_038                   *6                   #8             2
-    MAR_TCR_2017_036                   *6                   #2             2
+    MAR_TCR_2017_038                   *7                   #7             2
+    MAR_TCR_2017_036                   *7                   #2             2
     MAR_TCR_2017_002                   *2                   #2             2
     MAR_TCR_2017_030                   *2                   #2             2
     MAR_TCR_2017_009                   *3                   #3             3
     MAR_TCR_2017_012                   *3                   #3             3
     MAR_TCR_2017_016                   *3                   #3             3
-    MAR_TCR_2017_020                   *3                   #5             3
-    MAR_TCR_2017_047                   *9                  #10             3
-    MAR_TCR_2017_049                   *7                  #10             3
-    MAR_TCR_2017_039                   *7                   #5             3
+    MAR_TCR_2017_020                   *5                   #3             3
     MAR_TCR_2017_017                   *4                   #4             4
-    MAR_TCR_2017_028                   *5                   #6             5
-    MAR_TCR_2017_034                   *5                   #7             5
-    MAR_TCR_2017_048                  *10                   #7             5
-    MAR_TCR_2017_042                   *8                   #9             6
+    MAR_TCR_2017_048                  *11                   #6             5
+    MAR_TCR_2017_034                   *6                   #6             5
+    MAR_TCR_2017_028                   *6                   #5             5
+    MAR_TCR_2017_039                   *8                   #8             6
+    MAR_TCR_2017_047                  *10                  #10             6
+    MAR_TCR_2017_049                  *10                   #8             6
+    MAR_TCR_2017_042                   *9                   #9             7

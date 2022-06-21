@@ -54,3 +54,9 @@ reso <- get.snpR.stats(dat, ".base", "maf")$single
 keep.col <- c(6, 3:5, 7:10)
 reso <- dplyr::arrange(reso[,keep.col], sp, chr, position)
 data.table::fwrite(reso, "diagnostic_snp_results_overall.txt", sep = "\t")
+
+rbt <- reso[reso$sp == "RBT",]
+sum(rbt$ref == rbt$minor)/nrow(rbt)
+
+yct <- reso[reso$sp == "YCT",]
+sum(yct$ref == yct$major)/nrow(yct)

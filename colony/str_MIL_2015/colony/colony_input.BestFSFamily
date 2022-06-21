@@ -1,14 +1,13 @@
-FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5,Member6,Member7
-               1     0.8354     0.6315    WAL_MIL_2015_001,WAL_MIL_2015_005,WAL_MIL_2015_013,WAL_MIL_2015_018,WAL_MIL_2015_022,WAL_MIL_2015_026,WAL_MIL_2015_031
-               2     0.2230     0.2192    WAL_MIL_2015_002,WAL_MIL_2015_008
-               3     0.8670     0.6843    WAL_MIL_2015_004,WAL_MIL_2015_006,WAL_MIL_2015_023,WAL_MIL_2015_040
-               4     0.7010     0.5277    WAL_MIL_2015_007,WAL_MIL_2015_025,WAL_MIL_2015_038
-               5     1.0000     0.2977    WAL_MIL_2015_009
-               6     0.8262     0.8068    WAL_MIL_2015_010,WAL_MIL_2015_020
-               7     0.7165     0.4585    WAL_MIL_2015_011,WAL_MIL_2015_019
-               8     1.0000     0.5375    WAL_MIL_2015_012
-               9     1.0000     0.5502    WAL_MIL_2015_014
-              10     0.7161     0.7150    WAL_MIL_2015_021,WAL_MIL_2015_039
-              11     1.0000     0.3505    WAL_MIL_2015_024
-              12     1.0000     0.3728    WAL_MIL_2015_030
-              13     1.0000     0.3046    WAL_MIL_2015_032
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5,Member6,Member7,Member8
+               1     0.5947     0.5931    WAL_MIL_2015_001,WAL_MIL_2015_005,WAL_MIL_2015_006,WAL_MIL_2015_013,WAL_MIL_2015_018,WAL_MIL_2015_022,WAL_MIL_2015_026,WAL_MIL_2015_031
+               2     0.1998     0.1994    WAL_MIL_2015_002,WAL_MIL_2015_008
+               3     0.7660     0.5620    WAL_MIL_2015_004,WAL_MIL_2015_007,WAL_MIL_2015_023,WAL_MIL_2015_025,WAL_MIL_2015_038,WAL_MIL_2015_040
+               4     1.0000     0.6759    WAL_MIL_2015_009
+               5     0.8449     0.8339    WAL_MIL_2015_010,WAL_MIL_2015_020
+               6     0.6954     0.6775    WAL_MIL_2015_011,WAL_MIL_2015_019
+               7     1.0000     0.5389    WAL_MIL_2015_012
+               8     1.0000     0.5646    WAL_MIL_2015_014
+               9     0.7048     0.7048    WAL_MIL_2015_021,WAL_MIL_2015_039
+              10     1.0000     0.3755    WAL_MIL_2015_024
+              11     1.0000     0.4050    WAL_MIL_2015_030
+              12     1.0000     0.3072    WAL_MIL_2015_032

@@ -1,20 +1,20 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     NFH_FOR_2017_014                   *1                   #1             1
-    NFH_FOR_2017_055                   *5                   #1             1
+    NFH_FOR_2017_055                   *1                   #5             1
     NFH_FOR_2017_016                   *2                   #2             2
     NFH_FOR_2017_021                   *3                   #3             3
     NFH_FOR_2017_025                   *3                   #3             3
     NFH_FOR_2017_107                   *3                   #3             3
     NFH_FOR_2017_051                   *4                   #4             4
-    NFH_FOR_2017_065                   *7                   #6             5
-    NFH_FOR_2017_059                   *6                   #5             5
-    NFH_FOR_2017_124                  *12                   #6             5
-    NFH_FOR_2017_126                  *12                   #5             5
-    NFH_FOR_2017_067                   *8                   #7             6
-    NFH_FOR_2017_118                   *8                   #7             6
-    NFH_FOR_2017_078                   *9                   #8             7
-    NFH_FOR_2017_105                   *9                   #8             7
-    NFH_FOR_2017_115                   *9                   #8             7
-    NFH_FOR_2017_102                  *10                   #9             8
-    NFH_FOR_2017_110                  *11                  #10             9
-    NFH_FOR_2017_129                  *11                  #10             9
+    NFH_FOR_2017_059                   *5                   #6             5
+    NFH_FOR_2017_126                   *5                  #12             5
+    NFH_FOR_2017_065                   *6                   #7             5
+    NFH_FOR_2017_124                   *6                  #12             5
+    NFH_FOR_2017_067                   *7                   #8             6
+    NFH_FOR_2017_118                   *7                   #8             6
+    NFH_FOR_2017_078                   *8                   #9             7
+    NFH_FOR_2017_115                   *8                   #9             7
+    NFH_FOR_2017_102                   *9                  #10             8
+    NFH_FOR_2017_105                  *10                  #11             9
+    NFH_FOR_2017_110                  *10                  #11             9
+    NFH_FOR_2017_129                  *10                  #11             9

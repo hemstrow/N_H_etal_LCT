@@ -1,21 +1,21 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     ROC_TOJ_2017_001                   *1                   #1             1
     ROC_TOJ_2017_003                   *2                   #2             1
-    ROC_TOJ_2017_004                   *1                   #2             1
+    ROC_TOJ_2017_004                   *2                   #1             1
     ROC_TOJ_2017_008                   *3                   #3             2
     ROC_TOJ_2017_011                   *1                   #1             1
     ROC_TOJ_2017_012                   *4                   #4             3
     ROC_TOJ_2017_016                   *5                   #5             4
-    ROC_TOJ_2017_020                   *6                   #2             1
-    ROC_TOJ_2017_021                   *7                   #6             5
-    ROC_TOJ_2017_023                   *7                   #6             5
-    ROC_TOJ_2017_025                   *8                   #5             4
+    ROC_TOJ_2017_020                   *2                   #6             1
+    ROC_TOJ_2017_021                   *6                   #7             5
+    ROC_TOJ_2017_023                   *6                   #7             5
+    ROC_TOJ_2017_025                   *7                   #5             4
     ROC_TOJ_2017_026                   *2                   #2             1
-    ROC_TOJ_2017_030                   *8                   #7             4
-    ROC_TOJ_2017_032                   *9                   #8             6
-    ROC_TOJ_2017_036                   *4                   #4             3
-    ROC_TOJ_2017_037                  *10                   #6             5
-    ROC_TOJ_2017_040                  *11                   #9             7
-    ROC_TOJ_2017_044                   *4                   #4             3
-    ROC_TOJ_2017_046                  *12                   #1             1
-    ROC_TOJ_2017_050                  *13                  #10             8
+    ROC_TOJ_2017_030                   *7                   #8             4
+    ROC_TOJ_2017_032                   *8                   #9             6
+    ROC_TOJ_2017_036                   *4                  #10             3
+    ROC_TOJ_2017_037                   *6                  #11             5
+    ROC_TOJ_2017_040                   *9                  #12             7
+    ROC_TOJ_2017_044                   *4                  #10             3
+    ROC_TOJ_2017_046                   *1                  #13             1
+    ROC_TOJ_2017_050                  *10                  #14             8

@@ -1,4 +1,4 @@
 FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
-               1     0.8217     0.8190    STE_MSQ_2000_008,STE_MSQ_2000_010
+               1     0.8161     0.8133    STE_MSQ_2000_008,STE_MSQ_2000_010
                2     1.0000     0.9995    STE_MSQ_2000_009
-               3     1.0000     0.9923    STE_MSQ_2000_013
+               3     1.0000     0.9919    STE_MSQ_2000_013

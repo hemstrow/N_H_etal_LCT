@@ -6,7 +6,7 @@ LHU_INK_2016_002,*2,#2,2
 Config#,2,LogLikelihood,-3.5422887189E+01
 OffspringID,FatherID,MotherID,ClusterIndex
 LHU_INK_2016_001,*1,#1,1
-LHU_INK_2016_002,*2,#1,1
+LHU_INK_2016_002,*1,#2,1
 Config#,3,LogLikelihood,-3.7873417958E+01
 OffspringID,FatherID,MotherID,ClusterIndex
 LHU_INK_2016_001,*1,#1,1

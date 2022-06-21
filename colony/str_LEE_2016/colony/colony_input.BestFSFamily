@@ -1,9 +1,8 @@
-FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3
-               1     0.0299     0.0299    SFH_LEE_2016_001,SFH_LEE_2016_014,SFH_LEE_2016_016
-               2     0.7890     0.4840    SFH_LEE_2016_002,SFH_LEE_2016_017
-               3     1.0000     0.7261    SFH_LEE_2016_003
-               4     1.0000     0.9982    SFH_LEE_2016_005
-               5     0.8258     0.8258    SFH_LEE_2016_006,SFH_LEE_2016_008
-               6     1.0000     0.9834    SFH_LEE_2016_007
-               7     1.0000     0.3646    SFH_LEE_2016_013
-               8     1.0000     0.7320    SFH_LEE_2016_015
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
+               1     0.1988     0.1982    SFH_LEE_2016_002,SFH_LEE_2016_017
+               2     1.0000     0.9454    SFH_LEE_2016_003
+               3     1.0000     0.6797    SFH_LEE_2016_005
+               4     1.0000     0.9900    SFH_LEE_2016_007
+               5     1.0000     0.5063    SFH_LEE_2016_008
+               6     1.0000     0.5148    SFH_LEE_2016_013
+               7     0.3512     0.3405    SFH_LEE_2016_014,SFH_LEE_2016_016

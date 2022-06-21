@@ -1,4 +1,3 @@
 Number Fre(#PaternalFamily) Fre(#MaternalFamily) Fre(#FullSib-Family)   Fre(#Child/Father)   Fre(#Child/Mather)    Fre(#Mating/Male)  Fre(#Mating/Female)
-     1               0.0000               0.0000               0.0000               0.9742               1.0000               0.9742               1.0000
-     2               0.0516               0.0000               0.0000               0.0258               0.0000               0.0258               0.0000
-     3               0.9484               1.0000               1.0000               0.0000               0.0000               0.0000               0.0000
+     1               0.0000               0.0021               0.0000               1.0000               0.9979               1.0000               0.9979
+     2               1.0000               0.9979               1.0000               0.0000               0.0021               0.0000               0.0021

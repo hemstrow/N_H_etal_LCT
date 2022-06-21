@@ -1,7 +1,7 @@
 ClusterIndex Probability          OffspringID             FatherID             MotherID
-           1      0.4903     ROC_FRZ_1997_005                   *1                   #1
-           1      0.4903     ROC_FRZ_1997_026                   *1                   #1
-           2      0.5742     ROC_FRZ_1997_007                   *2                   #2
-           2      0.5742     ROC_FRZ_1997_009                   *2                   #2
-           3      0.5304     ROC_FRZ_1997_011                   *3                   #3
-           4      0.3151     ROC_FRZ_1997_022                   *4                   #4
+           1      0.4606     ROC_FRZ_1997_005                   *1                   #1
+           1      0.4606     ROC_FRZ_1997_026                   *1                   #1
+           2      0.5900     ROC_FRZ_1997_007                   *2                   #2
+           2      0.5900     ROC_FRZ_1997_009                   *2                   #2
+           3      0.5681     ROC_FRZ_1997_011                   *3                   #3
+           4      0.3496     ROC_FRZ_1997_022                   *4                   #4

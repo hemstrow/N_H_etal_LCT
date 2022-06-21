@@ -1,7 +1,4 @@
 ClusterIndex Probability          OffspringID             FatherID             MotherID
-           1      0.3614     MCD_LIN_2017_001                   *1                   #1
-           1      0.3614     MCD_LIN_2017_002                   *1                   #1
-           1      0.3614     MCD_LIN_2017_006                   *1                   #4
-           2      0.9991     MCD_LIN_2017_003                   *2                   #2
-           2      0.9991     MCD_LIN_2017_004                   *2                   #2
-           3      0.9991     MCD_LIN_2017_005                   *3                   #3
+           1      0.3632     MCD_LIN_2017_001                   *1                   #1
+           2      0.3508     MCD_LIN_2017_002                   *2                   #2
+           3      0.9032     MCD_LIN_2017_006                   *3                   #3

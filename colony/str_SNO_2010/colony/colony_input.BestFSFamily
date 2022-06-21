@@ -1,8 +1,0 @@
-FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
-               1     1.0000     0.9872    SFL_SNO_2010_450
-               2     1.0000     0.9877    SFL_SNO_2010_451
-               3     0.7829     0.7782    SFL_SNO_2010_452,SFL_SNO_2010_456
-               4     0.5762     0.5761    SFL_SNO_2010_453,SFL_SNO_2010_454
-               5     1.0000     0.9884    SFL_SNO_2010_455
-               6     0.1386     0.1386    SFL_SNO_2010_457,SFL_SNO_2010_458
-               7     1.0000     0.9683    SFL_SNO_2010_459

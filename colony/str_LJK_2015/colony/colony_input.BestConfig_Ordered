@@ -1,17 +1,15 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     MAG_LJK_2015_038                   *1                   #1             1
     MAG_LJK_2015_039                   *1                   #1             1
-    MAG_LJK_2015_043                   *1                   #1             1
     MAG_LJK_2015_048                   *1                   #1             1
-    MAG_LJK_2015_059                   *1                   #1             1
     MAG_LJK_2015_040                   *2                   #2             2
-    MAG_LJK_2015_041                   *3                   #3             3
-    MAG_LJK_2015_060                   *3                   #3             3
-    MAG_LJK_2015_044                   *4                   #4             4
-    MAG_LJK_2015_053                   *4                   #4             4
-    MAG_LJK_2015_045                   *5                   #5             5
-    MAG_LJK_2015_046                   *5                   #5             5
-    MAG_LJK_2015_049                   *5                   #5             5
-    MAG_LJK_2015_051                   *5                   #5             5
-    MAG_LJK_2015_052                   *5                   #5             5
-    MAG_LJK_2015_058                   *6                   #6             6
+    MAG_LJK_2015_059                   *2                   #2             2
+    MAG_LJK_2015_044                   *3                   #3             3
+    MAG_LJK_2015_053                   *3                   #3             3
+    MAG_LJK_2015_045                   *4                   #4             4
+    MAG_LJK_2015_046                   *4                   #4             4
+    MAG_LJK_2015_049                   *4                   #4             4
+    MAG_LJK_2015_051                   *4                   #4             4
+    MAG_LJK_2015_052                   *4                   #4             4
+    MAG_LJK_2015_058                   *5                   #5             5
+    MAG_LJK_2015_060                   *5                   #5             5

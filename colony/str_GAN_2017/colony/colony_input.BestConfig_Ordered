@@ -1,20 +1,19 @@
          OffspringID             FatherID             MotherID  ClusterIndex
+    NFH_GAN_2017_020                  *10                   #1             1
     NFH_GAN_2017_002                   *1                   #1             1
-    NFH_GAN_2017_020                   *1                  #10             1
-    NFH_GAN_2017_008                   *2                   #6             2
+    NFH_GAN_2017_011                   *7                   #5             2
+    NFH_GAN_2017_012                   *7                   #5             2
+    NFH_GAN_2017_015                   *8                   #2             2
+    NFH_GAN_2017_008                   *2                   #5             2
     NFH_GAN_2017_003                   *2                   #2             2
     NFH_GAN_2017_013                   *2                   #2             2
-    NFH_GAN_2017_015                   *9                   #2             2
-    NFH_GAN_2017_011                   *8                   #6             2
-    NFH_GAN_2017_012                   *8                   #6             2
     NFH_GAN_2017_005                   *4                   #3             3
     NFH_GAN_2017_010                   *4                   #3             3
     NFH_GAN_2017_018                   *4                   #3             3
     NFH_GAN_2017_004                   *3                   #3             3
-    NFH_GAN_2017_017                   *3                   #9             3
-    NFH_GAN_2017_006                   *5                   #4             4
-    NFH_GAN_2017_007                   *6                   #5             5
-    NFH_GAN_2017_009                   *7                   #7             6
-    NFH_GAN_2017_014                   *7                   #7             6
-    NFH_GAN_2017_016                  *10                   #8             7
-    NFH_GAN_2017_019                  *11                   #8             7
+    NFH_GAN_2017_017                   *3                   #8             3
+    NFH_GAN_2017_007                   *5                   #4             4
+    NFH_GAN_2017_009                   *6                   #6             5
+    NFH_GAN_2017_014                   *6                   #6             5
+    NFH_GAN_2017_016                   *9                   #7             6
+    NFH_GAN_2017_019                   *9                   #9             6

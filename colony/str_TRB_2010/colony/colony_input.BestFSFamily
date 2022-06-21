@@ -1,8 +1,0 @@
-FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2
-               1     0.9942     0.9200    SFL_TRB_2010_103,SFL_TRB_2010_104
-               2     0.6676     0.6657    SFL_TRB_2010_105,SFL_TRB_2010_110
-               3     1.0000     1.0000    SFL_TRB_2010_106
-               4     0.2576     0.2571    SFL_TRB_2010_107,SFL_TRB_2010_115
-               5     1.0000     0.9192    SFL_TRB_2010_111
-               6     1.0000     0.8438    SFL_TRB_2010_112
-               7     0.8352     0.7831    SFL_TRB_2010_113,SFL_TRB_2010_114

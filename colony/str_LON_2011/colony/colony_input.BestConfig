@@ -1,15 +1,15 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     QUI_LON_2011_216                   *1                   #1             1
-    QUI_LON_2011_217                   *1                   #2             1
-    QUI_LON_2011_218                   *2                   #2             1
-    QUI_LON_2011_220                   *3                   #3             2
-    QUI_LON_2011_221                   *4                   #4             3
-    QUI_LON_2011_222                   *4                   #4             3
-    QUI_LON_2011_223                   *5                   #1             1
-    QUI_LON_2011_225                   *6                   #5             4
-    QUI_LON_2011_226                   *7                   #6             5
-    QUI_LON_2011_227                   *6                   #5             4
-    QUI_LON_2011_230                   *8                   #7             6
-    QUI_LON_2011_231                   *7                   #8             5
-    QUI_LON_2011_232                   *9                   #9             7
-    QUI_LON_2011_233                  *10                   #2             1
+    QUI_LON_2011_217                   *2                   #2             2
+    QUI_LON_2011_218                   *3                   #1             1
+    QUI_LON_2011_220                   *4                   #1             1
+    QUI_LON_2011_221                   *5                   #2             2
+    QUI_LON_2011_222                   *2                   #3             2
+    QUI_LON_2011_223                   *3                   #4             1
+    QUI_LON_2011_225                   *1                   #4             1
+    QUI_LON_2011_226                   *6                   #5             3
+    QUI_LON_2011_227                   *6                   #5             3
+    QUI_LON_2011_230                   *6                   #5             3
+    QUI_LON_2011_231                   *6                   #5             3
+    QUI_LON_2011_232                   *6                   #5             3
+    QUI_LON_2011_233                   *6                   #5             3

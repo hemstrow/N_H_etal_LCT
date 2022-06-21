@@ -1,7 +1,7 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     ROC_FRZ_2000_023                   *1                   #1             1
     ROC_FRZ_2000_030                   *2                   #2             2
-    ROC_FRZ_2000_046                   *3                   #6             3
     ROC_FRZ_2000_032                   *3                   #3             3
+    ROC_FRZ_2000_046                   *3                   #6             3
     ROC_FRZ_2000_035                   *4                   #4             4
     ROC_FRZ_2000_039                   *5                   #5             5

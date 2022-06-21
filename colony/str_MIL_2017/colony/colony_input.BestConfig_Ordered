@@ -1,5 +1,4 @@
          OffspringID             FatherID             MotherID  ClusterIndex
-    WAL_MIL_2017_018                   *3                   #1             1
     WAL_MIL_2017_001                   *1                   #1             1
     WAL_MIL_2017_003                   *1                   #1             1
     WAL_MIL_2017_005                   *1                   #1             1
@@ -13,6 +12,7 @@
     WAL_MIL_2017_033                   *1                   #1             1
     WAL_MIL_2017_034                   *1                   #1             1
     WAL_MIL_2017_036                   *1                   #1             1
+    WAL_MIL_2017_018                   *3                   #1             1
     WAL_MIL_2017_011                   *2                   #2             2
     WAL_MIL_2017_032                   *2                   #2             2
     WAL_MIL_2017_019                   *4                   #3             3

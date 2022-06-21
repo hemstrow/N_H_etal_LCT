@@ -1,9 +1,9 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     ROC_ROC_2017_001                   *1                   #1             1
-    ROC_ROC_2017_006                   *2                   #5             2
     ROC_ROC_2017_002                   *2                   #2             2
+    ROC_ROC_2017_006                   *5                   #2             2
     ROC_ROC_2017_003                   *3                   #3             3
     ROC_ROC_2017_004                   *3                   #3             3
-    ROC_ROC_2017_007                   *5                   #4             4
+    ROC_ROC_2017_007                   *6                   #4             4
     ROC_ROC_2017_005                   *4                   #4             4
-    ROC_ROC_2017_008                   *6                   #6             5
+    ROC_ROC_2017_008                   *7                   #5             5

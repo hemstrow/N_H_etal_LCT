@@ -1,11 +1,10 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     LTR_IPL_2016_002                   *1                   #1             1
-    LTR_IPL_2016_041                   *1                   #9             1
-    LTR_IPL_2016_038                   *9                   #9             1
+    LTR_IPL_2016_041                   *9                   #1             1
     LTR_IPL_2016_004                   *2                   #2             2
     LTR_IPL_2016_006                   *3                   #3             3
     LTR_IPL_2016_007                   *4                   #4             4
     LTR_IPL_2016_020                   *5                   #5             5
-    LTR_IPL_2016_025                   *6                   #6             6
-    LTR_IPL_2016_028                   *7                   #7             7
-    LTR_IPL_2016_032                   *8                   #8             8
+    LTR_IPL_2016_028                   *6                   #6             6
+    LTR_IPL_2016_032                   *7                   #7             7
+    LTR_IPL_2016_038                   *8                   #8             8

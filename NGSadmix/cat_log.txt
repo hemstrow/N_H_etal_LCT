@@ -1,0 +1,900 @@
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r1
+Setup: seed=1641452855 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  91421.42 sec
+	[ALL done] walltime used =  12752.00 sec
+best like=-85821759.352707 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r10
+Setup: seed=1641455477 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  90326.70 sec
+	[ALL done] walltime used =  13340.00 sec
+best like=-85830235.788233 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r2
+Setup: seed=1641453069 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  67011.45 sec
+	[ALL done] walltime used =  14474.00 sec
+best like=-85950403.120198 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r3
+Setup: seed=1641453078 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  92380.71 sec
+	[ALL done] walltime used =  12810.00 sec
+best like=-85963444.515046 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r4
+Setup: seed=1641453435 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  73950.30 sec
+	[ALL done] walltime used =  10565.00 sec
+best like=-85944423.851550 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r5
+Setup: seed=1641453466 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  92699.11 sec
+	[ALL done] walltime used =  12995.00 sec
+best like=-85827539.726529 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r6
+Setup: seed=1641454075 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  74835.83 sec
+	[ALL done] walltime used =  26497.00 sec
+best like=-85946936.638533 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r7
+Setup: seed=1641454458 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  82882.74 sec
+	[ALL done] walltime used =  22066.00 sec
+best like=-85957357.081695 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r8
+Setup: seed=1641454960 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  92573.64 sec
+	[ALL done] walltime used =  12948.00 sec
+best like=-85843533.952364 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r9
+Setup: seed=1641455143 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  90337.23 sec
+	[ALL done] walltime used =  13338.00 sec
+best like=-85833987.216144 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r1
+Setup: seed=1641421513 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  244.74 sec
+	[ALL done] walltime used =  124.00 sec
+best like=-103408508.608479 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r10
+Setup: seed=1641421664 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  296.17 sec
+	[ALL done] walltime used =  154.00 sec
+best like=-103408508.608524 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r2
+Setup: seed=1641421513 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  239.02 sec
+	[ALL done] walltime used =  123.00 sec
+best like=-103408508.608479 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r3
+Setup: seed=1641421513 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  281.50 sec
+	[ALL done] walltime used =  136.00 sec
+best like=-103408508.608479 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r4
+Setup: seed=1641421513 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  237.61 sec
+	[ALL done] walltime used =  141.00 sec
+best like=-103408508.608479 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r5
+Setup: seed=1641421513 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  280.12 sec
+	[ALL done] walltime used =  133.00 sec
+best like=-103408508.608479 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r6
+Setup: seed=1641421513 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  253.10 sec
+	[ALL done] walltime used =  152.00 sec
+best like=-103408508.608479 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r7
+Setup: seed=1641421513 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  243.84 sec
+	[ALL done] walltime used =  143.00 sec
+best like=-103408508.608479 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r8
+Setup: seed=1641421664 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  248.43 sec
+	[ALL done] walltime used =  124.00 sec
+best like=-103408508.608524 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=1, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K1_r9
+Setup: seed=1641421664 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  239.95 sec
+	[ALL done] walltime used =  124.00 sec
+best like=-103408508.608524 after 10 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r1
+Setup: seed=1641421664 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  5217.46 sec
+	[ALL done] walltime used =  1474.00 sec
+best like=-87536965.924690 after 350 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r10
+Setup: seed=1641422974 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  7443.81 sec
+	[ALL done] walltime used =  1437.00 sec
+best like=-87536965.933998 after 500 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r2
+Setup: seed=1641421664 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  5733.91 sec
+	[ALL done] walltime used =  1191.00 sec
+best like=-87536965.924690 after 350 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r3
+Setup: seed=1641421664 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  5436.40 sec
+	[ALL done] walltime used =  1595.00 sec
+best like=-87536965.924690 after 350 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r4
+Setup: seed=1641421695 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  5622.77 sec
+	[ALL done] walltime used =  1662.00 sec
+best like=-87536965.918247 after 350 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r5
+Setup: seed=1641421817 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  6289.95 sec
+	[ALL done] walltime used =  1214.00 sec
+best like=-87536965.927635 after 400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r6
+Setup: seed=1641421817 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  5980.68 sec
+	[ALL done] walltime used =  1155.00 sec
+best like=-87536965.927635 after 400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r7
+Setup: seed=1641421844 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  3536.06 sec
+	[ALL done] walltime used =  648.00 sec
+best like=-87536969.003937 after 200 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r8
+Setup: seed=1641422504 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  6046.29 sec
+	[ALL done] walltime used =  1021.00 sec
+best like=-87536965.909338 after 350 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=2, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K2_r9
+Setup: seed=1641422863 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  6567.20 sec
+	[ALL done] walltime used =  1499.00 sec
+best like=-87536965.958358 after 400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r1
+Setup: seed=1641423035 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  14342.10 sec
+	[ALL done] walltime used =  2469.00 sec
+best like=-87223373.106530 after 750 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r10
+Setup: seed=1641424588 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  15889.12 sec
+	[ALL done] walltime used =  5786.00 sec
+best like=-87223373.143676 after 783 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r2
+Setup: seed=1641423157 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  13121.55 sec
+	[ALL done] walltime used =  3006.00 sec
+best like=-86585726.216437 after 750 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r3
+Setup: seed=1641423278 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  13187.15 sec
+	[ALL done] walltime used =  3703.00 sec
+best like=-86585713.435843 after 700 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r4
+Setup: seed=1641423370 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  20225.17 sec
+	[ALL done] walltime used =  5668.00 sec
+best like=-87137572.289325 after 1050 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r5
+Setup: seed=1641423552 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  41272.41 sec
+	[ALL done] walltime used =  6048.00 sec
+best like=-87137634.281514 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r6
+Setup: seed=1641424344 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  10963.69 sec
+	[ALL done] walltime used =  1835.00 sec
+best like=-86585891.707442 after 600 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r7
+Setup: seed=1641424363 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  6866.10 sec
+	[ALL done] walltime used =  1430.00 sec
+best like=-87472729.670527 after 350 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r8
+Setup: seed=1641424423 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  36523.07 sec
+	[ALL done] walltime used =  6558.00 sec
+best like=-87137559.942648 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=3, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K3_r9
+Setup: seed=1641424588 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  15365.55 sec
+	[ALL done] walltime used =  2164.00 sec
+best like=-87223373.143676 after 783 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r1
+Setup: seed=1641425532 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  16369.29 sec
+	[ALL done] walltime used =  3132.00 sec
+best like=-86518783.024701 after 700 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r10
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  30948.94 sec
+	[ALL done] walltime used =  4333.00 sec
+best like=-86282916.211963 after 1400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r2
+Setup: seed=1641425804 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  38476.56 sec
+	[ALL done] walltime used =  8243.00 sec
+best like=-86828283.544776 after 1600 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r3
+Setup: seed=1641426173 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  32759.92 sec
+	[ALL done] walltime used =  6717.00 sec
+best like=-86282916.349306 after 1400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r4
+Setup: seed=1641426203 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  34241.03 sec
+	[ALL done] walltime used =  5684.00 sec
+best like=-86828286.787546 after 1550 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r5
+Setup: seed=1641426764 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  32720.26 sec
+	[ALL done] walltime used =  4522.00 sec
+best like=-86282918.541339 after 1500 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r6
+Setup: seed=1641426994 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  45065.33 sec
+	[ALL done] walltime used =  12303.00 sec
+best like=-86828396.410476 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r7
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  33203.07 sec
+	[ALL done] walltime used =  5554.00 sec
+best like=-86282916.211963 after 1400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r8
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  35575.27 sec
+	[ALL done] walltime used =  5310.00 sec
+best like=-86282916.211963 after 1400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=4, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K4_r9
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  35475.38 sec
+	[ALL done] walltime used =  5237.00 sec
+best like=-86282916.211963 after 1400 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r1
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  50843.63 sec
+	[ALL done] walltime used =  7582.00 sec
+best like=-86498535.957422 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r10
+Setup: seed=1641430998 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  46695.75 sec
+	[ALL done] walltime used =  8008.00 sec
+best like=-86216026.535381 after 1950 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r2
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  50875.16 sec
+	[ALL done] walltime used =  7582.00 sec
+best like=-86498535.957422 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r3
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  50806.05 sec
+	[ALL done] walltime used =  7561.00 sec
+best like=-86498535.957422 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r4
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  50808.50 sec
+	[ALL done] walltime used =  7555.00 sec
+best like=-86498535.957422 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r5
+Setup: seed=1641427238 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  50899.48 sec
+	[ALL done] walltime used =  8791.00 sec
+best like=-86498535.957422 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r6
+Setup: seed=1641428671 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  50050.22 sec
+	[ALL done] walltime used =  8524.00 sec
+best like=-86215993.383360 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r7
+Setup: seed=1641429068 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  23200.32 sec
+	[ALL done] walltime used =  6403.00 sec
+best like=-86315895.393578 after 950 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r8
+Setup: seed=1641429620 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  55351.74 sec
+	[ALL done] walltime used =  8252.00 sec
+best like=-86318976.542768 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=5, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K5_r9
+Setup: seed=1641430383 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  50994.25 sec
+	[ALL done] walltime used =  7618.00 sec
+best like=-86216067.588008 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r1
+Setup: seed=1641431306 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  27761.65 sec
+	[ALL done] walltime used =  3988.00 sec
+best like=-85957979.382825 after 1050 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r10
+Setup: seed=1641434851 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  54975.79 sec
+	[ALL done] walltime used =  8194.00 sec
+best like=-86198344.661202 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r2
+Setup: seed=1641431581 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  55607.50 sec
+	[ALL done] walltime used =  8247.00 sec
+best like=-86181314.123502 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r3
+Setup: seed=1641431918 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  58926.71 sec
+	[ALL done] walltime used =  9416.00 sec
+best like=-86178429.400858 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r4
+Setup: seed=1641432499 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  65180.81 sec
+	[ALL done] walltime used =  9399.00 sec
+best like=-86198451.344557 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r5
+Setup: seed=1641432560 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  65411.45 sec
+	[ALL done] walltime used =  9543.00 sec
+best like=-86178320.977955 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r6
+Setup: seed=1641432805 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  64332.70 sec
+	[ALL done] walltime used =  10232.00 sec
+best like=-86175628.873330 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r7
+Setup: seed=1641432897 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  64127.23 sec
+	[ALL done] walltime used =  10083.00 sec
+best like=-86186563.043571 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r8
+Setup: seed=1641434057 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  65464.52 sec
+	[ALL done] walltime used =  9565.00 sec
+best like=-86180149.095021 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=6, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K6_r9
+Setup: seed=1641434808 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  76682.05 sec
+	[ALL done] walltime used =  47388.00 sec
+best like=-86185771.333479 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r1
+Setup: seed=1641434851 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  60972.86 sec
+	[ALL done] walltime used =  8998.00 sec
+best like=-86015356.278836 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r10
+Setup: seed=1641439856 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  60785.33 sec
+	[ALL done] walltime used =  8900.00 sec
+best like=-86449112.067669 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r2
+Setup: seed=1641435310 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  58804.93 sec
+	[ALL done] walltime used =  8323.00 sec
+best like=-86156823.732796 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r3
+Setup: seed=1641435494 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  64677.84 sec
+	[ALL done] walltime used =  17487.00 sec
+best like=-86176228.278295 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r4
+Setup: seed=1641436044 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  63597.94 sec
+	[ALL done] walltime used =  17018.00 sec
+best like=-86158219.692125 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r5
+Setup: seed=1641437205 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  63573.30 sec
+	[ALL done] walltime used =  10517.00 sec
+best like=-86167878.755165 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r6
+Setup: seed=1641437875 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  71832.17 sec
+	[ALL done] walltime used =  10400.00 sec
+best like=-86167797.122138 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r7
+Setup: seed=1641438029 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  60708.65 sec
+	[ALL done] walltime used =  8872.00 sec
+best like=-86160612.678155 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r8
+Setup: seed=1641439016 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  62697.71 sec
+	[ALL done] walltime used =  10617.00 sec
+best like=-86164191.364682 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=7, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K7_r9
+Setup: seed=1641439311 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  64119.62 sec
+	[ALL done] walltime used =  15140.00 sec
+best like=-86163350.215599 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r1
+Setup: seed=1641441354 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  71513.98 sec
+	[ALL done] walltime used =  11030.00 sec
+best like=-86144696.176844 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r10
+Setup: seed=1641443854 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  65427.04 sec
+	[ALL done] walltime used =  9575.00 sec
+best like=-86009395.078269 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r2
+Setup: seed=1641441903 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  79301.52 sec
+	[ALL done] walltime used =  11172.00 sec
+best like=-86008347.234753 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r3
+Setup: seed=1641442117 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  79570.11 sec
+	[ALL done] walltime used =  11342.00 sec
+best like=-86142555.847318 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r4
+Setup: seed=1641442197 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  92046.15 sec
+	[ALL done] walltime used =  16322.00 sec
+best like=-85986394.197988 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r5
+Setup: seed=1641443001 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  78130.02 sec
+	[ALL done] walltime used =  12130.00 sec
+best like=-85978904.594535 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r6
+Setup: seed=1641443062 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  65454.08 sec
+	[ALL done] walltime used =  9564.00 sec
+best like=-85876559.324972 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r7
+Setup: seed=1641443062 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  78369.03 sec
+	[ALL done] walltime used =  12389.00 sec
+best like=-85876559.324972 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r8
+Setup: seed=1641443641 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  63249.69 sec
+	[ALL done] walltime used =  8898.00 sec
+best like=-85980130.848165 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=8, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K8_r9
+Setup: seed=1641443641 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  79348.54 sec
+	[ALL done] walltime used =  11313.00 sec
+best like=-85980130.848165 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r1
+Setup: seed=1641446642 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  77768.34 sec
+	[ALL done] walltime used =  11367.00 sec
+best like=-85970679.589544 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r10
+Setup: seed=1641452641 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  71822.82 sec
+	[ALL done] walltime used =  10321.00 sec
+best like=-85967345.203371 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r2
+Setup: seed=1641446642 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  91122.90 sec
+	[ALL done] walltime used =  35669.00 sec
+best like=-85970679.589544 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r3
+Setup: seed=1641446905 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  71625.19 sec
+	[ALL done] walltime used =  10220.00 sec
+best like=-85955409.585179 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r4
+Setup: seed=1641447728 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  74591.14 sec
+	[ALL done] walltime used =  12115.00 sec
+best like=-85861839.606680 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r5
+Setup: seed=1641448277 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  85283.75 sec
+	[ALL done] walltime used =  12050.00 sec
+best like=-85978402.082443 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r6
+Setup: seed=1641448766 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  71342.30 sec
+	[ALL done] walltime used =  10155.00 sec
+best like=-85968129.695736 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r7
+Setup: seed=1641449650 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  76895.38 sec
+	[ALL done] walltime used =  12387.00 sec
+best like=-85975984.612735 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r8
+Setup: seed=1641452397 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  76510.14 sec
+	[ALL done] walltime used =  11295.00 sec
+best like=-85968418.399151 after 2000 iterations
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=9, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K9_r9
+Setup: seed=1641452550 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  69262.22 sec
+	[ALL done] walltime used =  9654.00 sec
+best like=-86142614.739566 after 2000 iterations

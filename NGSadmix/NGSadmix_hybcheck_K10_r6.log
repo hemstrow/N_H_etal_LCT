@@ -1,0 +1,9 @@
+Input: lname=hybrid_check_bamlist.txt_YCT_positions_adm.beagle.gz nPop=10, fname=(null) qname=(null) outfiles=NGSadmix_hybcheck_K10_r6
+Setup: seed=1641454075 nThreads=8 method=1
+Convergence: maxIter=2000 tol=0.000010 tolLike50=0.100000 dymBound=0
+Filters: misTol=0.050000 minMaf=0.010000 minLrt=0.000000 minInd=0
+Input file has dim: nsites=43262 nind=2793
+Input file has dim (AFTER filtering): nsites=40380 nind=2793
+	[ALL done] cpu-time used =  74835.83 sec
+	[ALL done] walltime used =  26497.00 sec
+best like=-85946936.638533 after 2000 iterations

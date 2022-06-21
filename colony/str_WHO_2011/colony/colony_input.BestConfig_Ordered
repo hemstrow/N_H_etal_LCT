@@ -1,10 +1,10 @@
          OffspringID             FatherID             MotherID  ClusterIndex
     WWH_WHO_2011_010                   *1                   #1             1
-    WWH_WHO_2011_036                   *2                   #5             2
+    WWH_WHO_2011_036                   *5                   #2             2
     WWH_WHO_2011_016                   *2                   #2             2
     WWH_WHO_2011_024                   *3                   #3             3
     WWH_WHO_2011_041                   *3                   #3             3
     WWH_WHO_2011_034                   *4                   #4             4
     WWH_WHO_2011_047                   *4                   #4             4
-    WWH_WHO_2011_038                   *5                   #6             5
-    WWH_WHO_2011_044                   *5                   #6             5
+    WWH_WHO_2011_038                   *6                   #5             5
+    WWH_WHO_2011_044                   *6                   #5             5

@@ -1,15 +1,13 @@
-FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4
-               1     0.2959     0.2959    WAL_SLK_2015_001,WAL_SLK_2015_016
-               2     0.6517     0.0690    WAL_SLK_2015_002,WAL_SLK_2015_015,WAL_SLK_2015_019
-               3     0.2055     0.1976    WAL_SLK_2015_003,WAL_SLK_2015_011
-               4     1.0000     0.6969    WAL_SLK_2015_004
-               5     0.8394     0.8355    WAL_SLK_2015_005,WAL_SLK_2015_026
-               6     0.9397     0.1801    WAL_SLK_2015_006,WAL_SLK_2015_014,WAL_SLK_2015_027,WAL_SLK_2015_030
-               7     1.0000     0.0561    WAL_SLK_2015_007
-               8     0.6338     0.0932    WAL_SLK_2015_008,WAL_SLK_2015_023
-               9     1.0000     0.9591    WAL_SLK_2015_009
-              10     0.5899     0.3759    WAL_SLK_2015_010,WAL_SLK_2015_018
-              11     0.2970     0.2954    WAL_SLK_2015_013,WAL_SLK_2015_021,WAL_SLK_2015_029
-              12     0.7462     0.7288    WAL_SLK_2015_017,WAL_SLK_2015_020,WAL_SLK_2015_024
-              13     1.0000     0.0855    WAL_SLK_2015_022
-              14     1.0000     0.1692    WAL_SLK_2015_025
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
+               1     0.1791     0.1791    WAL_SLK_2015_001,WAL_SLK_2015_004
+               2     0.8609     0.0901    WAL_SLK_2015_002,WAL_SLK_2015_015
+               3     0.3692     0.3545    WAL_SLK_2015_003,WAL_SLK_2015_011
+               4     0.8280     0.8262    WAL_SLK_2015_005,WAL_SLK_2015_026
+               5     0.2944     0.2944    WAL_SLK_2015_006,WAL_SLK_2015_007,WAL_SLK_2015_014,WAL_SLK_2015_027,WAL_SLK_2015_030
+               6     1.0000     0.2493    WAL_SLK_2015_008
+               7     1.0000     0.6768    WAL_SLK_2015_009
+               8     0.3566     0.3544    WAL_SLK_2015_010,WAL_SLK_2015_013,WAL_SLK_2015_018
+               9     0.7573     0.7431    WAL_SLK_2015_017,WAL_SLK_2015_020,WAL_SLK_2015_024
+              10     1.0000     0.0447    WAL_SLK_2015_019
+              11     0.8592     0.7211    WAL_SLK_2015_021,WAL_SLK_2015_029
+              12     0.7714     0.7231    WAL_SLK_2015_022,WAL_SLK_2015_023,WAL_SLK_2015_025

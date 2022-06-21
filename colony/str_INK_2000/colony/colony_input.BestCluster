@@ -1,5 +1,4 @@
 ClusterIndex Probability          OffspringID             FatherID             MotherID
-           1      0.0728     LHU_INK_2000_104                   *1                   #1
-           1      0.0728     LHU_INK_2000_121                   *3                   #1
-           2      0.1463     LHU_INK_2000_107                   *2                   #2
-           2      0.1463     LHU_INK_2000_118                   *2                   #3
+           1      0.3772     LHU_INK_2000_104                   *1                   #1
+           2      0.0826     LHU_INK_2000_107                   *2                   #2
+           2      0.0826     LHU_INK_2000_121                   *2                   #3

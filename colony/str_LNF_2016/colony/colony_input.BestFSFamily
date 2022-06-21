@@ -1,12 +1,11 @@
-FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3
-               1     0.8682     0.6327    PPT_LNF_2016_001,PPT_LNF_2016_006
-               2     1.0000     0.1684    PPT_LNF_2016_002
-               3     1.0000     0.6761    PPT_LNF_2016_003
-               4     0.2739     0.2098    PPT_LNF_2016_004,PPT_LNF_2016_020
-               5     1.0000     0.9948    PPT_LNF_2016_005
-               6     1.0000     0.9663    PPT_LNF_2016_007
-               7     0.3359     0.3359    PPT_LNF_2016_008,PPT_LNF_2016_009,PPT_LNF_2016_017
-               8     0.9026     0.9026    PPT_LNF_2016_010,PPT_LNF_2016_011
-               9     0.6142     0.6142    PPT_LNF_2016_012,PPT_LNF_2016_013,PPT_LNF_2016_014
-              10     1.0000     0.1791    PPT_LNF_2016_018
-              11     1.0000     0.4807    PPT_LNF_2016_019
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4
+               1     0.1554     0.1554    PPT_LNF_2016_001,PPT_LNF_2016_004,PPT_LNF_2016_006,PPT_LNF_2016_020
+               2     1.0000     0.1711    PPT_LNF_2016_002
+               3     1.0000     0.6794    PPT_LNF_2016_003
+               4     1.0000     0.9931    PPT_LNF_2016_005
+               5     1.0000     0.9662    PPT_LNF_2016_007
+               6     0.3315     0.3315    PPT_LNF_2016_008,PPT_LNF_2016_009,PPT_LNF_2016_017
+               7     0.9052     0.9052    PPT_LNF_2016_010,PPT_LNF_2016_011
+               8     0.6205     0.6205    PPT_LNF_2016_012,PPT_LNF_2016_013,PPT_LNF_2016_014
+               9     1.0000     0.1832    PPT_LNF_2016_018
+              10     1.0000     0.4855    PPT_LNF_2016_019

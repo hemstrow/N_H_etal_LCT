@@ -91,6 +91,7 @@ Ne via NeEstimator, ho, he, het_hom, and Tajima's D. Uncomment to run.
 # dat <- calc_het_hom_ratio(dat, c("stream.year"))
 # dat <- calc_tajimas_d(dat, "stream.year.chr", par = 6)
 # dat <- calc_fis(dat, "stream.year")
+# dat <- calc_prop_poly(dat, "stream.year")
 # saveRDS(dat, "processed_snpRdata.RDS")
 dat <- readRDS("processed_snpRdata.RDS")
 ```
@@ -173,7 +174,7 @@ Other basic stats:
 ```{r, results='hide'}
 ne <- get.snpR.stats(dat, "stream.year", "ne")$pop
 colnames(ne)[2] <- "subfacet"
-diversity <- get.snpR.stats(dat, "stream.year", c("pi", "ho", "het_hom_ratio", "fis"))$weighted.mean
+diversity <- get.snpR.stats(dat, "stream.year", c("pi", "ho", "het_hom_ratio", "fis", "prop_poly"))$weighted.means
 ```
 
 # PCA and NGSadmix plots
@@ -203,6 +204,9 @@ check[,bad := LCT < 0.99]
 n_rem <- table(check$subfacet[which(check$bad)])
 n_rem <- as.data.frame(n_rem)
 colnames(n_rem) <- c("locale", "Number of Hybrids (%LCT < .99)")
+
+mean(check[which(bad),]$RBT)
+mean(check[which(bad),]$YCT)
 
 merge_and_add <- function(x, tab, new.name){
   tab <- as.data.frame(tab)
@@ -333,7 +337,7 @@ stats <- stats[-which(stats$subfacet %in% bad.locales),]
 # year.matches <- which(abs(stats$year  - stats$PVA.Abund.Year) <= 5 & stats$`Final n` >= 5)
 year.matches <- which(!is.na(stats$PVA.Abund.Year) & stats$`Final n` >= 5)
 cor_dat <- stats[year.matches,]
-cor_dat <- reshape2::melt(cor_dat[,c("subfacet", "Basin", "Creek", "year", "pi", "ho",
+cor_dat <- reshape2::melt(cor_dat[,c("subfacet", "Basin", "Creek", "year", "pi", "ho", 
                                      "ts.theta", "ws.theta", "theta_diff", "PVA.Extinction", "PVA.Abundance.50", "N_harmean")], 
                           id.vars = c("subfacet", "Basin", "Creek", "year", "PVA.Extinction", "PVA.Abundance.50", "N_harmean"))
 
@@ -399,7 +403,7 @@ rfstats$ts.theta <- scale(rfstats$ts.theta)
 
 
 ## run a random forest against extinction risk
-rfstats_ext <- rfstats[,c("PVA.Extinction", "ho", "pi", "ws.theta", "ts.theta")]
+rfstats_ext <- rfstats[,c("PVA.Extinction", "ho", "pi",  "ws.theta", "ts.theta")]
 
 
 ## full model

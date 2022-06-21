@@ -1,7 +1,6 @@
 FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
-               1     0.0836     0.0810    MAG_LJK_2015_038,MAG_LJK_2015_039,MAG_LJK_2015_043,MAG_LJK_2015_048,MAG_LJK_2015_059
-               2     1.0000     0.4981    MAG_LJK_2015_040
-               3     0.1598     0.1494    MAG_LJK_2015_041,MAG_LJK_2015_060
-               4     0.9095     0.7034    MAG_LJK_2015_044,MAG_LJK_2015_053
-               5     0.4357     0.4330    MAG_LJK_2015_045,MAG_LJK_2015_046,MAG_LJK_2015_049,MAG_LJK_2015_051,MAG_LJK_2015_052
-               6     1.0000     0.7176    MAG_LJK_2015_058
+               1     0.0891     0.0694    MAG_LJK_2015_038,MAG_LJK_2015_039,MAG_LJK_2015_048
+               2     0.1113     0.1072    MAG_LJK_2015_040,MAG_LJK_2015_059
+               3     0.8723     0.6193    MAG_LJK_2015_044,MAG_LJK_2015_053
+               4     0.2421     0.2404    MAG_LJK_2015_045,MAG_LJK_2015_046,MAG_LJK_2015_049,MAG_LJK_2015_051,MAG_LJK_2015_052
+               5     0.1309     0.1136    MAG_LJK_2015_058,MAG_LJK_2015_060

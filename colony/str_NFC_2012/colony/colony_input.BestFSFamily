@@ -1,10 +1,10 @@
-FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4,Member5
-               1     0.3109     0.2363    EFH_NFC_2012_001,EFH_NFC_2012_017
-               2     0.6873     0.6828    EFH_NFC_2012_002,EFH_NFC_2012_008,EFH_NFC_2012_011,EFH_NFC_2012_012,EFH_NFC_2012_013
-               3     0.6488     0.6487    EFH_NFC_2012_003,EFH_NFC_2012_005
-               4     0.8974     0.8780    EFH_NFC_2012_004,EFH_NFC_2012_007
-               5     1.0000     0.1134    EFH_NFC_2012_006
-               6     1.0000     0.2492    EFH_NFC_2012_009
-               7     0.9126     0.4397    EFH_NFC_2012_010,EFH_NFC_2012_015,EFH_NFC_2012_018
-               8     1.0000     0.9850    EFH_NFC_2012_014
-               9     1.0000     0.9950    EFH_NFC_2012_016
+FullSibshipIndex Prob(Inc.) Prob(Exc.)    Member1,Member2,Member3,Member4
+               1     0.3567     0.3536    EFH_NFC_2012_001,EFH_NFC_2012_006,EFH_NFC_2012_009
+               2     0.7048     0.5515    EFH_NFC_2012_002,EFH_NFC_2012_008,EFH_NFC_2012_011,EFH_NFC_2012_013
+               3     0.7413     0.7410    EFH_NFC_2012_003,EFH_NFC_2012_005
+               4     0.8906     0.8663    EFH_NFC_2012_004,EFH_NFC_2012_007
+               5     0.8997     0.4314    EFH_NFC_2012_010,EFH_NFC_2012_015,EFH_NFC_2012_018
+               6     1.0000     0.8405    EFH_NFC_2012_012
+               7     1.0000     0.9574    EFH_NFC_2012_014
+               8     1.0000     0.9554    EFH_NFC_2012_016
+               9     1.0000     0.7251    EFH_NFC_2012_017
